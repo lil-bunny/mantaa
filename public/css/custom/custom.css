@@ -1,0 +1,111 @@
+/*================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 5.0
+	Author: PIXINVENT
+	Author URL: https://themeforest.net/user/pixinvent/portfolio
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.users-list-wrapper .users-list-table .dataTable tbody td {
+    padding: 0.8rem 0.4rem;
+}
+
+.auth_logo {
+    padding: 25px 15px 0;
+}
+
+.auth_logo a {
+    display: block;
+    max-width: 100%;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.auth_logo a img {
+    width: 100%;
+    height: auto;
+}
+
+.brand-sidebar .brand-logo {
+    padding: 18px 12px 18px 22px;
+}
+
+.brand-sidebar .logo-wrapper a.brand-logo img {
+    height: 28px;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-collapsed .brand-sidebar .logo-wrapper a.brand-logo img._full {
+    transform: scale(0);
+    transform-origin: left center;
+    height: 0;
+}
+
+.brand-sidebar .logo-wrapper a.brand-logo img._icon {
+    transform: scale(0);
+    transform-origin: left center;
+    height: 0;
+}
+
+.nav-collapsed .brand-sidebar .logo-wrapper a.brand-logo img._icon {
+    transform: scale(1);
+    height: 22px;
+}
+
+.nav-collapsed .brand-sidebar .brand-logo {
+    padding: 34px 2px 10px 2px;
+}
+
+.nav-collapsed .brand-sidebar .navbar-toggler,
+.nav-collapsed .brand-sidebar .brand-logo span {
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    height: 36px;
+    top: auto !important;
+    right: auto !important;
+    position: relative !important;
+    text-align: center;
+}
+
+.nav-collapsed .brand-sidebar .navbar-toggler i {
+    height: 36px !important;
+    line-height: 36px !important;
+}
+
+.media-tutor{
+    padding-left:10px;
+}
+
+.tabs .tab a{
+    margin:0 24px;
+}
+.users-view .users-view-timeline{
+    padding:1rem;
+}
+.collapsible-accordion li .collapsible-header {
+    justify-content: space-between;
+  }
+  .collapsible-accordion li .collapsible-header .caret {
+    color: #999;
+    margin-right: 0;
+    transition: transform 0.2s ease;
+  }
+  .collapsible-accordion li.active .collapsible-header {
+    background-color:#3f51b5;
+    color: white;
+  }
+  .collapsible-accordion li.active .collapsible-header .caret {
+    color: white;
+    transform: rotate(-180deg);
+    transform-origin: 0.6em 0.5em;
+  }
+  .collapsible-body-padding{
+    padding:1rem;
+    background-color: #fff;
+  }
+  
