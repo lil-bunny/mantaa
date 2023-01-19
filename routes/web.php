@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('frontend.home');
+    // Route::get('/', 'login')->name('login');
+    // Route::post('/loginSubmit', 'loginSubmit')->name('login.submit');
+    // Route::get('/user-forgot-password', 'forgotPassword')->name('user-forgot-password');
+    // Route::post('/forgotPasswordSubmit', 'forgotPasswordSubmit')->name('forgotPasswordSubmit');
 });

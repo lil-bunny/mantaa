@@ -1,0 +1,12 @@
+<svg id="hospital-icon" xmlns="http://www.w3.org/2000/svg" width="22.549" height="20.692" viewBox="0 0 22.549 20.692">
+  <g id="Group_44" data-name="Group 44" transform="translate(0 0)">
+    <g id="Group_43" data-name="Group 43" transform="translate(0 0)">
+      <path id="Path_9790" data-name="Path 9790" d="M22.172,28.812,11.838,21.3a.857.857,0,0,0-1.127,0L.376,28.812A.948.948,0,0,0,.94,30.5H2.819V40.837a.888.888,0,0,0,.939.939H18.79a.888.888,0,0,0,.939-.939V30.5h1.879A.948.948,0,0,0,22.172,28.812ZM11.274,39.9a5.637,5.637,0,1,1,5.637-5.637A5.653,5.653,0,0,1,11.274,39.9Z" transform="translate(0 -21.085)" fill="#f6a73b"/>
+    </g>
+  </g>
+  <g id="Group_46" data-name="Group 46" transform="translate(7.047 8.948)">
+    <g id="Group_45" data-name="Group 45" transform="translate(0 0)">
+      <path id="Path_9791" data-name="Path 9791" d="M165.655,227.1v-2.818h-2.818V227.1h-2.818v2.818h2.818v2.818h2.818v-2.818h2.818V227.1Z" transform="translate(-160.018 -224.285)" fill="#f6a73b"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,228 @@
+
+@media screen and (min-width:576px) { 
+  
+}
+@media screen and (min-width:768px) {	 
+  
+  .main-header .fullmenu .menu li {
+    margin-left: 26px;
+  }
+  .fullmenu .menu a {
+    color: var(--dark-color);
+  }
+}
+@media screen and (min-width:992px) {			
+  
+}
+@media screen and (min-width:1400px) {  
+  .item-m6-l4-xxl3:not(:nth-child(-n+4)) {
+    margin-top: 30px;
+  }
+}
+@media (max-width:1400px) {
+  .site-box h3 {font-size: 1.1rem;}
+  .map-search {height: 780px}
+  .search-content {max-height: 780px}
+  .map-search iframe {height: 100% !important}
+} 
+@media (max-width:1300px) {
+  .sec-plot-info li span {font-size: 14px}
+  .sec-plot-info li p {font-size: 24px}
+  .home-banner .search-widget input {
+    padding: 20px 15px 20px 52px;
+    background-position: left 20px center;
+    background-size: 18px auto;
+  }
+  .home-banner .search-widget .btn-search {
+    padding: 12px 40px;
+    font-size: 16px;
+  }
+  .home-banner .search-widget {padding: 35px 45px}
+}
+
+@media screen and (max-width:1199px) {
+  .search-content {padding: 0;overflow: inherit;max-height: inherit;}
+  .plot-banner > img {height: 360px;object-fit: cover;}
+  .site-box .bottom-widget {padding: 0 10px}
+  .site-box .bottom-widget h6 {font-size: 0.9rem;}
+  .site-box .bottom-widget h5 {font-size: 0.92rem;}
+  .site-box h3 {font-size: 1rem;}
+  .site-box h4 {font-size: 0.775rem;}
+  .btn-more {font-size: 16px;line-height: normal;padding: 16px 30px;}
+  .city-box h3 {font-size: 16px}
+  .section-cities .container {max-width: 90%;}
+  .sec-plot-info li p {font-size: 20px}
+  .search-results > [class*="col-"] {width: 100%}
+  .search-results > div [class*="col-"] {width: 33.333%}
+  .map-search {padding: 0;height: 200px;}
+
+.map-search iframe {
+    height: 100%;
+}
+}
+@media screen and (max-width:991px) {
+  .banner-search .search-widget {margin-bottom: -97px}
+  .search-results > div [class*="col-"] {width: 50%}
+  .banner-cont p {font-size: 18px}
+  .banner-cont p img {width: 15px}
+  .section-cities .container {max-width: 85%;}
+   .section-demand h2 {
+      margin-top: 3rem;
+  } 
+  .sec-log-regi {padding:0 15px}
+  .sec-log-regi .container {margin: 15px auto;}
+  .p-30 {padding: 20px;}
+  .display-info h4 {font-size: 16px}
+  .sec-plot-info li {padding: 10px 15px;margin: 10px 0}
+  .sec-plot-info li p {font-size: 14px}
+  .sec-plot-info li span {font-size: 13px}
+  .sec-plot-info {margin: 0 0 40px}
+  .list-plot-info li {padding: 10px}
+  .list-plot-info figure {
+    margin: 0 10px 0 0;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+  }
+  .list-plot-info figure img {width: 13px}
+  .list-plot-info {height: calc(100% - 30px);}
+}
+@media screen and (max-width:767px) {
+  .search-title {margin-top: 30px}
+  .sec-plot-info {
+      margin: 20px 0 40px;
+      padding: 20px;
+  }
+  .sec-plot-info li {
+    padding: 10px 15px;
+    margin: 5px;
+    border: rgba(112, 112, 112, 0.2) 1px solid;
+}
+.plot-banner .banner-wrap {
+    padding-top: 80px;
+}
+.list-plot-info figure {width: 40px;height: 40px;min-width: 40px}
+.list-plot-info figure img {width: auto;}
+  .sec-plot-info li::before {display: none;}
+  .plot-banner > img {height: 310px}
+  .container, .container-sm {max-width: 620px;}
+  .col-xs-cs-6 {width: 50%;}
+  .section-cities .container {max-width: 83%}
+  .home-banner .search-widget {padding: 25px;}
+  .home-banner .search-widget input {font-size: 14px}
+  .display-info {margin: 0}
+  
+}
+@media screen and (max-width:575px) {
+  .site-box,
+  .site-box .img-elm img,
+  .search-results > div [class*="col-"],
+  .col-xs-cs-6 {width: 100%;}
+  
+}
+@media (max-width:479px) {
+  .feedback-sec p {font-size: 14px}
+  .avatar-link {margin: 0}
+  .avatar-link figure {
+    margin: 0 15px 0 0;
+    width: 30px;
+    height: 30px;
+  }
+  h3.sec-title {font-size: 18px}
+  .avatar-link span {display: none;}
+  .banner-cont p {font-size: 13px;line-height: 1.5}
+  .banner-cont p span {
+    margin: 5px 0 0;
+    display: block;
+  }
+  .review-sec li {padding: 20px 15px}
+  .sec-plot-info {
+    margin: 20px 0 30px;
+    padding: 0 15px 20px;
+  }
+  .feedback-sec textarea.form-control {height: 135px;}
+  .display-info p {font-size: 16px}
+  .feedback-sec .form-control,
+  .form-control {
+    font-size: 0.95rem;
+    padding: 7px 10px;
+    height: 40px;
+  }
+  .search-form .btn, .feedback-sec .btn, .display-info .btn {font-size: 14px;padding: 14px 25px;}
+  .btn.btn-submit {
+    font-size: 14px;
+    padding: 14px 10px;
+  }
+  .or-text span {font-size: 11px}
+  .flex-wrap-xs {flex-wrap: wrap;}
+  .search-form .col-auto,
+  .w-100-xs {width: 100%}
+  body {font-size: 1rem}
+  .sec-log-regi h1 {font-size: 24px}
+  .home-banner > img {
+      min-height: 300px;
+      object-fit: cover;
+  }
+  .banner-search > img {min-height: 100px;}
+  .header-right .btn {
+     padding: 10px 15px;
+      font-size: 14px;
+  }
+  .header-right .btn svg {
+      width: 15px;
+      height: 15px;
+      margin-right: 2px;
+  }
+  .logo {
+      display: block;
+      max-width: 130px;
+  }
+  .search-title {margin-top: 50px;}
+  .section-cities .container {max-width: 80%}
+  .city-items button.slick-next {right: -40px;}
+  .city-items button.slick-prev {left: -40px}
+  .city-items button {width: 30px;height: 26px}
+  .main-header {padding: 10px 0}
+  .home-banner .search-widget form {display: block;text-align: center;}
+  .home-banner .search-widget .btn-search {margin-top: 10px}
+  .home-banner .search-widget {padding: 15px}
+  .main-footer .footer-bottom {font-size: 0.75rem}
+  .home-banner .search-widget input {
+    font-size: 13px;
+    padding: 15px 5px 15px 30px;
+    background-position: left 9px center;
+    background-size: 15px auto;
+  }
+  .search-form {padding-bottom: 20px}
+}
+@media (max-width:380px) {
+  .header-right .btn.ms-3 {margin-left: 0.5rem !important;}
+  .logo {max-width: 120px}
+  .header-right .btn svg {
+      width: 13px;
+      height: 13px;
+  }
+  .header-right .btn {
+      padding: 6px 13px;
+      font-size: 13px;
+  }
+  h1.sec-title, h2.sec-title {font-size: 1.3rem}
+  .home-banner .search-widget input {
+    font-size: 12px;
+  }
+}
+@media (max-width:350px) {
+  body {
+    font-size: 0.93rem;
+}
+  .home-banner h1 {font-size: 1.35rem}
+  .header-right .btn {
+    padding: 5px 11px;
+    font-size: 11px;
+  }
+  .header-right .btn svg {
+      width: 10px;
+      height: 10px;
+  }
+  .list-plot-info li {flex-basis: 100%}
+}

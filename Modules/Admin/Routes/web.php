@@ -16,8 +16,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index');
     Route::get('/login', 'AdminController@login')->name('admin.login');
     Route::get('/logout', 'AdminController@logout')->name('admin.logout');
-    Route::post('/loginSubmit', 'AdminController@loginSubmit')->name('admin.loginSubmit');
-    
+    Route::post('/loginSubmit', 'AdminController@loginSubmit')->name('admin.loginSubmit');    
 });
 
 Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
