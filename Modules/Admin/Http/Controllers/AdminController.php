@@ -75,12 +75,6 @@ class AdminController extends Controller
      */
     public function loginSubmit(Request $request)
     {
-        // validates the input parameters posted
-        /*$request->validate([
-            'email' => ['required', 'email'],
-            'password' => 'required',
-        ]);*/
-
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',

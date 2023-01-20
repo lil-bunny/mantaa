@@ -20,8 +20,7 @@ use App\Http\Controllers\HomeController;
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('frontend.home');
-    // Route::get('/', 'login')->name('login');
-    // Route::post('/loginSubmit', 'loginSubmit')->name('login.submit');
-    // Route::get('/user-forgot-password', 'forgotPassword')->name('user-forgot-password');
-    // Route::post('/forgotPasswordSubmit', 'forgotPasswordSubmit')->name('forgotPasswordSubmit');
+    Route::get('/login', 'login')->name('frontend.login');
+    Route::post('/loginSubmit', 'loginSubmit')->name('frontend.loginSubmit');
+    Route::get('/register', 'register')->name('frontend.register');
 });
