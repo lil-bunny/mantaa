@@ -94,13 +94,15 @@ class UserController extends Controller
                 'role_id' => $request->input('role_id'),
                 'status' => $request->input('status'),
             ]);
+
+            return redirect()->route('admin.user');
         } else {
             // fetching roles
             $roles = Role::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
 
-            $errors=$validator->errors()->messages();
-            return view('admin::user.add', ['roles' => $roles, 'errors' => $errors]);
+            $errors=$validator->errors();
+            return redirect()->route('admin::user_add')->with('errors',$errors)->with('roles',$roles);
         }
 
         return redirect()->intended('admin/users')->withSuccess('User created successfully');
@@ -176,8 +178,8 @@ class UserController extends Controller
             $roles = Role::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
 
-            $errors=$validator->errors()->messages();
-            return view('admin::user.add', ['roles' => $roles, 'errors' => $errors]);
+            $errors=$validator->errors();
+            return redirect()->route('admin::user_edit', ['id' => $id])->with('errors',$errors)->with('roles',$roles);
         }
     }
 

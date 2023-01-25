@@ -65,8 +65,8 @@ class RoleController extends Controller
                 'status' => $request->input('status'),
             ]);
         } else {
-            $errors=$validator->errors()->messages();
-            return view('admin::role.add');
+            $errors=$validator->errors();
+            return redirect()->route('admin.role_add')->with('errors',$errors);
         }
 
         return redirect()->intended('admin/roles')->withSuccess('Role created successfully');
@@ -110,7 +110,7 @@ class RoleController extends Controller
             return redirect()->intended('admin/roles')->withSuccess('Role updated successfully');
         } else {
             $errors=$validator->errors()->messages();
-            return view('admin::role.add', ['errors' => $errors]);
+            return redirect()->route('admin::role_edit', ['id' => $id])->with('errors',$errors);
         }
     }
 

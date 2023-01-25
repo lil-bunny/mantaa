@@ -85,8 +85,8 @@ class CityController extends Controller
             $states = State::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
 
-            $errors=$validator->errors()->messages();
-            return view('admin::city.add', ['states' => $states, 'errors' => $errors]);
+            $errors=$validator->errors();
+            return redirect()->route('admin::city_add')->with('errors',$errors)->with('states',$states);
         }
 
         return redirect()->intended('admin/cities')->withSuccess('City created successfully');
@@ -143,8 +143,9 @@ class CityController extends Controller
             $states = State::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
 
-            $errors=$validator->errors()->messages();
-            return view('admin::city.add', ['states' => $states, 'errors' => $errors]);
+            $errors=$validator->errors();
+
+            return redirect()->route('admin::city_edit', ['id' => $id])->with('errors',$errors)->with('states',$states);
         }
     }
 

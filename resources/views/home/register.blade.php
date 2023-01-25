@@ -21,10 +21,10 @@
                 <input type="text" placeholder="Name" class="form-control" name="name">
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control" name="email1">
+                <input type="email" placeholder="Email" class="form-control" name="email">
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Phone" class="form-control" name="phone">
+                <input type="text" placeholder="Phone" class="form-control" name="mobile">
             </div>
             <div class="form-group">
                 <input type="passowrd" placeholder="Password" class="form-control" name="password">

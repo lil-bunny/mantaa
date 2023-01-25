@@ -65,8 +65,8 @@ class StateController extends Controller
                 'status' => $request->input('status'),
             ]);
         } else {
-            $errors=$validator->errors()->messages();
-            return view('admin::state.add');
+            $errors=$validator->errors();
+            return redirect()->route('admin::state_add')->with('errors',$errors);
         }
 
         return redirect()->intended('admin/states')->withSuccess('State created successfully');
@@ -109,8 +109,8 @@ class StateController extends Controller
 
             return redirect()->intended('admin/states')->withSuccess('State updated successfully');
         } else {
-            $errors=$validator->errors()->messages();
-            return view('admin::state.add', ['errors' => $errors]);
+            $errors=$validator->errors();
+            return redirect()->route('admin::state_edit', ['id' => $id])->with('errors',$errors);
         }
     }
 
