@@ -21,6 +21,8 @@ use App\Http\Controllers\HomeController;
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('frontend.home');
     Route::get('/login', 'login')->name('frontend.login');
+    Route::get('/logout', 'logout')->name('frontend.logout');
     Route::post('/loginSubmit', 'loginSubmit')->name('frontend.loginSubmit');
     Route::get('/register', 'register')->name('frontend.register');
+    Route::post('/registerSubmit', 'registerSubmit')->name('frontend.registerSubmit');
 });

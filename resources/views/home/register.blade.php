@@ -6,24 +6,37 @@
 <section class="sec-ptb sec-log-regi">
     <div class="container">
         <h1>Sign Up</h1>
-        <form>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="{{ route('frontend.registerSubmit') }}">
+            @csrf
             <div class="form-group">
-                <input type="text" placeholder="Name" class="form-control" name="">
+                <input type="text" placeholder="Name" class="form-control" name="name">
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control" name="">
+                <input type="email" placeholder="Email" class="form-control" name="email1">
             </div>
             <div class="form-group">
-                <input type="passowrd" placeholder="Password" class="form-control" name="">
+                <input type="text" placeholder="Phone" class="form-control" name="phone">
             </div>
             <div class="form-group">
-                <input type="passowrd" placeholder="Repeat Password" class="form-control" name="">
+                <input type="passowrd" placeholder="Password" class="form-control" name="password">
             </div>
-            <button class="btn btn-primary btn-submit w-100">Sign Up</button>
-            <p class="text-muted mt-3">Already have an account? <a href="login.html">Login</a></p>
+            <div class="form-group">
+                <input type="passowrd" placeholder="Repeat Password" class="form-control" name="cnf_password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit w-100">Sign Up</button>
+            <p class="text-muted mt-3">Already have an account? <a href="{{ route('frontend.login') }}">Login</a></p>
         </form>
         <div class="or-text mt-2 mt-sm-5"><span>OR</span></div>
-        <a href="#" class="mt-4 mt-sm-5 d-block gbtn"><img src="assets/images/google-login.png" alt="icon"></a>
+        <a href="#" class="mt-4 mt-sm-5 d-block gbtn"><img src="{{ asset('front-assets/images/google-login.png') }}" alt="icon"></a>
     </div>
 </section>
 <!-- // END REGISTER BODY -->

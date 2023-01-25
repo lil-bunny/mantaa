@@ -69,8 +69,8 @@
                                                         <div class="row">
                                                             <div class="col s12 input-field">
                                                                 <select name="status">
-                                                                    <option value="1" {{ $user_data->status==1 ? 'selected' : ''}}>Active</option>
-                                                                    <option value="0" {{ $user_data->status==0 ? 'selected' : ''}}>Inactive</option>
+                                                                    <option value="1" {{ $city_data->status==1 ? 'selected' : ''}}>Active</option>
+                                                                    <option value="0" {{ $city_data->status==0 ? 'selected' : ''}}>Inactive</option>
                                                                 </select>
                                                                 <label>Status</label>
                                                             </div>

@@ -6,7 +6,12 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Role;
 use Session;
+use Validator;
+use Hash;
+
 
 class HomeController extends Controller
 {
@@ -26,7 +31,7 @@ class HomeController extends Controller
     public function login()
     {
         $prev_route = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
-        return view('home.login', ['prev_route' => $errors]);
+        return view('home.login', ['prev_route' => $prev_route]);
     }
 
     /**
@@ -69,21 +74,69 @@ class HomeController extends Controller
                     'email', 'Invalid Credentials'
                 );
                 
-                $errors=$validator->errors()->messages();
-                return view('home.login', ['errors' => $errors]);
+                $errors=$validator->errors();
+                return redirect()->route('home.login')->with('errors',$errors);
             }
         } else {
-            $errors=$validator->errors()->messages();
-            return view('home.login', ['errors' => $errors]);
+            $errors=$validator->errors();
+            return redirect()->route('home.login')->with('errors',$errors);
         }
     }
 
     /**
-     * Displays the registartion template
+     * Displays the registration template
      * @return Renderable
      */
     public function register()
     {
         return view('home.register');
+    }
+
+    /**
+     * Create user
+     * @return Renderable
+     */
+    public function registerSubmit(Request $request)
+    {
+        // Validation
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|unique:users|max:255',
+            'name' => 'required',
+            'mobile' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            // fetching roles for customer
+            $roles = Role::where('is_deleted', '=', 0)
+                            ->where('status', '=', 1)
+                            ->where('role_id', '=', 'customer')
+                            ->get();
+            
+            // create user record
+            User::create([
+                'full_name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'mobile' => $request->input('mobile'),
+                'password' => $request->input('password'),
+                'role_id' => $roles->id,
+                'status' => $request->input('status'),
+            ]);
+
+            return redirect('/register');
+        } else {
+            $errors=$validator->errors();
+            return redirect()->route('frontend.register')->with('errors',$errors);
+        }
+    }
+
+    /**
+     * Redirect to home page after logout.
+     * @return Renderable
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('frontend.home');
     }
 }
