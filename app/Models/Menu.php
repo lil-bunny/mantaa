@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Kyslik\ColumnSortable\Sortable;
 
-class Role extends Model
+class Menu extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Sortable;
-    protected $guarded = [];
-
+    //protected $guard = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -22,18 +21,21 @@ class Role extends Model
      */
     protected $fillable = [
         'title',
-        'role_id',
-        'admin_access',
+        'route',
         'status',
     ];
+
 
     public $sortable = [
         'id',
         'title',
+        'route',
         'created_at'
     ];
 
-    public function menus() {
-        return $this->belongsToMany(Menu::class, 'role_menu');
+    
+
+    public function roles() {
+        return $this->belongsToMany(Role::class, 'role_user');
     }
 }

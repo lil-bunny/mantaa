@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::get('/roles/add', 'RoleController@add')->name('admin.role_add');
     Route::post('/roles/create_role', 'RoleController@create_role')->name('admin.create_role');
     Route::get('/roles/edit/{id}', 'RoleController@edit')->name('admin.role_edit');
-    Route::post('/roles/update_user/{id}', 'RoleController@update_role')->name('admin.update_role');
+    Route::post('/roles/update_role/{id}', 'RoleController@update_role')->name('admin.update_role');
     Route::post('/roles/role_delete/{id}', 'RoleController@role_delete')->name('admin.role_delete');
     ########## ROLES SECTIONS ENDS HERE #####################
 
@@ -59,4 +59,17 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/cities/update_city/{id}', 'CityController@update_city')->name('admin.update_city');
     Route::post('/cities/city_delete/{id}', 'CityController@city_delete')->name('admin.city_delete');
     ########## CITIES SECTIONS ENDS HERE #####################
+
+    ########## MENUS SECTIONS STARTS HERE #####################
+    Route::get('/menus', 'MenuController@index')->name('admin.menu');
+    Route::get('/menus/add', 'MenuController@add')->name('admin.menu_add');
+    Route::post('/menus/create_menu', 'MenuController@create_menu')->name('admin.create_menu');
+    Route::get('/menus/edit/{id}', 'MenuController@edit')->name('admin.menu_edit');
+    Route::post('/menus/update_menu/{id}', 'MenuController@update_menu')->name('admin.update_menu');
+    Route::post('/menus/menu_delete/{id}', 'MenuController@menu_delete')->name('admin.menu_delete');
+    ########## MENUS SECTIONS ENDS HERE #####################
+
+    ########## SETTINGS SECTIONS STARTS HERE #####################
+    Route::get('/settings', 'SettingController@index')->name('admin.setting');
+    ########## SETTINGS SECTIONS STARTS HERE #####################
 });

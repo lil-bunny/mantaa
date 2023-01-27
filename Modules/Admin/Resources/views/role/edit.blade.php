@@ -58,6 +58,30 @@
                                                                 </select>
                                                                 <label>Status</label>
                                                             </div>
+                                                            <div class="col s12 input-field">
+                                                                <fieldset class="main-cechbox-holder">
+                                                                    <legend>Admin Access:</legend>
+                                                                    <div class="main-cechbox">
+                                                                            <div class="sub-cechbox">
+                                                                                <input type="checkbox" id="admin_access" name="admin_access" value="1" {{ $role_data->admin_access==1 ? 'checked' : '' }}>
+                                                                                <label for="scales">Enable</label>
+                                                                            </div>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            <div class="col s12 input-field">
+                                                                <fieldset class="main-cechbox-holder">
+                                                                    <legend>Choose menu:</legend>
+                                                                    <div class="main-cechbox">
+                                                                        @foreach ($menus as $menu)
+                                                                            <div class="sub-cechbox">
+                                                                                <input type="checkbox" id="scales" name="menu[]" value="{{ $menu->id }}" {{ in_array($menu->id, $menus_chkd) ? 'checked' : '' }}>
+                                                                                <label for="scales">{{ $menu->title }}</label>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col s12 display-flex justify-content-end mt-3">

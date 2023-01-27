@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\Role;
+use App\Models\Menu;
 use Validator;
 use Session;
 
@@ -32,7 +33,7 @@ class RoleController extends Controller
         if($filters['status'] != '') {
             $roles->where('roles.status', '=', $filters['status']);
         }
-        $roles = $roles->paginate(5);
+        $roles = $roles->paginate(10);
         
         return view('admin::role.index', ['roles'=>$roles, 'filters' => $filters]);
     }
@@ -44,7 +45,11 @@ class RoleController extends Controller
      */
     public function add()
     {
-        return view('admin::role.add');
+        // fetching menu data
+        $menus = Menu::where('is_deleted', '=', 0)
+                            ->where('status', '=', 1)->get();
+
+        return view('admin::role.add', ['menus'=>$menus]);
     }
 
     /**
@@ -59,11 +64,16 @@ class RoleController extends Controller
         ]);
         
         if ($validator->passes()) {
+            $final_name = preg_replace('#[ -]+#', '-', trim($request->input('title')));
             // create user record
-            Role::create([
+            $roles = Role::create([
                 'title' => $request->input('title'),
+                'role_id' => strtolower($final_name),
+                'admin_access' => $request->input('admin_access'),
                 'status' => $request->input('status'),
             ]);
+
+            $roles->menus()->attach($request->input('menu'));
         } else {
             $errors=$validator->errors();
             return redirect()->route('admin.role_add')->with('errors',$errors);
@@ -80,8 +90,16 @@ class RoleController extends Controller
     {
         // fetching user details
         $role_data = Role::find($id);
+        $menus_chkd = [];
+        foreach($role_data->menus->toArray() as $menu) {
+            $menus_chkd[] = $menu['id'];
+        }
+
+        // fetching menu data
+        $menus = Menu::where('is_deleted', '=', 0)
+                            ->where('status', '=', 1)->get();
                     
-        return view('admin::role.edit', ['role_data' => $role_data]);
+        return view('admin::role.edit', ['role_data' => $role_data, 'menus_chkd' => $menus_chkd, 'menus' => $menus]);
     }
 
 
@@ -101,8 +119,12 @@ class RoleController extends Controller
             $model= Role::find($id);
 
             // creating user data updation array
+            $final_name = preg_replace('#[ -]+#', '-', trim($request->input('title')));
             $model->title = $request->input('title');
+            $model->role_id = strtolower($final_name);
             $model->status = $request->input('status');
+            $model->admin_access = $request->input('admin_access')==1?1:0;
+            $model->menus()->sync($request->input('menu'));
 
             // update user record
             $model->save();

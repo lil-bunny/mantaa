@@ -12032,3 +12032,28 @@ tr.group:hover
     top: 40%;
     right: -2px;
 }
+/* 2023-01-27*/
+.main-cechbox-holder{
+    padding: 0;
+    border: 0;
+}
+
+.main-cechbox-holder .main-cechbox {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 10px;
+  }
+.sub-cechbox{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sub-cechbox [type="checkbox"]:not(:checked), .sub-cechbox [type="checkbox"]:checked {
+    position: inherit;
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .main-cechbox-holder label{
+    font-size: 14px;
+  }

@@ -89,6 +89,13 @@ class AdminController extends Controller
                             'email', 'User not found'
                         );
                     }
+
+                    // checking for admin access
+                    if($u->admin_access != 1) {
+                        $validator->errors()->add(
+                            'email', 'User not found'
+                        );
+                    }
                 }else{
                     $validator->errors()->add(
                         'email', 'User not found'
