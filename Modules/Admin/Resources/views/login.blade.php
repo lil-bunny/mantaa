@@ -14,6 +14,15 @@
 
                             </a>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="POST" action="{{ route('admin.loginSubmit') }}">
                             @csrf
                             <div class="row">
@@ -25,21 +34,13 @@
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix pt-2">person_outline</i>
                                     <input type="text" placeholder="Email" id="email" name="email" required>
-                                    @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                    <!-- <label for="username" class="center-align">Username</label> -->
-                                </div>
+                                </div>
                             </div>
                             <div class="row margin">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix pt-2">lock_outline</i>
                                     <input type="password" placeholder="Password" id="password" name="password" required>
-                                    @if ($errors->has('password'))
-                                    <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
-                                    <!-- <label for="password">Password</label> -->
-                                </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">

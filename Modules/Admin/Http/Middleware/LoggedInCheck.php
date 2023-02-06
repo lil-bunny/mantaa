@@ -24,16 +24,11 @@ class LoggedInCheck
             $user = Auth::user();
 
             // checking user has the admin access or not
-            if($user->admin_access != 1) {
+            $role_data = Role::find($user->role_id);
+            if($role_data->admin_access != 1) {
                 return redirect()->route('frontend.home'); 
             }
 
-            $role_data = Role::find($user->role_id);
-
-            // fetching states
-            $menus = Menu::where('is_deleted', '=', 0)
-                            ->where('status', '=', 1)->get();
-            
             View::share('menus_sidebar', $role_data->menus);
             return $next($request);
         } else {

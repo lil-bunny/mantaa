@@ -8,24 +8,12 @@ use Illuminate\Routing\Controller;
 use Hash;
 use Session;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function __construct() {
-        /*User::create([
-            'first_name' => 'Super',
-            'last_name' => 'Admin',
-            'email' => 'admin@mantaray.com',
-            'mobile' => '9831757876',
-            'image' => 'demo.jpeg',
-            'password' => Hash::make('admin@123'),
-            'role_id' => 1,
-            'status' => 1
-        ]);*/
-    }
-
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -86,14 +74,15 @@ class AdminController extends Controller
                 if (!empty($u)) {
                     if(Hash::check($request->input('password'), $u->password)==false){
                         $validator->errors()->add(
-                            'email', 'User not found'
+                            'email', 'Invalid password'
                         );
                     }
 
                     // checking for admin access
-                    if($u->admin_access != 1) {
+                    $role_data = Role::find($u->role_id);
+                    if($role_data->admin_access != 1) {
                         $validator->errors()->add(
-                            'email', 'User not found'
+                            'email', 'The user is not authorised'
                         );
                     }
                 }else{
@@ -112,16 +101,15 @@ class AdminController extends Controller
                 return redirect()->intended('admin/dashboard')
                             ->withSuccess('Signed In');
             } else {
-                // redirect to the login page if the users credentials are not valid
-                return redirect()->intended('admin/login')
-                ->withError('Login details are not valid');
+                $validator->errors()->add(
+                    'email', 'Invalid credentials'
+                );
+                $errors=$validator->errors();
+                return redirect()->route('admin.login')->with('errors',$errors);
             }
         } else {
-            $errors=$validator->errors()->messages();
-            Session::flash('error', $errors);
-            // redirect to the login page if the users credentials are not valid
-            return redirect()->intended('admin/login')
-            ->withError('Login details are not valid');
+            $errors=$validator->errors();
+            return redirect()->route('admin.login')->with('errors',$errors);
         }
     }
 }
