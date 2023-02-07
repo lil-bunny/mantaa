@@ -40,7 +40,8 @@ class CityController extends Controller
         }
         $cities = $cities->paginate(5);
         
-        // fetching roles
+        
+        // fetching states
         $states = State::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
         

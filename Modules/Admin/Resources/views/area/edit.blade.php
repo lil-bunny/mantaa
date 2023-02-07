@@ -11,11 +11,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col s10 m6 l6">
-                                <h5 class="breadcrumbs-title mt-0 mb-0"><span>Admin Cities</span></h5>
+                                <h5 class="breadcrumbs-title mt-0 mb-0"><span>Admin Menus</span></h5>
                                 <ol class="breadcrumbs mb-0">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="{{ route('admin.city') }}">Cities</a>
+                                    <li class="breadcrumb-item active"><a href="{{ route('admin.menu') }}">Menus</a>
                                     </li>
                                 </ol>
                             </div>
@@ -41,28 +41,14 @@
                                                 </div>
                                             @endif
                                             <!-- Admin Users Edit account form start -->
-                                            <form id="accountForm" method="post" action="{{ route('admin.create_city') }}">
+                                            <form id="accountForm" method="post" action="{{ route('admin.update_menu',['id'=>$menu_data->id]) }}">
                                             @csrf    
                                             <div class="row">
-                                                    <div class="col s12 m12">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <select name="state_id">
-                                                                    @foreach($states as $state)
-                                                                        <option value="{{ $state->id }}">{{ $state->title }}</option>
-                                                                    @endforeach                                    
-                                                                </select>
-                                                                <label>State</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="name" name="name" type="text" class="validate" value=""
-                                                                       data-error=".errorTxt2">
+                                                                <input id="name" name="name" type="text" class="validate" value="{{ $menu_data->title }}" data-error=".errorTxt2">
                                                                 <label for="name">Name</label>
-                                                                <small class="errorTxt2"></small>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -70,10 +56,19 @@
                                                         <div class="row">
                                                             <div class="col s12 input-field">
                                                                 <select name="status">
-                                                                    <option value="1">Active</option>
-                                                                    <option value="0">Inactive</option>
+                                                                    <option value="1" {{ $menu_data->status==1 ? 'selected' : ''}}>Active</option>
+                                                                    <option value="0" {{ $menu_data->status==0 ? 'selected' : ''}}>Inactive</option>
                                                                 </select>
                                                                 <label>Status</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m12">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <input id="route" name="route" type="text" class="validate" value="{{ $menu_data->route }}" data-error=".errorTxt2">
+                                                                <label for="name">Name</label>
+                                                                <small class="errorTxt2"></small>
                                                             </div>
                                                         </div>
                                                     </div>

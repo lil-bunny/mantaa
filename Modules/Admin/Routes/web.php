@@ -69,6 +69,15 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/menus/menu_delete/{id}', 'MenuController@menu_delete')->name('admin.menu_delete');
     ########## MENUS SECTIONS ENDS HERE #####################
 
+    ########## AREA SECTIONS STARTS HERE #####################
+    Route::get('/areas', 'AreaController@index')->name('admin.area');
+    Route::get('/areas/add', 'AreaController@add')->name('admin.area_add');
+    Route::post('/areas/create_area', 'AreaController@create_area')->name('admin.create_area');
+    Route::get('/areas/edit/{id}', 'AreaController@edit')->name('admin.area_edit');
+    Route::post('/areas/update_area/{id}', 'AreaController@update_area')->name('admin.update_area');
+    Route::post('/areas/area_delete/{id}', 'AreaController@area_delete')->name('admin.area_delete');
+    ########## AREA SECTIONS ENDS HERE #####################
+
     ########## SETTINGS SECTIONS STARTS HERE #####################
     Route::get('/settings', 'SettingController@index')->name('admin.setting');
     ########## SETTINGS SECTIONS STARTS HERE #####################
