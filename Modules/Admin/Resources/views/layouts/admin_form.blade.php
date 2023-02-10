@@ -22,6 +22,7 @@
         <!-- END: Page Level CSS-->
         <!-- BEGIN: Custom CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/custom/custom.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/custom/map_style.css') }}">
         <!-- END: Custom CSS-->
     </head>
     <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">

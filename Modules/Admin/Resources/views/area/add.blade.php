@@ -3,6 +3,9 @@
 @section('content')
 
 <!-- BEGIN: Page Main-->
+
+
+
 <div id="main">
             <div class="row">
                 <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
@@ -45,6 +48,26 @@
                                                 <!-- Location Details Starts Here -->    
                                                 <div class="row">
                                                     <h4>Location Details</h4>
+
+                                                    <div class="col s12 m12">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <input id="autocomplete" name="autocomplete" type="text" class="validate" value="" placeholder="Choose Location" />
+                                                                <label>Search Place</label>    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="">
+                                                        <div class="">
+                                                            <!-- <div class="col s12"> -->
+                                                            <div id="map"></div>
+                                                            <!-- </div> -->
+                                                        </div>
+                                                    </div>
+
+                                                    
+
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
@@ -357,4 +380,112 @@
             </div>
         </div>
         <!-- END: Page Main-->
+       
+
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeK9JLWPV_0-BCT3A63jji-NymGtLWVW4&callback=initAutocomplete&libraries=places&v=weekly"
+        defer
+        ></script>
+
+
+        <script type="text/javascript">
+
+            // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+            // function initialize() {
+
+            //     var input = document.getElementById('autocomplete');
+
+            //     var autocomplete = new google.maps.places.Autocomplete(input);
+
+
+
+            //     autocomplete.addListener('place_changed', function () {
+
+            //         var place = autocomplete.getPlace();
+
+            //         console.log(place);
+
+            //         $('#latitude').val(place.geometry['location'].lat());
+
+            //         $('#longitude').val(place.geometry['location'].lng());
+
+            //     });
+
+            // }
+
+            function initAutocomplete() {
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: -33.8688, lng: 151.2195 },
+                    zoom: 13,
+                    mapTypeId: "roadmap",
+                });
+                // Create the search box and link it to the UI element.
+                const input = document.getElementById("autocomplete");
+                const searchBox = new google.maps.places.SearchBox(input);
+
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener("bounds_changed", () => {
+                    searchBox.setBounds(map.getBounds());
+                });
+
+                let markers = [];
+
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener("places_changed", () => {
+                    const places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                    return;
+                    }
+
+                    // Clear out the old markers.
+                    markers.forEach((marker) => {
+                    marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+                    const bounds = new google.maps.LatLngBounds();
+
+                    places.forEach((place) => {
+                    if (!place.geometry || !place.geometry.location) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+
+                    const icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(50, 50),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25),
+                    };
+
+                    // Create a marker for each place.
+                    markers.push(
+                        new google.maps.Marker({
+                        map,
+                        icon,
+                        title: place.name,
+                        position: place.geometry.location,
+                        })
+                    );
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                    });
+                    map.fitBounds(bounds);
+                });
+            }
+
+            window.initAutocomplete = initAutocomplete;
+        </script>
 @endsection
