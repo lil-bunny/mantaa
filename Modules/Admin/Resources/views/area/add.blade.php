@@ -52,7 +52,7 @@
                                                     <div class="col s12 m12">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="autocomplete" name="autocomplete" type="text" class="validate" value="" placeholder="Choose Location" />
+                                                                <input id="autocomplete1" name="autocomplete1" type="text" class="validate" value="" placeholder="Choose Location" />
                                                                 <label>Search Place</label>    
                                                             </div>
                                                         </div>
@@ -418,15 +418,15 @@
 
             function initAutocomplete() {
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    center: { lat: -33.8688, lng: 151.2195 },
+                    center: { lat: 22.5726, lng: 88.3639 },
                     zoom: 13,
                     mapTypeId: "roadmap",
                 });
                 // Create the search box and link it to the UI element.
-                const input = document.getElementById("autocomplete");
+                const input = document.getElementById("autocomplete1");
                 const searchBox = new google.maps.places.SearchBox(input);
 
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
                 // Bias the SearchBox results towards current map's viewport.
                 map.addListener("bounds_changed", () => {
                     searchBox.setBounds(map.getBounds());
@@ -483,6 +483,51 @@
                     }
                     });
                     map.fitBounds(bounds);
+
+                    // define variables
+                    let address1 = "";
+                    let postcode = "";
+                    console.log(places);
+                    console.log('place details');
+
+                    // fetching the address components
+                    for (const component of place.address_components) {
+                        // @ts-ignore remove once typings fixed
+                        const componentType = component.types[0];
+
+                        switch (componentType) {
+                        case "street_number": {
+                            address1 = `${component.long_name} ${address1}`;
+                            break;
+                        }
+
+                        case "route": {
+                            address1 += component.short_name;
+                            break;
+                        }
+
+                        case "postal_code": {
+                            postcode = `${component.long_name}${postcode}`;
+                            break;
+                        }
+
+                        case "postal_code_suffix": {
+                            postcode = `${postcode}-${component.long_name}`;
+                            break;
+                        }
+                        case "locality":
+                            document.querySelector("#locality").value = component.long_name;
+                            break;
+                        case "administrative_area_level_1": {
+                            document.querySelector("#state").value = component.short_name;
+                            break;
+                        }
+                        case "country":
+                            document.querySelector("#country").value = component.long_name;
+                            break;
+                        }
+                    }
+
                 });
             }
 
