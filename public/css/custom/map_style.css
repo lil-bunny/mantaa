@@ -11,6 +11,7 @@
 #map {
   height: 100%;
   padding: 140px;
+  margin:20px 0 20px;
 }
 
 /* 
@@ -39,10 +40,6 @@ body {
 
 #map #infowindow-content {
   display: inline;
-}
-
-input#autocomplete {
-  position: absolute;
 }
 
 .pac-card {
@@ -87,6 +84,10 @@ input#autocomplete {
 
 #pac-input:focus {
   border-color: #4d90fe;
+}
+
+.search-inpt{
+  left: 0 !important;
 }
 
 #title {

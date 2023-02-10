@@ -76,10 +76,11 @@ class CityController extends Controller
         
         if ($validator->passes()) {
             // create user record
-            User::create([
+            City::create([
                 'name' => $request->input('name'),
                 'state_id' => $request->input('state_id'),
                 'status' => $request->input('status'),
+                'image' => $request->input('image')
             ]);
         } else {
             // fetching roles

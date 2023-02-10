@@ -101,11 +101,9 @@
                                                     </div>
                                                     <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn float-right">
-                                                                    <span>Upload Image</span>
-                                                                    <input type="file" name="profile_pic">
-                                                                </div>    
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Upload Image</label><br>
+                                                                <input type="file" class="mt-4" name="upload_image" />
                                                             </div>
                                                         </div>
                                                     </div>

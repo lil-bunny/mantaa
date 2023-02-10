@@ -49,7 +49,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="state_id">
                                                                     @foreach($states as $state)
-                                                                        <option value="{{ $state->id }}">{{ $state->title }}</option>
+                                                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
                                                                     @endforeach                                    
                                                                 </select>
                                                                 <label>State</label>
@@ -74,6 +74,14 @@
                                                                     <option value="0">Inactive</option>
                                                                 </select>
                                                                 <label>Status</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Upload Image</label><br>
+                                                                <input type="file" class="mt-8" name="upload_image" />
                                                             </div>
                                                         </div>
                                                     </div>

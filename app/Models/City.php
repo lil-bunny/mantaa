@@ -23,6 +23,7 @@ class City extends Authenticatable
         'name',
         'state_id',
         'status',
+        'image'
     ];
 
 

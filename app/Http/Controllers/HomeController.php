@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\City;
 use Session;
 use Validator;
 use Hash;
@@ -17,11 +18,17 @@ class HomeController extends Controller
 {
     /**
      * Display a home page component
+     * 
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home.index');
+        // return view('home.index');
+        
+        // fetching city lists
+        $cities = City::all();
+        
+        return view('home.index', ['cities'=>$cities]);
     }
 
     /**

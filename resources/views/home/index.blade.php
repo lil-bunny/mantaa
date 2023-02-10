@@ -159,18 +159,20 @@
     <div class="container">
         <h2 class="sec-title text-center">Choose From The Cities</h2>
         <div class="city-items">
+            @foreach($cities as $city)
             <div>
                 <div class="city-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
                         <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/mumbai-location.jpg') }}" alt="img"/></span>
                     </a>
                     <div class="botm-elmnt">
-                        <h3>Mumbai</h3>
+                        <h3>{{ $city->name }}</h3>
                         <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <div>
+            @endforeach
+            <!-- <div>
                 <div class="city-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
                         <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/kolkata-location.jpg') }}" alt="img"/></span>
@@ -213,7 +215,7 @@
                         <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>	
 </section>	

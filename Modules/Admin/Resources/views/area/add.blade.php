@@ -48,36 +48,50 @@
                                                 <!-- Location Details Starts Here -->    
                                                 <div class="row">
                                                     <h4>Location Details</h4>
-
-                                                    <div class="col s12 m12">
+                                                    <div class="col s12 m12 sss">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="autocomplete" name="autocomplete" type="text" class="validate" value="" placeholder="Choose Location" />
-                                                                <label>Search Place</label>    
+                                                                <input id="autocomplet" name="autocomplete" type="text" class="validate search-inpt" value="" placeholder="Choose Location" />
+                                                                <label>Search Place</label>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="">
-                                                        <div class="">
-                                                            <!-- <div class="col s12"> -->
-                                                            <div id="map"></div>
-                                                            <!-- </div> -->
+                                                    <div class="col s12 m12 sss">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <div id="map"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    
-
-
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="state_id">
-                                                                    @foreach($states as $state)
-                                                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                                                    @endforeach 
-                                                                </select>
-                                                                <label>State</label>
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="">
+                                                                <label>Location Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <input id="road_name" name="road_name" type="text" class="validate" value="">
+                                                                <label>Road Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <input id="area_name" name="area_name" type="text" class="validate" value="">
+                                                                <label>Area Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
+                                                                <label>Pincode</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -93,6 +107,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <select name="state_id">
+                                                                    @foreach($states as $state)
+                                                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                                                    @endforeach 
+                                                                </select>
+                                                                <label>State</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
@@ -106,40 +133,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
-                                                                <label>Pincode</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
 
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="title" name="title" type="text" class="validate" value="">
-                                                                <label>Area Name</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="road_name" name="road_name" type="text" class="validate" value="">
-                                                                <label>Road Name</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   
+                                                    
 
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="site_location" name="site_location" type="text" class="validate" value="">
-                                                                <label>Location Name</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
@@ -324,20 +323,20 @@
                                                 <div class="row">
                                                     <h4>Area Picture and Video Details</h4>
 
-                                                    <div class="col s12 m6">
+                                                    <div class="col s12 m4">
                                                         <div class="row">
                                                             <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn float-right">
+                                                                <div class="btn">
                                                                     <span>Area Picture1 </span>
                                                                     <input type="file" name="area_pic1">
                                                                 </div>    
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s12 m6">
+                                                    <div class="col s12 m4">
                                                         <div class="row">
                                                             <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn float-right">
+                                                                <div class="btn">
                                                                     <span>Area Picture2 </span>
                                                                     <input type="file" name="area_pic2">
                                                                 </div>    
@@ -345,10 +344,10 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col s12 m12">
+                                                    <div class="col s12 m4">
                                                         <div class="row">
                                                             <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn float-right">
+                                                                <div class="btn">
                                                                     <span>Area Video</span>
                                                                     <input type="file" name="area_video">
                                                                 </div>    
