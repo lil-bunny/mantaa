@@ -67,4 +67,8 @@ class Area extends Authenticatable
     public function city() {
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function site_marit_values() {
+        return $this->belongsToMany(SiteMeritValue::class, 'area_site_merit_value')->setEagerLoads([]);
+    }
 }

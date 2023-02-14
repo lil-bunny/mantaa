@@ -48,15 +48,15 @@
                                                 <!-- Location Details Starts Here -->    
                                                 <div class="row">
                                                     <h4>Location Details</h4>
-                                                    <div class="col s12 m12 sss">
+                                                    <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="autocomplet" name="autocomplete" type="text" class="validate search-inpt" value="" placeholder="Choose Location" />
+                                                            <div class="col s12">
+                                                                <input id="autocomplete" name="autocomplete" type="text" class="validate search-inpt" value="" placeholder="Choose Location" />
                                                                 <label>Search Place</label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s12 m12 sss">
+                                                    <div class="col s12 m12">
                                                         <div class="row">
                                                             <div class="col s12">
                                                                 <div id="map"></div>
@@ -65,40 +65,75 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="site_location" name="site_location" type="text" class="validate" value="">
+                                                            <div class="col s12">
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="" readonly>
                                                                 <label>Location Name</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="road_name" name="road_name" type="text" class="validate" value="">
+                                                            <div class="col s12">
+                                                                <input id="road_name" name="road_name" type="text" class="validate" value="" readonly>
                                                                 <label>Road Name</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="area_name" name="area_name" type="text" class="validate" value="">
+                                                            <div class="col s12">
+                                                                <input id="area_name" name="area_name" type="text" class="validate" value="" readonly>
                                                                 <label>Area Name</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
+                                                            <div class="col s12">
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="" readonly>
                                                                 <label>Pincode</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <input id="lat" name="lat" type="text" class="validate" value="" readonly>
+                                                                <label>Latitude</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <select name="city_id">
+                                                            <div class="col s12">
+                                                                <input id="lng" name="lng" type="text" class="validate" value="" readonly>
+                                                                <label>Longitude</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <input id="city_name" name="city_name" type="text" class="validate" value="" readonly>
+                                                                <label>City</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <input id="state_name" name="state_name" type="text" class="validate" value="" readonly>
+                                                                <label>State</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <select name="city_id" id="city_id">
                                                                     @foreach($cities as $city)
                                                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
                                                                     @endforeach
@@ -109,21 +144,21 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <select name="state_id">
+                                                            <div class="col s12">
+                                                                <select name="state_id" id="state_id">
                                                                     @foreach($states as $state)
                                                                         <option value="{{ $state->id }}">{{ $state->name }}</option>
                                                                     @endforeach 
                                                                 </select>
-                                                                <label>State</label>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
+                                                    
                                                     
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="city_tag">
                                                                     @foreach($city_tags as $key => $city_tag)
                                                                         <option value="{{ $key }}">{{ $city_tag }}</option>
@@ -141,7 +176,7 @@
                                                     
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                             <input id="face_traffic_from" name="face_traffic_from" type="text" class="validate" value="">
                                                                 <label>FTF (Facing Traffic From)</label>
                                                             </div>
@@ -150,7 +185,7 @@
 
                                                     <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="place_type">
                                                                     @foreach($location_types as $key => $location_type)
                                                                         <option value="{{ $key }}">{{ $location_type }}</option>
@@ -358,6 +393,81 @@
                                                 <!-- Area Picture and Video Details Ends Here -->
 
 
+                                                <!-- Nearby Details Starts Here -->
+                                                <div class="row">
+                                                    <h4>Nearby Places</h4>
+
+                                                    <div class="col s12 input-field">
+                                                        <fieldset class="main-cechbox-holder">
+                                                            <legend>Choose Option (Any 6):</legend>
+                                                            <div class="main-cechbox">
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Airport">
+                                                                    <label for="scales">Airport</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Hospital">
+                                                                    <label for="scales">Hospital</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="School">
+                                                                    <label for="scales">School</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="College">
+                                                                    <label for="scales">College</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="University">
+                                                                    <label for="scales">University</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Mall">
+                                                                    <label for="scales">Mall</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Multiplexes">
+                                                                    <label for="scales">Multiplexes</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Metro Station">
+                                                                    <label for="scales">Metro Station</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Train Station">
+                                                                    <label for="scales">Train Station</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Bus Stop">
+                                                                    <label for="scales">Bus Stop</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Bus Depot">
+                                                                    <label for="scales">Bus Depot</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Taxi Stand">
+                                                                    <label for="scales">Taxi Stand</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Auto Stand">
+                                                                    <label for="scales">Auto Stand</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Police Station">
+                                                                    <label for="scales">Police Station</label>
+                                                                </div>
+                                                                <div class="sub-cechbox">
+                                                                    <input type="checkbox" name="nearby_places[]" value="Charging Station">
+                                                                    <label for="scales">Charging Station</label>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <!-- Nearby Details Ends Here -->
+
+
                                                 <div class="row">
                                                     <div class="col s12 display-flex justify-content-end mt-3">
                                                         <button type="submit" class="btn indigo">Save changes</button>
@@ -389,32 +499,6 @@
 
         <script type="text/javascript">
 
-            // google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-            // function initialize() {
-
-            //     var input = document.getElementById('autocomplete');
-
-            //     var autocomplete = new google.maps.places.Autocomplete(input);
-
-
-
-            //     autocomplete.addListener('place_changed', function () {
-
-            //         var place = autocomplete.getPlace();
-
-            //         console.log(place);
-
-            //         $('#latitude').val(place.geometry['location'].lat());
-
-            //         $('#longitude').val(place.geometry['location'].lng());
-
-            //     });
-
-            // }
-
             function initAutocomplete() {
                 const map = new google.maps.Map(document.getElementById("map"), {
                     center: { lat: 22.5726, lng: 88.3639 },
@@ -422,7 +506,7 @@
                     mapTypeId: "roadmap",
                 });
                 // Create the search box and link it to the UI element.
-                const input = document.getElementById("autocomplete1");
+                const input = document.getElementById("autocomplete");
                 const searchBox = new google.maps.places.SearchBox(input);
 
                 //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -486,47 +570,75 @@
                     // define variables
                     let address1 = "";
                     let postcode = "";
+                    let city = "";
+                    let state = "";
+                    let road_name = "";
+                    let area_name = "";
+                    let lat = "";
+                    let lng = "";
                     console.log(places);
                     console.log('place details');
 
+                    // assigning lat lng variables
+                    lat = places[0].geometry.location.lat();
+                    lng = places[0].geometry.location.lng();
+
                     // fetching the address components
-                    for (const component of place.address_components) {
+                    for (const component of places[0].address_components) {
                         // @ts-ignore remove once typings fixed
                         const componentType = component.types[0];
 
                         switch (componentType) {
-                        case "street_number": {
-                            address1 = `${component.long_name} ${address1}`;
-                            break;
-                        }
+                            case "street_number": {
+                                address1 = `${component.long_name} ${address1}`;
+                                break;
+                            }
 
-                        case "route": {
-                            address1 += component.short_name;
-                            break;
-                        }
+                            case "route": {
+                                address1 += component.short_name;
+                                road_name = component.short_name;
+                                break;
+                            }
 
-                        case "postal_code": {
-                            postcode = `${component.long_name}${postcode}`;
-                            break;
-                        }
+                            case "sublocality_level_1": {
+                                address1 += ','+component.short_name;
+                                area_name = component.short_name;
+                                break;
+                            }
+                            
+                            case "locality": {
+                                address1 += ','+component.long_name;
+                                city = component.long_name;
+                                break;
+                            }
 
-                        case "postal_code_suffix": {
-                            postcode = `${postcode}-${component.long_name}`;
-                            break;
-                        }
-                        case "locality":
-                            document.querySelector("#locality").value = component.long_name;
-                            break;
-                        case "administrative_area_level_1": {
-                            document.querySelector("#state").value = component.short_name;
-                            break;
-                        }
-                        case "country":
-                            document.querySelector("#country").value = component.long_name;
-                            break;
+                            case "postal_code": {
+                                postcode = `${component.long_name}${postcode}`;
+                                break;
+                            }
+
+                            case "postal_code_suffix": {
+                                postcode = `${postcode}-${component.long_name}`;
+                                break;
+                            }
+                            
+                            case "administrative_area_level_1": {
+                                state = component.long_name;
+                                break;
+                            }
                         }
                     }
-
+                    console.log(city);
+                    console.log('Test');
+                    // assigning the values in text boxes
+                    document.querySelector("#site_location").value = address1;
+                    document.querySelector("#road_name").value = road_name;
+                    document.querySelector("#area_name").value = area_name;
+                    document.querySelector("#pin_code").value = postcode;
+                    document.querySelector("#city_name").value = city;
+                    document.querySelector("#state_name").value = state;
+                    document.querySelector("#lat").value = lat;
+                    document.querySelector("#lng").value = lng;
                 });
             }
 

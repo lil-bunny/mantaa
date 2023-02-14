@@ -10,6 +10,8 @@ use Session;
 use App\Models\Area;
 use App\Models\State;
 use App\Models\City;
+use App\Models\SiteMerit;
+use App\Models\SiteMeritValue;
 use Validator;
 
 class AreaController extends Controller
@@ -53,6 +55,19 @@ class AreaController extends Controller
         $states = State::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
         
+        // $site_merit_values = SiteMeritValue::where('is_deleted', '=', 0)
+        //                     ->where('status', '=', 1)->get();
+        // foreach($site_merit_values as $site_merit_value) {
+        //     dd($site_merit_value->site_merit);exit;
+        // }
+
+        // $areas = Area::with('site_merit_values')
+        //                 ->where('is_deleted', '=', 0)
+        //                 ->where('status', '=', 1)
+        //                 ->where('id', '=', '13236')->get();
+        // foreach($areas as $area) {
+        //     dd($area->site_marit_values->site_merit);exit;
+        // }
 
         // fetching cities
         $cities = City::where('is_deleted', '=', 0)
