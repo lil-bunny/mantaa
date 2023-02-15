@@ -20,12 +20,34 @@ class Area extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'full_name',
-        'email',
-        'mobile',
-        'image',
-        'password',
-        'role_id',
+        'title',
+        'site_location',
+        'road_name',
+        'pin_code',
+        'lat',
+        'lng',
+        'state_id',
+        'city_id',
+        'city_tag',
+        'face_traffic_from',
+        'place_type',
+        'media_formats',
+        'orientation',
+        'media_tags',
+        'height',
+        'width',
+        'illumination',
+        'ad_spot_per_second',
+        'total_ad_spot_perday',
+        'total_advertiser',
+        'display_charge_pm',
+        'production_cost',
+        'installation_cost',
+        'media_partner_name',
+        'area_pic1',
+        'area_pic2',
+        'area_video',
+        'nearby_places',
         'status',
         'created_by',
     ];
@@ -39,26 +61,6 @@ class Area extends Authenticatable
         'site_location',
         'created_at'
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
 
     public function state() {
         return $this->belongsTo(State::class, 'state_id');

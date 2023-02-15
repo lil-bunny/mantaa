@@ -43,7 +43,7 @@
                                                     </ul>
                                                 </div>
                                             @endif
-                                            <form id="accountForm" method="post" action="{{ route('admin.create_area') }}">
+                                            <form id="accountForm" method="post" enctype='multipart/form-data' action="{{ route('admin.create_area') }}">
                                             @csrf
                                                 <!-- Location Details Starts Here -->    
                                                 <div class="row">
@@ -66,7 +66,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="site_location" name="site_location" type="text" class="validate" value="" readonly>
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="">
                                                                 <label>Location Name</label>
                                                             </div>
                                                         </div>
@@ -129,30 +129,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <!-- <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12">
-                                                                <select name="city_id" id="city_id">
-                                                                    @foreach($cities as $city)
-                                                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label>City</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12">
-                                                                <select name="state_id" id="state_id">
-                                                                    @foreach($states as $state)
-                                                                        <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                                                    @endforeach 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
                                                     
                                                     
 
@@ -358,34 +334,30 @@
                                                 <div class="row">
                                                     <h4>Area Picture and Video Details</h4>
 
-                                                    <div class="col s12 m4">
+                                                    <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn">
-                                                                    <span>Area Picture1 </span>
-                                                                    <input type="file" name="area_pic1">
-                                                                </div>    
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col s12 m4">
-                                                        <div class="row">
-                                                            <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn">
-                                                                    <span>Area Picture2 </span>
-                                                                    <input type="file" name="area_pic2">
-                                                                </div>    
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Area Picture1</label><br>
+                                                                <input type="file" class="mt-4" name="area_pic1" />
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col s12 m4">
+                                                    <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col m6 s12 file-field input-field">
-                                                                <div class="btn">
-                                                                    <span>Area Video</span>
-                                                                    <input type="file" name="area_video">
-                                                                </div>    
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Area Picture2</label><br>
+                                                                <input type="file" class="mt-4" name="area_pic2" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                    <div class="col s12 m12">
+                                                        <div class="row">
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Area Video</label><br>
+                                                                <input type="file" class="mt-4" name="area_video" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -466,6 +438,27 @@
                                                     </div>
                                                 </div>
                                                 <!-- Nearby Details Ends Here -->
+
+                                                <!-- Site Merits Starts Here -->
+                                                <div class="row">
+                                                    <h4>Site Merits</h4>
+
+                                                    @foreach($site_merits as $site_merit)
+                                                        <div class="col s12 m6">
+                                                            <div class="row">
+                                                                <div class="col s12 input-field">
+                                                                    <select name="site_merit_{{ $site_merit->id }}">
+                                                                        @foreach($site_merit->site_merit_values as $site_merit_value)
+                                                                            <option value="{{ $site_merit_value->id }}">{{ $site_merit_value->title }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <label>{{ $site_merit->title }}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <!-- Site Merits Ends Here -->
 
 
                                                 <div class="row">
