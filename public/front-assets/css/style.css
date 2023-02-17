@@ -538,6 +538,8 @@ h2.sec-title {
 }
 .site-box .img-elm img {
   border-radius: 5px;
+  object-fit: cover;
+  height: 201px;
 }
 .site-box .info-elmnt{
   padding: 10px 17px;

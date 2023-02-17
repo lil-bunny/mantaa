@@ -41,15 +41,15 @@
                                                 </div>
                                             @endif
                                             <!-- Admin Users Edit account form start -->
-                                            <form id="accountForm" method="post" action="{{ route('admin.update_city',['id'=>$city_data->id]) }}">
+                                            <form id="accountForm" method="post" action="{{ route('admin.update_city',['id'=>$city_data->id]) }}" enctype="multipart/form-data">
                                             @csrf    
                                             <div class="row">
                                                     <div class="col s12 m12">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="role_id">
+                                                                <select name="state_id">
                                                                     @foreach($states as $state)
-                                                                        <option value="{{ $state->id }}" {{ $city_data->state_id==$state->id ? 'selected' : ''}}>{{ $state->name }}</option>
+                                                                        <option value="{{ $state->id }}" {{ $city_data->state_id == $state->id ? 'selected' : ''}}>{{ $state->name }}</option>
                                                                     @endforeach                                    
                                                                 </select>
                                                                 <label>State</label>
@@ -73,6 +73,14 @@
                                                                     <option value="0" {{ $city_data->status==0 ? 'selected' : ''}}>Inactive</option>
                                                                 </select>
                                                                 <label>Status</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col m6 s12 input-field">
+                                                                <label for="upload_image">Upload Image</label><br>
+                                                                <input type="file" class="mt-8" name="city_pic" />
                                                             </div>
                                                         </div>
                                                     </div>

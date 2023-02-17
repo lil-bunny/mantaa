@@ -40,7 +40,6 @@ class CityController extends Controller
         }
         $cities = $cities->paginate(5);
         
-        
         // fetching states
         $states = State::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
@@ -72,15 +71,22 @@ class CityController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:cities|max:255',
             'state_id' => 'required',
+            'city_pic' => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
         
         if ($validator->passes()) {
+            // picture upload
+            $fileName = auth()->id() . '_' . time() . '.'. $request->city_pic->extension();  
+            $type = $request->city_pic->getClientMimeType();
+            $size = $request->city_pic->getSize();
+            $request->city_pic->move(public_path('/images/city'), $fileName);
+            
             // create user record
             City::create([
                 'name' => $request->input('name'),
                 'state_id' => $request->input('state_id'),
                 'status' => $request->input('status'),
-                'image' => $request->input('image')
+                'image' => $fileName
             ]);
         } else {
             // fetching roles
@@ -88,9 +94,8 @@ class CityController extends Controller
                             ->where('status', '=', 1)->get();
 
             $errors=$validator->errors();
-            return redirect()->route('admin::city_add')->with('errors',$errors)->with('states',$states);
+            return redirect()->route('admin.city_add')->with('errors',$errors)->with('states',$states);
         }
-
         return redirect()->intended('admin/cities')->withSuccess('City created successfully');
     }
 
@@ -132,9 +137,19 @@ class CityController extends Controller
             $model= City::find($id);
 
             // creating city data updation array
-            $model->name = $request->input('name');
             $model->state_id = $request->input('state_id');
+            $model->name = $request->input('name');
             $model->status = $request->input('status');
+
+            // checking if profile pic is uploaded or not
+            if($request->city_pic) {
+                // picture upload
+                $fileName = auth()->id() . '_' . time() . '.'. $request->city_pic->extension();  
+                $type = $request->city_pic->getClientMimeType();
+                $size = $request->city_pic->getSize();
+                $request->city_pic->move(public_path('/images/city'), $fileName);
+                $model->image = $fileName;
+            }
 
             // update user record
             $model->save();
@@ -146,8 +161,7 @@ class CityController extends Controller
                             ->where('status', '=', 1)->get();
 
             $errors=$validator->errors();
-
-            return redirect()->route('admin::city_edit', ['id' => $id])->with('errors',$errors)->with('states',$states);
+            return redirect()->route('admin.city_edit', ['id' => $id])->with('errors',$errors);
         }
     }
 

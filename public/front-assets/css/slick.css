@@ -88,7 +88,9 @@
 }
 .slick-slide img
 {
+    object-fit: cover;
     display: block;
+    height: 201px;
 }
 .slick-slide.slick-loading img
 {

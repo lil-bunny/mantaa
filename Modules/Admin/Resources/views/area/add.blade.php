@@ -74,7 +74,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="road_name" name="road_name" type="text" class="validate" value="" readonly>
+                                                                <input id="road_name" name="road_name" type="text" class="validate" value="">
                                                                 <label>Road Name</label>
                                                             </div>
                                                         </div>

@@ -28,126 +28,27 @@
     <div class="container">
         <h2 class="sec-title text-center pt-4">Sites In Demand</h2>
         <div class="row sites-items">
+            @foreach($areas as $area)
             <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
                 <div class="site-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
+                    @if($area->area_pic1 == NULL)
+                        <span class="d-block"><img class="w-100" src="{{asset('images/area/no-image.png')}}" alt="img"/></span>
+                    @else
+                        <span class="d-block"><img src="{{asset('images/area/'. $area->area_pic1)}}" alt="img"/></span>
+                    @endif
                     </a>
                     <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
+                        <h3><a href="javascript:void(0);">{{ $area->site_location }}</a></h3>
+                        <h4>{{ $area->title }}</h4>
                     </div>
                     <div class="bottom-widget d-flex justify-content-between align-items-center">
                         <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
+                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> {{ $area->rent_per_month }}</h5>
                     </div>
                 </div>
             </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="plot-details.html">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="plot-details.html" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
-                <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img src="{{asset('front-assets/images/sites-img.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="info-elmnt">
-                        <h3><a href="plot-details.html">Cras eu nulla sed tellus</a></h3>
-                        <h4>Etiam viverra auctor</h4>
-                    </div>
-                    <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Starting from</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="text-center mt-5"><a href="javascript:void(0);" class="btn btn-primary btn-more">View More<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"/></svg></a></div>
     </div>	
@@ -163,7 +64,11 @@
             <div>
                 <div class="city-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/mumbai-location.jpg') }}" alt="img"/></span>
+                        @if($city->image == NULL)
+                            <span class="d-block"><img class="w-100" src="{{asset('images/city/no-image.png')}}" alt="img"/></span>
+                        @else
+                            <span class="d-block"><img class="w-100" src="{{asset('images/city/'. $city->image)}}" alt="img"/></span>
+                        @endif
                     </a>
                     <div class="botm-elmnt">
                         <h3>{{ $city->name }}</h3>
@@ -172,50 +77,6 @@
                 </div>
             </div>
             @endforeach
-            <!-- <div>
-                <div class="city-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/kolkata-location.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="botm-elmnt">
-                        <h3>Kolkata</h3>
-                        <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="city-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/chennai-location.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="botm-elmnt">
-                        <h3>Chennai</h3>
-                        <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="city-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/bangaluru-location.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="botm-elmnt">
-                        <h3>Bangaluru</h3>
-                        <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="city-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
-                        <span class="d-block"><img class="w-100" src="{{asset('front-assets/images/bangaluru-location.jpg') }}" alt="img"/></span>
-                    </a>
-                    <div class="botm-elmnt">
-                        <h3>Bangaluru</h3>
-                        <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>	
 </section>	

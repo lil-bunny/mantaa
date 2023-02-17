@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\City;
+use App\Models\Area;
 use Session;
 use Validator;
 use Hash;
@@ -27,8 +28,9 @@ class HomeController extends Controller
         
         // fetching city lists
         $cities = City::all();
+        $areas = Area::orderBy('id', 'desc')->limit(8)->get();
         
-        return view('home.index', ['cities'=>$cities]);
+        return view('home.index', ['cities'=>$cities, 'areas'=>$areas]);
     }
 
     /**

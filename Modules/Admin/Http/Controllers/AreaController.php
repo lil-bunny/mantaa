@@ -148,6 +148,7 @@ class AreaController extends Controller
             'pin_code' => 'required',
             'lat' => 'required',
             'lng' => 'required',
+            'height' => 'required',
             'city_name' => 'required',
             'state_name' => 'required',
             'city_tag' => 'required',
@@ -158,8 +159,8 @@ class AreaController extends Controller
         
         if ($validator->passes()) {
             $area_pic1 = '';
-            $area_pic2 = '';
-            $area_video = '';
+            // $area_pic2 = '';
+            // $area_video = '';
 
             // finding city name and if not found then create city
             $states = State::where('is_deleted', '=', 0)
@@ -203,29 +204,29 @@ class AreaController extends Controller
                 $fileName1 = auth()->id() . '_' . time() . '.'. $request->area_pic1->extension();  
                 $type1 = $request->area_pic1->getClientMimeType();
                 $size1 = $request->area_pic1->getSize();
-                $request->area_pic1->move(public_path('application_files/area_images'), $fileName1);
+                $request->area_pic1->move(public_path('/images/area'), $fileName1);
                 $area_pic1 = $fileName1;
             }
             
             // checking for area pic2
-            if($request->area_pic2) {
-                // picture upload
-                $fileName2 = auth()->id() . '_' . time() . '.'. $request->area_pic2->extension();  
-                $type2 = $request->area_pic2->getClientMimeType();
-                $size2 = $request->area_pic2->getSize();
-                $request->area_pic2->move(public_path('application_files/area_images'), $fileName2);
-                $area_pic2 = $fileName2;
-            }
+            // if($request->area_pic2) {
+            //     // picture upload
+            //     $fileName2 = auth()->id() . '_' . time() . '.'. $request->area_pic2->extension();  
+            //     $type2 = $request->area_pic2->getClientMimeType();
+            //     $size2 = $request->area_pic2->getSize();
+            //     $request->area_pic2->move(public_path('application_files/area_images'), $fileName2);
+            //     $area_pic2 = $fileName2;
+            // }
 
             // checking for area videos
-            if($request->area_video) {
-                // picture upload
-                $fileName3 = auth()->id() . '_' . time() . '.'. $request->area_video->extension();  
-                $type3 = $request->area_video->getClientMimeType();
-                $size3 = $request->area_video->getSize();
-                $request->area_video->move(public_path('application_files/area_videos'), $fileName3);
-                $area_video = $fileName3;
-            }
+            // if($request->area_video) {
+            //     // picture upload
+            //     $fileName3 = auth()->id() . '_' . time() . '.'. $request->area_video->extension();  
+            //     $type3 = $request->area_video->getClientMimeType();
+            //     $size3 = $request->area_video->getSize();
+            //     $request->area_video->move(public_path('application_files/area_videos'), $fileName3);
+            //     $area_video = $fileName3;
+            // }
 
             // create area record
             $areas = Area::create([
@@ -254,8 +255,8 @@ class AreaController extends Controller
                 'installation_cost' => $request->input('installation_cost'),
                 'media_partner_name' => $request->input('media_partner_name'),
                 'area_pic1' => $area_pic1,
-                'area_pic2' => $area_pic2,
-                'area_video' => $area_video,
+                // 'area_pic2' => $area_pic2,
+                // 'area_video' => $area_video,
                 'nearby_places' => json_encode($request->input('nearby_places')),
             ]);
 

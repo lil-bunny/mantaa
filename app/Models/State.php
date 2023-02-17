@@ -30,4 +30,8 @@ class State extends Model
         'name',
         'created_at'
     ];
+
+    public function state() {
+        return $this->belongsTo(State::class, 'state_id');
+    }
 }
