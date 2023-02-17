@@ -366,7 +366,7 @@
 
 
                                                 <!-- Nearby Details Starts Here -->
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <h4>Nearby Places</h4>
 
                                                     <div class="col s12 input-field">
@@ -436,7 +436,7 @@
                                                             </div>
                                                         </fieldset>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- Nearby Details Ends Here -->
 
                                                 <!-- Site Merits Starts Here -->

@@ -152,7 +152,7 @@ class AreaController extends Controller
             'state_name' => 'required',
             'city_tag' => 'required',
             'area_pic1' => 'required|mimes:png,jpg,jpeg|max:2048',
-            'nearby_places' => 'required|array|max:6',
+            //'nearby_places' => 'required|array|max:6',
         ]);
 
         
@@ -347,12 +347,6 @@ class AreaController extends Controller
             $site_merits_values_assigned[] = $site_marit_value->id;
         }
         
-        // fetching assigned nearby places
-        $nearby_places = json_decode($area_data->nearby_places, true);
-
-        // parents list for nearby places
-        $nearby_places_list = ['Airport', 'Hospital', 'School', 'College', 'University', 'Mall', 'Multiplexes', 'Metro Station', 'Train Station', 'Bus Stop', 'Bus Depot', 'Taxi Stand', 'Auto Stand', 'Police Station', 'Charging Station'];
-                    
         return view('admin::area.edit', ['area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'nearby_places' => $nearby_places, 'nearby_places_list' => $nearby_places_list, 'site_merits_values_assigned' => $site_merits_values_assigned]);
     }
 
