@@ -90,7 +90,7 @@ class UserController extends Controller
                 'email' => $request->input('email'),
                 'mobile' => $request->input('mobile'),
                 'image' => $fileName,
-                'password' => $request->input('password'),
+                'password' => bcrypt($request->input('password')),
                 'role_id' => $request->input('role_id'),
                 'status' => $request->input('status'),
             ]);
@@ -102,7 +102,8 @@ class UserController extends Controller
                             ->where('status', '=', 1)->get();
 
             $errors=$validator->errors();
-            return redirect()->route('admin::user_add')->with('errors',$errors)->with('roles',$roles);
+            // return redirect()->route('admin::user_add')->with('errors',$errors)->with('roles',$roles);
+            return redirect()->route('admin.user_add')->with('errors',$errors)->with('roles',$roles);
         }
 
         return redirect()->intended('admin/users')->withSuccess('User created successfully');
@@ -166,7 +167,7 @@ class UserController extends Controller
             
             // checking if password is set or not
             if($request->input('password')) {
-                $model->password = $request->input('password');
+                $model->password = bcrypt($request->input('password'));
             }
 
             // update user record
@@ -179,7 +180,7 @@ class UserController extends Controller
                             ->where('status', '=', 1)->get();
 
             $errors=$validator->errors();
-            return redirect()->route('admin::user_edit', ['id' => $id])->with('errors',$errors)->with('roles',$roles);
+            return redirect()->route('admin.user_edit', ['id' => $id])->with('errors',$errors)->with('roles',$roles);
         }
     }
 

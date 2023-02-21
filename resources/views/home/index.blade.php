@@ -35,7 +35,7 @@
                     @if($area->area_pic1 == NULL)
                         <span class="d-block"><img class="w-100" src="{{asset('images/area/no-image.png')}}" alt="img"/></span>
                     @else
-                        <span class="d-block"><img src="{{asset('images/area/'. $area->area_pic1)}}" alt="img"/></span>
+                        <span class="d-block"><img src="{{ url('public/application_files/area_images') . '/'. $area->area_pic1 }}" alt="img"/></span>
                     @endif
                     </a>
                     <div class="info-elmnt">
@@ -65,9 +65,9 @@
                 <div class="city-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
                         @if($city->image == NULL)
-                            <span class="d-block"><img class="w-100" src="{{asset('images/city/no-image.png')}}" alt="img"/></span>
+                            <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city/no-image.png') }}" alt="img"/></span>
                         @else
-                            <span class="d-block"><img class="w-100" src="{{asset('images/city/'. $city->image)}}" alt="img"/></span>
+                            <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city') . '/'. $city->image }}" alt="img"/></span>
                         @endif
                     </a>
                     <div class="botm-elmnt">

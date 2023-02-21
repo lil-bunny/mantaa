@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 use App\Models\Role;
+use App\Models\Notification;
 
 class LoggedInCheck
 {
@@ -29,7 +30,20 @@ class LoggedInCheck
                 return redirect()->route('frontend.home'); 
             }
 
+            // fetching user informations
+            $notification_count_unread = 0;
+            $notifications = Notification::where('user_id', '=', $user->id)
+                            ->get();
+            foreach($notifications as $notification) {
+                if($notification->is_read == 0) {
+                    $notification_count_unread++;
+                }
+            }
+
             View::share('menus_sidebar', $role_data->menus);
+            View::share('notifications', $notifications);
+            View::share('notification_count_unread', $notification_count_unread);
+            View::share('user_name', $user->full_name);
             return $next($request);
         } else {
             return redirect()->route('admin.login');

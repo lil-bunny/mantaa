@@ -103,7 +103,7 @@
                                                         <div class="row">
                                                             <div class="col m6 s12 input-field">
                                                                 <label for="upload_image">Upload Image</label><br>
-                                                                <input type="file" class="mt-4" name="upload_image" />
+                                                                <input type="file" class="mt-4" name="profile_pic" />
                                                             </div>
                                                         </div>
                                                     </div>

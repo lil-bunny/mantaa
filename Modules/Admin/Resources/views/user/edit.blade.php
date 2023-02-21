@@ -105,7 +105,7 @@
                                                                     <input type="file" name="profile_pic">
                                                                 </div>    
                                                             </div>
-                                                            <img src="{{ url('application_files/user_images') . '/'. $user_data->image }}" alt="" class="image" height="100" width="100">
+                                                            <img src="{{ url('public/application_files/user_images') . '/'. $user_data->image }}" alt="" class="image" height="100" width="100">
                                                         </div>
                                                     </div>
                                                     <div class="col s12 display-flex justify-content-end mt-3">
