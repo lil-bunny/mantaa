@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AreaDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/register', 'register')->name('frontend.register');
     Route::post('/registerSubmit', 'registerSubmit')->name('frontend.registerSubmit');
 });
+
+Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
+
+
+
