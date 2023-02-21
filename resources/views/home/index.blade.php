@@ -65,7 +65,7 @@
                 <div class="city-box">
                     <a href="javascript:void(0);" class="d-block img-elm">
                         @if($city->image == NULL)
-                            <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city/no-image.png') }}" alt="img"/></span>
+                            <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city_images/no-image.png') }}" alt="img"/></span>
                         @else
                             <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city_images') . '/'. $city->image }}" alt="img"/></span>
                         @endif

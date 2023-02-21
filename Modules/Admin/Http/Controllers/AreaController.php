@@ -258,8 +258,8 @@ class AreaController extends Controller
                 'installation_cost' => $request->input('installation_cost'),
                 'media_partner_name' => $request->input('media_partner_name'),
                 'area_pic1' => $area_pic1,
-                // 'area_pic2' => $area_pic2,
-                // 'area_video' => $area_video,
+                'area_pic2' => $area_pic2,
+                'area_video' => $area_video,
                 'status' => 0
                 //'nearby_places' => json_encode($request->input('nearby_places')),
             ]);
