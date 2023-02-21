@@ -11,7 +11,7 @@
 				<h1 class="primary-color w-100">{{ $data['title'] }}</h1>
 				<div class="banner-cont"> 
 					<p><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">State: {{ $data['state'] -> name }}</span><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">City: {{ $data['city'] -> name }}</span><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">Pincode: {{ $data['pin_code'] }}</span></p>
-					<p><img src="../public/front-assets/images/latitude-icon.svg" alt="icon">Latitude, Longitude : {{ $data['lat'] }} {{ $data['lng'] }}</p>
+					<p><img src="../public/front-assets/images/latitude-icon.svg" alt="icon">Latitude, Longitude : {{ $data['lat'] }}, {{ $data['lng'] }}</p>
 					<p><img src="../public/front-assets/images/caleder-icon.svg" alt="icon">Last Updated : {{ $data['updated_at'] }}</p>
 				</div>
 			</div>
@@ -22,13 +22,7 @@
 			<div class="container">
 				<div class="plot-thumb-slider">
 					<div>
-						<img class="w-100" src="../public/front-assets/images/plot-slider-thumbnail-photo.jpg" alt="Thumbnail">
-					</div>
-					<div>
-						<img class="w-100" src="../public/front-assets/images/plot-slider-thumbnail-photo.jpg" alt="Thumbnail">
-					</div>
-					<div>
-						<img class="w-100" src="../public/front-assets/images/plot-slider-thumbnail-photo.jpg" alt="Thumbnail">
+						<img class="w-100" src="{{asset('images/area/'. $data['area_pic1'])}}" alt="Thumbnail">
 					</div>
 				</div>
 			</div>
