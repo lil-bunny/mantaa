@@ -40,7 +40,7 @@
                                                     </ul>
                                                 </div>
                                             @endif
-                                            <form id="accountForm" method="post" enctype='multipart/form-data' action="{{ route('admin.create_area') }}">
+                                            <form id="accountForm" method="post" enctype='multipart/form-data' action="{{ route('admin.update_area',['id'=>$area_data->id]) }}">
                                             @csrf
                                                 <!-- Location Details Starts Here -->    
                                                 <div class="row">
@@ -371,26 +371,6 @@
                                                 <!-- Area Picture and Video Details Ends Here -->
 
 
-                                                <!-- Nearby Details Starts Here -->
-                                                <div class="row">
-                                                    <h4>Nearby Places</h4>
-
-                                                    <div class="col s12 input-field">
-                                                        <fieldset class="main-cechbox-holder">
-                                                            <legend>Choose Option (Any 6):</legend>
-                                                            <div class="main-cechbox">
-                                                                @foreach($nearby_places_list as $nearby_places_info)
-                                                                    <div class="sub-cechbox">
-                                                                        <input type="checkbox" name="nearby_places[]" value="{{ $nearby_places_info }}"  {{ in_array($nearby_places_info, $nearby_places) ? 'checked' : '' }}>
-                                                                        <label for="scales">Airport</label>
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                                <!-- Nearby Details Ends Here -->
-
                                                 <!-- Site Merits Starts Here -->
                                                 <div class="row">
                                                     <h4>Site Merits</h4>
@@ -411,6 +391,18 @@
                                                     @endforeach
                                                 </div>
                                                 <!-- Site Merits Ends Here -->
+
+                                                <div class="col s12 m6">
+                                                    <div class="row">
+                                                        <div class="col s12 input-field">
+                                                            <select name="status">
+                                                                <option value="1" {{ $area_data->status==1 ? 'selected' : ''}}>Active</option>
+                                                                <option value="0" {{ $area_data->status==0 ? 'selected' : ''}}>Inactive</option>
+                                                            </select>
+                                                            <label>Status</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
                                                 <div class="row">
