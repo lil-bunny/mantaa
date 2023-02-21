@@ -31,7 +31,7 @@
             @foreach($areas as $area)
             <div class="site-item d-flex col-md-6 col-lg-3 col-xxl-3 col-xs-cs-6">
                 <div class="site-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
+                    <a href="{{ route('area-details', ['id' => $area->id]) }}" class="d-block img-elm">
                     @if($area->area_pic1 == NULL)
                         <span class="d-block"><img class="w-100" src="{{asset('images/area/no-image.png')}}" alt="img"/></span>
                     @else
