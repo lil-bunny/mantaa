@@ -24,6 +24,9 @@
 					<div>
 						<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
 					</div>
+					<div>
+						<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
+					</div>
 					@if($data['area_pic2'] != NULL)
 						<div>
 							<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic2'] }}" alt="Thumbnail">
