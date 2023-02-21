@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\City;
 use App\Models\Area;
+use App\Models\Notification;
 use Session;
 use Validator;
 use Hash;
@@ -24,11 +25,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // return view('home.index');
-        
         // fetching city lists
-        $cities = City::all();
-        $areas = Area::orderBy('id', 'desc')->limit(8)->get();
+        $cities = City::where('is_deleted', '=', 0)
+                    ->where('status', '=', 1)->orderBy('id', 'desc')->get();
+        $areas = Area::where('is_deleted', '=', 0)
+                    ->where('status', '=', 1)->orderBy('id', 'desc')->limit(8)->get();
         
         return view('home.index', ['cities'=>$cities, 'areas'=>$areas]);
     }
@@ -121,16 +122,34 @@ class HomeController extends Controller
                             ->where('status', '=', 1)
                             ->where('role_id', '=', 'customer')
                             ->get();
+            foreach($roles as $role) {
+                $role_id = $role->id;
+            }
             
             // create user record
-            User::create([
+            $user_obj = User::create([
                 'full_name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'mobile' => $request->input('mobile'),
-                'password' => $request->input('password'),
-                'role_id' => $roles->id,
-                'status' => $request->input('status'),
+                'password' => bcrypt($request->input('password')),
+                'role_id' => $role_id,
+                'status' => 0,
             ]);
+
+            $super_admin_users = User::with(['role' => function($q) {
+                $q->select('id');
+                $q->where('role_id', '=', 'admin');
+            }])                    
+            ->get();
+            foreach($super_admin_users as $super_admin_user) {
+                $notifications = Notification::create([
+                    'title' => 'A new user has been registered',
+                    'route' => 'admin.user_edit',
+                    'object_id' => $user_obj->id,
+                    'user_id' => $super_admin_user->id,
+                    'is_read' => 0
+                ]);
+            }
 
             return redirect('/register');
         } else {

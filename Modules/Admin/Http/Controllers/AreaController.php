@@ -282,8 +282,6 @@ class AreaController extends Controller
             }])                    
             ->get();
             foreach($super_admin_users as $super_admin_user) {
-                echo $super_admin_user->id;
-
                 $notifications = Notification::create([
                     'title' => 'A new area has been added',
                     'route' => 'admin.area_edit',
@@ -306,6 +304,11 @@ class AreaController extends Controller
      */
     public function edit($id)
     {
+
+        // updating nottifications
+        Notification::where("object_id",$id)->where("is_read",0)->update(array('is_read' => 1));
+
+
         // fetching user details
         $area_data = Area::find($id);
 

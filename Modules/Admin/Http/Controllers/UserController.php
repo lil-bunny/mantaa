@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Notification;
 use Validator;
 
 class UserController extends Controller
@@ -115,6 +116,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        // updating nottifications
+        Notification::where("object_id",$id)->where("is_read",0)->update(array('is_read' => 1));
+
         // fetching roles
         $roles = Role::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
