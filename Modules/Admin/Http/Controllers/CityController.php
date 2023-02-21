@@ -79,7 +79,7 @@ class CityController extends Controller
             $fileName = auth()->id() . '_' . time() . '.'. $request->city_pic->extension();  
             $type = $request->city_pic->getClientMimeType();
             $size = $request->city_pic->getSize();
-            $request->city_pic->move(public_path('application_files/user_images'), $fileName);
+            $request->city_pic->move(public_path('application_files/city'), $fileName);
             
             // create user record
             City::create([
@@ -147,7 +147,7 @@ class CityController extends Controller
                 $fileName = auth()->id() . '_' . time() . '.'. $request->city_pic->extension();  
                 $type = $request->city_pic->getClientMimeType();
                 $size = $request->city_pic->getSize();
-                $request->city_pic->move(public_path('application_files/user_images'), $fileName);
+                $request->city_pic->move(public_path('application_files/city'), $fileName);
                 $model->image = $fileName;
             }
 
