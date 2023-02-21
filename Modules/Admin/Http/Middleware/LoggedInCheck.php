@@ -33,6 +33,7 @@ class LoggedInCheck
             // fetching user informations
             $notification_count_unread = 0;
             $notifications = Notification::where('user_id', '=', $user->id)
+                            ->orderBy('id', 'desc')
                             ->get();
             foreach($notifications as $notification) {
                 if($notification->is_read == 0) {

@@ -22,8 +22,13 @@
 			<div class="container">
 				<div class="plot-thumb-slider">
 					<div>
-						<img class="w-100" src="{{asset('images/area/'. $data['area_pic1'])}}" alt="Thumbnail">
+						<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
 					</div>
+					@if($data['area_pic2'] != NULL)
+						<div>
+							<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic2'] }}" alt="Thumbnail">
+						</div>
+					@endif
 				</div>
 			</div>
 		</section>

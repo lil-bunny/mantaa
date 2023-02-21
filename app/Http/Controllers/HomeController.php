@@ -133,7 +133,7 @@ class HomeController extends Controller
                 'mobile' => $request->input('mobile'),
                 'password' => bcrypt($request->input('password')),
                 'role_id' => $role_id,
-                'status' => 0,
+                'status' => 1,
             ]);
 
             $super_admin_users = User::with(['role' => function($q) {
