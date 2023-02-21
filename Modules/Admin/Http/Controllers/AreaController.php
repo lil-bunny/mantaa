@@ -446,7 +446,7 @@ class AreaController extends Controller
                 $fileName1 = auth()->id() . '_' . time() . '.'. $request->area_pic1->extension();  
                 $type1 = $request->area_pic1->getClientMimeType();
                 $size1 = $request->area_pic1->getSize();
-                $request->area_pic1->move(public_path('/images/area'), $fileName1);
+                $request->area_pic1->move(public_path('application_files/area_images'), $fileName1);
                 $area_pic1 = $fileName1;
             }
             
@@ -496,18 +496,32 @@ class AreaController extends Controller
             $model->production_cost = $request->input('production_cost');
             $model->installation_cost = $request->input('installation_cost');
             $model->media_partner_name = $request->input('media_partner_name');
-            $model->area_pic1 = $area_pic1;
-            $model->area_pic2 = $area_pic2;
-            $model->area_video = $area_video;
+            if($area_pic1 != '') {
+                $model->area_pic1 = $area_pic1;
+            }
+            if($area_pic2 != '') {
+                $model->area_pic2 = $area_pic2;
+            }
+            if($area_video != '') {
+                $model->area_video = $area_video;
+            }
             $model->status = $request->input('status');
 
             // update user record
             $model->save();
 
+            // fetching site merit values and assigning to area object
+            $site_merits = SiteMerit::where('is_deleted', '=', 0)
+                    ->where('status', '=', 1)->get();
+            $site_merit_values = [];
+            foreach($site_merits as $site_merit) {
+                $site_merit_values[] = $request->input('site_merit_'.$site_merit->id);
+            }
+            $model->site_marit_values()->attach($site_merit_values);
+
             return redirect()->intended('admin/areas')->withSuccess('Area updated successfully');
         } else {
             $errors=$validator->errors();
-            //return redirect()->route('admin::area_edit', ['id' => $id])->with('errors',$errors);
             return redirect()->route('admin.area_edit', ['id' => $id])->with('errors',$errors);
         }
     }

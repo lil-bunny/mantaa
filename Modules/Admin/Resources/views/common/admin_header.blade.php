@@ -7,6 +7,8 @@
                 <li><a class="waves-effect waves-block waves-light" href="javascript:void(0);">Welcome, {{ $user_name }}</a></li>
                     @if ($notification_count_unread != 0)
                         <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">{{ $notification_count_unread }}</small></i></a></li>
+                    @else
+                        <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none</i></a></li>
                     @endif
                     <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{ asset('images/avatar/avatar-7.png') }}" alt="avatar"><i></i></span></a></li>
                 </ul>
@@ -21,7 +23,7 @@
                     @if ($notifications->count())
                         @foreach($notifications as $notification)
                         <li>
-                            <a class="black-text" href="{{ route('admin.area_edit', ['id' => $notification->object_id]) }}"><span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> {{ $notification->title }}</a>
+                            <a class="black-text" href="{{ route($notification->route, ['id' => $notification->object_id]) }}"><span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> {{ $notification->title }}</a>
                             <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">on {{ $notification->created_at }}</time>
                         </li>
                         @endforeach
