@@ -339,7 +339,12 @@
                                                                 <label for="upload_image">Area Picture1</label><br>
                                                                 <input type="file" class="mt-4" name="area_pic1" />
                                                             </div>
-                                                            <img src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic1 }}" alt="" class="image" height="100" width="100">
+                                                            <img 
+                                                                src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic1 }}" 
+                                                                alt="" 
+                                                                id="areaImage" 
+                                                                height="100" 
+                                                                width="100">
                                                         </div>
                                                     </div>
 
@@ -349,7 +354,12 @@
                                                                 <label for="upload_image">Area Picture2</label><br>
                                                                 <input type="file" class="mt-4" name="area_pic2" />
                                                                 @if ($area_data->area_pic2)
-                                                                <img src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic2 }}" alt="" class="image" height="100" width="100">
+                                                                <img 
+                                                                    src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic2 }}" 
+                                                                    alt="" 
+                                                                    id="areaImage" 
+                                                                    height="100" 
+                                                                    width="100">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -426,6 +436,15 @@
             </div>
         </div>
         <!-- END: Page Main-->
+
+        <!-- Area Image Modal -->
+        
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+        
+        <!-- End Area Image Modal -->
        
 
         <script
@@ -580,5 +599,22 @@
             }
 
             window.initAutocomplete = initAutocomplete;
+
+        </script>
+        
+        <script type="text/javascript">
+            var modal = document.getElementById('myModal');
+            var img = document.getElementById('areaImage');
+            var modalImg = document.getElementById("img01");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
         </script>
 @endsection
+
+
