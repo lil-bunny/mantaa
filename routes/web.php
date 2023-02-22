@@ -28,7 +28,12 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/registerSubmit', 'registerSubmit')->name('frontend.registerSubmit');
 });
 
-Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
+Route::group(['middleware' => 'customerloggedinCheck'], function()
+{
+    ########## AREA SECTIONS STARTS HERE #####################
+    Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
+    ########## AREA ENDS HERE #####################
+});
 
 
 

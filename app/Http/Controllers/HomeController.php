@@ -14,6 +14,8 @@ use App\Models\Notification;
 use Session;
 use Validator;
 use Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Redirect;
 
 
 class HomeController extends Controller
@@ -40,8 +42,7 @@ class HomeController extends Controller
      */
     public function login()
     {
-        $prev_route = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
-        return view('home.login', ['prev_route' => $prev_route]);
+        return view('home.login');
     }
 
     /**
@@ -61,7 +62,7 @@ class HomeController extends Controller
                 if (!empty($u)) {
                     if(Hash::check($request->input('password'), $u->password)==false){
                         $validator->errors()->add(
-                            'email', 'User not found'
+                            'email', 'Invalid Password'
                         );
                     }
                 } else { 
@@ -73,23 +74,34 @@ class HomeController extends Controller
         });
         
         if ($validator->passes()) {
+            // assigning previous route if exists
+            if($request->input('prev_route')) {
+                $prev_route = $request->input('prev_route');
+            } else {
+                $prev_route = '';
+            }
+
             // checks the authentications
             $credentials = $request->only('email', 'password');
             
             // checking auth attempts and redirects to previous route if getting success
             if(Auth::attempt($credentials)) {
-                return redirect()->route($request->input('prev_route'));
+                if($request->input('prev_route')) {
+                    return redirect()->to();
+                } else {
+                    return redirect()->route('frontend.home');
+                }
             } else {
                 $validator->errors()->add(
                     'email', 'Invalid Credentials'
                 );
                 
                 $errors=$validator->errors();
-                return redirect()->route('home.login')->with('errors',$errors);
+                return redirect()->route('frontend.login')->with('errors',$errors)->with('prev_route',$prev_route);
             }
         } else {
             $errors=$validator->errors();
-            return redirect()->route('home.login')->with('errors',$errors);
+            return redirect()->route('frontend.login')->with('errors',$errors)->with('prev_route',$prev_route);
         }
     }
 
