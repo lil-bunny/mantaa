@@ -340,9 +340,10 @@
                                                                 <input type="file" class="mt-4" name="area_pic1" />
                                                             </div>
                                                             <img 
+                                                                onclick="imageModal(this);"
                                                                 src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic1 }}" 
                                                                 alt="" 
-                                                                id="areaImage" 
+                                                                id="areaImage1" 
                                                                 height="100" 
                                                                 width="100">
                                                         </div>
@@ -355,9 +356,10 @@
                                                                 <input type="file" class="mt-4" name="area_pic2" />
                                                                 @if ($area_data->area_pic2)
                                                                 <img 
+                                                                    onclick="imageModal(this);"
                                                                     src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic2 }}" 
                                                                     alt="" 
-                                                                    id="areaImage" 
+                                                                    id="areaImage2" 
                                                                     height="100" 
                                                                     width="100">
                                                                 @endif
@@ -603,12 +605,26 @@
         </script>
         
         <script type="text/javascript">
+            // var modal = document.getElementById('myModal');
+            // var img = document.getElementById('areaImage');
+            // var modalImg = document.getElementById("img01");
+            // img.onclick = function () {
+            //     modal.style.display = "block";
+            //     modalImg.src = this.src;
+            // }
+            // var span = document.getElementsByClassName("close")[0];
+            // span.onclick = function () {
+            //     modal.style.display = "none";
+            // }
+
+            var img;
             var modal = document.getElementById('myModal');
-            var img = document.getElementById('areaImage');
             var modalImg = document.getElementById("img01");
-            img.onclick = function () {
+            
+            function imageModal(e){
+                this.img = e.id;
                 modal.style.display = "block";
-                modalImg.src = this.src;
+                modalImg.src = e.src;
             }
             var span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
