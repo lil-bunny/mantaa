@@ -334,7 +334,7 @@
                                                     <h4>Area Picture and Video Details</h4>
 
                                                     <div class="col s12 m12">
-                                                        <div class="row">
+                                                        <div class="row area-image">
                                                             <div class="col m6 s12 input-field">
                                                                 <label for="upload_image">Area Picture1</label><br>
                                                                 <input type="file" class="mt-4" name="area_pic1" />
@@ -350,7 +350,7 @@
                                                     </div>
 
                                                     <div class="col s12 m12">
-                                                        <div class="row">
+                                                        <div class="row area-image">
                                                             <div class="col m6 s12 input-field">
                                                                 <label for="upload_image">Area Picture2</label><br>
                                                                 <input type="file" class="mt-4" name="area_pic2" />
@@ -369,13 +369,20 @@
 
                                                     
                                                     <div class="col s12 m12">
-                                                        <div class="row">
+                                                        <div class="row area-video">
                                                             <div class="col m6 s12 input-field">
                                                                 <label for="upload_image">Area Video</label><br>
                                                                 <input type="file" class="mt-4" name="area_video" />
                                                             </div>
                                                             @if ($area_data->area_video)
-                                                            <a href="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" target="_blank">Video Link</a>
+                                                            <!-- <a href="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" target="_blank">Video Link</a> -->
+                                                            <video 
+                                                                onclick="videoModal(this);" 
+                                                                height="100"
+                                                                width="100" 
+                                                                controls>
+                                                                <source src="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" type="video/mp4">
+                                                            </video>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -441,12 +448,21 @@
 
         <!-- Area Image Modal -->
         
-        <div id="myModal" class="modal">
+        <div id="img_modal" class="modal">
             <span class="close">&times;</span>
             <img class="modal-content" id="img01">
         </div>
         
         <!-- End Area Image Modal -->
+
+        <!-- Area Video Modal -->
+        
+        <div id="video_modal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="video01">
+        </div>
+        
+        <!-- End Area Video Modal -->
        
 
         <script
@@ -617,18 +633,24 @@
             //     modal.style.display = "none";
             // }
 
-            var img;
-            var modal = document.getElementById('myModal');
+            
+            var imgModal = document.getElementById('img_modal');
+            var videoModal = document.getElementById('video_modal');
             var modalImg = document.getElementById("img01");
+            var areaVideo = document.getElementById("video01");
             
             function imageModal(e){
-                this.img = e.id;
-                modal.style.display = "block";
+                imgModal.style.display = "block";
                 modalImg.src = e.src;
+            }
+            function videoModal(e){
+                videoModal.style.display = "block";
+                areaVideo = e.src;
             }
             var span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
-                modal.style.display = "none";
+                imgModal.style.display = "none";
+                videoModal.style.display = "none";
             }
         </script>
 @endsection
