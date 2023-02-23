@@ -3,6 +3,7 @@
 @section('content')
 
 <!-- BEGIN: Page Main-->
+
 <div id="main">
             <div class="row">
                 <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
@@ -127,10 +128,6 @@
                                                         </div>
                                                     </div>
 
-                                                    
-                                                    
-                                                    
-
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
@@ -143,11 +140,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
-
-                                                   
-                                                    
-
                                                     
                                                     <div class="col s12 m6">
                                                         <div class="row">
@@ -367,7 +359,6 @@
                                                         </div>
                                                     </div>
 
-                                                    
                                                     <div class="col s12 m12">
                                                         <div class="row area-video">
                                                             <div class="col m6 s12 input-field">
@@ -376,11 +367,11 @@
                                                             </div>
                                                             @if ($area_data->area_video)
                                                             <!-- <a href="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" target="_blank">Video Link</a> -->
-                                                            <video 
-                                                                onclick="videoModal(this);" 
-                                                                height="100"
-                                                                width="100" 
-                                                                controls>
+                                                            <video
+                                                                onclick="toggle();"
+                                                                width="150" 
+                                                                height="150"
+                                                                controls="true">
                                                                 <source src="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" type="video/mp4">
                                                             </video>
                                                             @endif
@@ -457,9 +448,9 @@
 
         <!-- Area Video Modal -->
         
-        <div id="video_modal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="video01">
+        <div class="areaVideo">
+            <video src="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" controls="true"></video>
+            <div class="close" onclick="toggle();">&times;</div>
         </div>
         
         <!-- End Area Video Modal -->
@@ -621,36 +612,24 @@
         </script>
         
         <script type="text/javascript">
-            // var modal = document.getElementById('myModal');
-            // var img = document.getElementById('areaImage');
-            // var modalImg = document.getElementById("img01");
-            // img.onclick = function () {
-            //     modal.style.display = "block";
-            //     modalImg.src = this.src;
-            // }
-            // var span = document.getElementsByClassName("close")[0];
-            // span.onclick = function () {
-            //     modal.style.display = "none";
-            // }
-
-            
             var imgModal = document.getElementById('img_modal');
-            var videoModal = document.getElementById('video_modal');
             var modalImg = document.getElementById("img01");
-            var areaVideo = document.getElementById("video01");
             
             function imageModal(e){
                 imgModal.style.display = "block";
                 modalImg.src = e.src;
             }
-            function videoModal(e){
-                videoModal.style.display = "block";
-                areaVideo = e.src;
-            }
             var span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
                 imgModal.style.display = "none";
-                videoModal.style.display = "none";
+            }
+            
+            function toggle(){
+                var trailer = document.querySelector(".areaVideo")
+                var video = document.querySelector("video")
+                trailer.classList.toggle("active");
+                video.pause();
+                video.currentTime = 0;
             }
         </script>
 @endsection
