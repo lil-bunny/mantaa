@@ -30,10 +30,15 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::group(['middleware' => 'customerloggedinCheck'], function()
 {
-    ########## AREA SECTIONS STARTS HERE #####################
+    ########## AREA DETAILS SECTIONS STARTS HERE #####################
     Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
-    ########## AREA ENDS HERE #####################
+    ########## AREA DETAILS ENDS HERE #####################
 });
+
+########## AREA SEARCH AND LISTING SECTIONS STARTS HERE #####################
+Route::get('/autocomplete-search', 'App\Http\Controllers\AreaDetailsController@autocompleteSearch')->name('frontend.autocompleteSearch');
+Route::get('/area-search', 'App\Http\Controllers\AreaDetailsController@areaSearch')->name('frontend.areaSearch');
+########## AREA SEARCH AND LISTING ENDS HERE #####################
 
 
 

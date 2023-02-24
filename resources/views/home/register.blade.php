@@ -40,3 +40,4 @@
     </div>
 </section>
 <!-- // END REGISTER BODY -->
+@endsection

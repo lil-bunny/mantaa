@@ -19,7 +19,7 @@
     <body>
         <!-- Topbar -->
         @include('common.front_header')
-        <!-- End of Topbar -->
+        <!-- End of Topbar test -->
 
         @yield('content')
 

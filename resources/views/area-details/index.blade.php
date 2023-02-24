@@ -307,7 +307,7 @@
 	</section>	
 	
 	<!-- // END CHOOSE CITIES -->
-
+	@endsection
 
 
 	

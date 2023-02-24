@@ -23,11 +23,7 @@
             <div class="form-group">
                 <input type="passowrd" placeholder="Password" class="form-control" name="password">
             </div>
-            
             <input type="hidden" name="prev_route" value="{{ $prev_route ?? '' }}">
-
-            <input type="hidden" name="prev_route1" value="{{ $test ?? '' }}">
-            
             <button class="btn btn-primary btn-submit w-100" type="submit">Login</button>
             <div class="d-flex justify-content-between flex-wrap-xs">
                 <p class="text-muted mt-3 mb-0 w-100-xs"><a href="javascript:void(0)">Forgot password?</a></p>
@@ -39,3 +35,4 @@
     </div>
 </section>
 <!-- // END LOGIN BODY -->
+@endsection
