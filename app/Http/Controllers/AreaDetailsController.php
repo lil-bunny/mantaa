@@ -16,13 +16,12 @@ class AreaDetailsController extends Controller
 {
     public function index(Request $request, $id)
     {
+
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
         
-        $feedbacks = Feedback::where('is_deleted', '=', 0)
-                    ->where('status', '=', 1)->orderBy('id', 'desc')->limit(3)->get();
-        
-        return view('area-details.index', compact('data', 'id'), ['feedbacks'=>$feedbacks]); 
+        // $data = Area::find($id);
+        return view('area-details.index', compact('data', 'id')); 
     }
 
     public function autocompleteSearch(Request $request)
@@ -70,8 +69,9 @@ class AreaDetailsController extends Controller
                     ->paginate(8);
         
         if ($request->ajax()) {
-            $view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
-            return response()->json(['html'=>$view]);
+            //$view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
+            return view('area-details.area_search_ajax', ['area_lists_ajax' => $data]);
+            //return response()->json(['html'=>$view]);
         }
         
         return view('area-details.area_search', ['area_lists' => $data]);

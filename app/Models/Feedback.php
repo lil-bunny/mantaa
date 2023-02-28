@@ -33,4 +33,8 @@ class Feedback extends Authenticatable
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function area() {
+        return $this->belongsTo(User::class, 'area_id');
+    }
 }
