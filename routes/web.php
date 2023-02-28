@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AreaDetailsController;
+use App\Http\Controllers\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,13 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
     ########## AREA DETAILS SECTIONS STARTS HERE #####################
     Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
     ########## AREA DETAILS ENDS HERE #####################
+    
+    ########## AREA DETAILS SECTIONS STARTS HERE #####################
+    Route::post('/area-details/{id}', 'App\Http\Controllers\FeedbackController@feedbackSubmit')->name('area-details');
+    ########## AREA DETAILS ENDS HERE #####################
 });
+
+
 
 ########## AREA SEARCH AND LISTING SECTIONS STARTS HERE #####################
 Route::get('/autocomplete-search', 'App\Http\Controllers\AreaDetailsController@autocompleteSearch')->name('frontend.autocompleteSearch');
