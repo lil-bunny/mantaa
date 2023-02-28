@@ -62,8 +62,8 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="search-content">
-					<div class="row sites-items">
+				<div class="search-content" id="post-cont">
+					<div class="row sites-items" id="post-data">
 						@foreach($area_lists as $area_info)
 							<div class="site-item d-flex col-md-6 col-xxl-6 item-m6-l4-xxl3">
 								<div class="site-box">
@@ -96,7 +96,7 @@
 				</div>
 				<!-- end second row -->
 				<!-- loader start -->
-					<div class="loader-container" style="display:none">
+					<div class="loader-container" id="ajax_loader" style="display:none">
 						<div class="loader-spinner">
 							<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 								<circle cx="50" cy="50" r="46" />
@@ -110,6 +110,73 @@
 	</div>
 </section>
 <!-- ens search result -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+<script type="text/javascript">
+	var page = 1;
+
+	jQuery(function($) {
+		$('#post-cont').on('scroll', function() {
+			if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+				page++;
+	        	loadMoreData(page);
+			}
+		})
+	});
+
+
+	function loadMoreData(page){
+
+	  jQuery.ajax(
+
+	        {
+
+	            url: '?page=' + page,
+
+	            type: "get",
+
+	            beforeSend: function()
+
+	            {
+
+	                jQuery('#ajax_loader').show();
+
+	            }
+
+	        })
+
+	        .done(function(data)
+
+	        {
+
+	            if(data.html == " "){
+
+	                jQuery('#ajax_loader').html("No more records found");
+
+	                return;
+
+	            }
+
+	            jQuery('#ajax_loader').hide();
+
+	            jQuery("#post-data").append(data.html);
+
+	        })
+
+	        .fail(function(jqXHR, ajaxOptions, thrownError)
+
+	        {
+
+	              alert('server not responding...');
+
+	        });
+
+	}
+
+</script>
 
 @endsection
 

@@ -13,8 +13,8 @@
         </h1>
         <div class="container">
             <div class="search-widget">
-                <form method="post" action="{{ route('frontend.areaSearch') }}">
-                    <input type="text" placeholder="Enter a location. Eg. City. locality or landmark" id="search"/>
+                <form method="get" action="{{ route('frontend.areaSearch') }}">
+                    <input type="text" name="searchText" placeholder="Enter a location. Eg. City. locality or landmark" id="search"/>
                     <input type="hidden" name="area_id" id="area_id" value="" />
                     <input type="hidden" name="city_id" id="city_id" value="" />
                     <button class="btn btn-search" type="submit">Search</button>
@@ -108,7 +108,7 @@
 
         select: function (event, ui) {
            $('#search').val(ui.item.label);
-           $('#id').val(ui.item.id);
+           $('#area_id').val(ui.item.id);
            $('#city_id').val(ui.item.city_id);
            console.log(ui.item); 
            return false;
