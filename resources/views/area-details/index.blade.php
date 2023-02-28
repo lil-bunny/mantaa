@@ -42,7 +42,6 @@
 				<h2 class="sec-title">Location Map</h2>
 				<div class="row">
 					<div class="col-md-7">
-						<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10420.161365955086!2d88.43267758710955!3d22.57598455697892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1672218003341!5m2!1sen!2sin" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 						<iframe src = "https://maps.google.com/maps?q={{ $data['lat'] }},{{ $data['lng'] }}&hl=es;z=14&amp;output=embed" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 					<div class="col-md-5">
@@ -164,48 +163,40 @@
 				<h2 class="sec-title">Feedback</h2>
 				<div class="feedback-sec">
 					<p>Help us improve by giving more information about this site</p>
-					<div class="form-group">
-						<textarea class="form-control" placeholder="Write text here..."></textarea> 
-					</div>
-					<button class="btn btn-warning">Submit<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
+					<form method="POST" action="{{ route('area-details', $id) }}">
+					@csrf
+						<div class="form-group">
+							<textarea class="form-control" placeholder="Write text here..." name="feedback"></textarea> 
+						</div>
+						<button class="btn btn-warning">Submit<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
+					</form>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<h2 class="sec-title">Recent Review</h2>
+				@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+        		@endif
 				<ul class="review-sec">
+					@foreach($feedbacks as $feedback)
 					<li>
 						<div class="d-flex">
 							<figure>
 								<img src="../public/front-assets/images/avatar-icon.svg" alt="icon">
 							</figure>
 							<div>
-								<p>Drew Reichert <span>17th Jan, 2022</span></p>
+								<p>{{ $feedback -> user -> full_name }} <span>{{ $feedback-> created_at }}</span></p>
 							</div>
 						</div>
-						Donec sed vulputate lacus. Pellentesque et vestibulum libero, nec euismod sem. Donec molestie ipsum erat, ac elementum felis blandit nec. Aenean suscipit tincidunt ipsum.
+						{{ $feedback -> feedback }}
 					</li>
-					<li>
-						<div class="d-flex">
-							<figure>
-								<img src="../public/front-assets/images/avatar-icon.svg" alt="icon">
-							</figure>
-							<div>
-								<p>Vince Marvin <span>12th May, 2022</span></p>
-							</div>
-						</div>
-						Donec sed vulputate lacus. Pellentesque et vestibulum libero, nec euismod sem. Donec molestie ipsum erat, ac elementum felis blandit nec. Aenean suscipit tincidunt ipsum.
-					</li>
-					<li>
-						<div class="d-flex">
-							<figure>
-								<img src="../public/front-assets/images/avatar-icon.svg" alt="icon">
-							</figure>
-							<div>
-								<p>Caesar Kling <span>25th Aug, 2022</span></p>
-							</div>
-						</div>
-						Donec sed vulputate lacus. Pellentesque et vestibulum libero, nec euismod sem. Donec molestie ipsum erat, ac elementum felis blandit nec. Aenean suscipit tincidunt ipsum.
-					</li>
+					@endforeach
 				</ul>
 			</div>
 		</div>
