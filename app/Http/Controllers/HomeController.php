@@ -87,7 +87,7 @@ class HomeController extends Controller
             // checking auth attempts and redirects to previous route if getting success
             if(Auth::attempt($credentials)) {
                 if($request->input('prev_route')) {
-                    return redirect()->to();
+                    return redirect()->to($prev_route);
                 } else {
                     return redirect()->route('frontend.home');
                 }
