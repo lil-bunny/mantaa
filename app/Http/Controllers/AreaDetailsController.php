@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use App\Models\Area;
 use App\Models\Feedback;
 use Session;
@@ -16,23 +17,16 @@ class AreaDetailsController extends Controller
 {
     public function index(Request $request, $id)
     {
-<<<<<<< HEAD
         //area
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
         //feedback
         $feedbacks = Feedback::where('is_deleted', '=', 0)
-                    ->where('status', '=', 1)->orderBy('id', 'desc')->limit(3)->get();
+                    ->where('status', '=', 1)
+                    ->where('area_id', '=', $id)
+                    ->orderBy('id', 'desc')->limit(3)->get();
         
         return view('area-details.index', compact('data', 'id'), ['feedbacks'=>$feedbacks]); 
-=======
-
-        $data = Area::where('is_deleted', '=', 0)
-                    ->where('status', '=', 1)->find($id);
-        
-        // $data = Area::find($id);
-        return view('area-details.index', compact('data', 'id')); 
->>>>>>> f3118f3fc59e45a1399c06fe6ef51923e22e2a6f
     }
 
     public function autocompleteSearch(Request $request)
@@ -61,30 +55,29 @@ class AreaDetailsController extends Controller
 
     public function areaSearch(Request $request)
     {
-        $area_id = $request->get('area_id');
-        $city_id = $request->get('city_id');
-        $search_text = $request->get('searchText');
+        $filters['area_id'] = $request->get('area_id');
+        $filters['city_id'] = $request->get('city_id');
+        $filters['search_text'] = $request->get('searchText');
         $res = [];
-        
-        // $data = Area::where('is_deleted', '=', 0)
-        //             ->where('status', '=', 1)
-        //             ->where('id', '=', $area_id)
-        //             ->orWhere('title', 'LIKE', '%'.$search_text.'%')
-        //             ->orWhere('site_location', 'LIKE', '%'.$search_text.'%')
-        //             ->orWhere('city_id', '=', $city_id)
-        //             ->orderByRaw("CASE WHEN id = ".$area_id." THEN 0 ELSE 1 END, id")
-        //             ->paginate(8);
         
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)
+                    ->where('id', '=', $filters['area_id'])
+                    ->orWhere('title', 'LIKE', '%'.$filters['search_text'].'%')
+                    ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
+                    ->orWhere('city_id', '=', $filters['city_id'])
+                    ->orderByRaw("CASE WHEN id = ".$filters['area_id']." THEN 0 ELSE 1 END, id")
                     ->paginate(8);
         
+        // $data = Area::where('is_deleted', '=', 0)
+        //             ->where('status', '=', 1)
+        //             ->paginate(8);
+        
         if ($request->ajax()) {
-            //$view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
-            return view('area-details.area_search_ajax', ['area_lists_ajax' => $data]);
-            //return response()->json(['html'=>$view]);
+            $view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
+            return response()->json(['html'=>$view]);
         }
         
-        return view('area-details.area_search', ['area_lists' => $data]);
+        return view('area-details.area_search', ['area_lists' => $data, 'filters' => $filters]);
     }
 }

@@ -10,10 +10,12 @@
 			
 		<div class="container">
 			<div class="search-widget">
-				<form>
-					<input type="text" placeholder="Enter a location. Eg. City. locality or landmark"/>
-					<button class="btn btn-search">Search</button>
-				</form>
+				<form method="get" action="{{ route('frontend.areaSearch') }}">
+                    <input type="text" name="searchText" value="{{ $filters['search_text'] }}" placeholder="Enter a location. Eg. City. locality or landmark" id="search"/>
+                    <input type="hidden" name="area_id" id="area_id" value="{{ $filters['area_id'] }}" />
+                    <input type="hidden" name="city_id" id="city_id" value="{{ $filters['city_id'] }}" />
+                    <button class="btn btn-search" type="submit">Search</button>
+                </form>
 			</div>
 		</div>
 	</div>
@@ -112,8 +114,34 @@
 <!-- ens search result -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
-	
+    var path = "{{ url('autocomplete-search') }}";
+
+    $( "#search" ).autocomplete({
+        source: function( request, response ) {
+          $.ajax({
+            url: path,
+            type: 'GET',
+            dataType: "json",
+            data: {
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+
+        select: function (event, ui) {
+           $('#search').val(ui.item.label);
+           $('#area_id').val(ui.item.id);
+           $('#city_id').val(ui.item.city_id);
+           console.log(ui.item); 
+           return false;
+        }
+    });
 </script>
 <script type="text/javascript">
 	var page = 1;
@@ -129,53 +157,30 @@
 
 
 	function loadMoreData(page){
+		jQuery.ajax(
+		{
+			url: '?page='+page+'&searchText='+jQuery('#search').val()+'&area_id='+jQuery('#area_id').val()+'&city_id='+jQuery('#city_id').val(),
+			type: "get",
+			beforeSend: function()
+			{
+				jQuery('#ajax_loader').show();
+			}
+		})
+		.done(function(data)
+		{
+			if(data.html == " ") {
+				jQuery('#ajax_loader').html("No more records found");
+				return;
+			}
 
-	  jQuery.ajax(
-
-	        {
-
-	            url: '?page=' + page,
-
-	            type: "get",
-
-	            beforeSend: function()
-
-	            {
-
-	                jQuery('#ajax_loader').show();
-
-	            }
-
-	        })
-
-	        .done(function(data)
-
-	        {
-
-	            if(data.html == " "){
-
-	                jQuery('#ajax_loader').html("No more records found");
-
-	                return;
-
-	            }
-
-	            jQuery('#ajax_loader').hide();
-
-	            jQuery("#post-data").append(data.html);
-
-	        })
-
-	        .fail(function(jqXHR, ajaxOptions, thrownError)
-
-	        {
-
-	              alert('server not responding...');
-
-	        });
-
+			jQuery('#ajax_loader').hide();
+			jQuery("#post-data").append(data.html);
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError)
+		{
+			alert('server not responding...');
+		});
 	}
-
 </script>
 
 @endsection

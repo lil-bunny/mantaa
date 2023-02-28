@@ -1,3 +1,6 @@
+@extends('layouts.ajax')
+
+@section('content') 
 @foreach($area_lists_ajax as $area_info)
 	<div class="site-item d-flex col-md-6 col-xxl-6 item-m6-l4-xxl3">
 		<div class="site-box">
@@ -26,3 +29,4 @@
 		</div>
 	</div>
 @endforeach
+@endsection
