@@ -16,9 +16,10 @@ class AreaDetailsController extends Controller
 {
     public function index(Request $request, $id)
     {
+        //area
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
-        
+        //feedback
         $feedbacks = Feedback::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->orderBy('id', 'desc')->limit(3)->get();
         
