@@ -26,7 +26,7 @@ class AreaDetailsController extends Controller
                     ->where('area_id', '=', $id)
                     ->orderBy('id', 'desc')->limit(3)->get();
         
-        return view('area-details.index', compact('data', 'id'), ['feedbacks'=>$feedbacks]); 
+        return view('area-details.index', compact('data', 'id'), ['feedbacks' => $feedbacks]); 
     }
 
     public function autocompleteSearch(Request $request)

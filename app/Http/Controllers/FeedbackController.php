@@ -24,14 +24,13 @@ class FeedbackController extends Controller
             $user = Auth::user();
 
             Feedback::create([
-                'user_id' => $user -> id,
+                'user_id' => $user->id,
                 'area_id' => $id,
                 'feedback' => $request->input('feedback'),
                 'status' => 1,
             ]);
         
-            return redirect('/');
-        
+            return redirect()->route('area-details', $id)
         } else {
             $errors=$validator->errors();
             return redirect()->route('area-details', $id)->with('errors',$errors);

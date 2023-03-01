@@ -162,9 +162,18 @@
 			<div class="col-md-6">
 				<h2 class="sec-title">Feedback</h2>
 				<div class="feedback-sec">
+					@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+					@endif
 					<p>Help us improve by giving more information about this site</p>
-					<form method="POST" action="{{ route('area-details', $id) }}">
-					@csrf
+					<form method="POST" action="{{ route('frontend.feedbackSubmit', $id) }}">
+						@csrf
 						<div class="form-group">
 							<textarea class="form-control" placeholder="Write text here..." name="feedback"></textarea> 
 						</div>
@@ -174,15 +183,6 @@
 			</div>
 			<div class="col-md-6">
 				<h2 class="sec-title">Recent Review</h2>
-				@if ($errors->any())
-				<div class="alert alert-danger">
-					<ul>
-						@foreach ($errors->all() as $error)
-							<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-        		@endif
 				<ul class="review-sec">
 					@foreach($feedbacks as $feedback)
 					<li>

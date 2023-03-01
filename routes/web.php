@@ -36,7 +36,7 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
     ########## AREA DETAILS ENDS HERE #####################
     
     ########## AREA DETAILS SECTIONS STARTS HERE #####################
-    Route::post('/area-details/{id}', 'App\Http\Controllers\FeedbackController@feedbackSubmit')->name('area-details');
+    Route::post('/feedbackSubmit/{id}', 'App\Http\Controllers\FeedbackController@feedbackSubmit')->name('frontend.feedbackSubmit');
     ########## AREA DETAILS ENDS HERE #####################
 });
 
