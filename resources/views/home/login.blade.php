@@ -21,7 +21,7 @@
                 <input type="email" placeholder="Email" class="form-control" name="email">
             </div>
             <div class="form-group">
-                <input type="passowrd" placeholder="Password" class="form-control" name="password">
+                <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
             <input type="hidden" name="prev_route" value="{{ $prev_route ?? '' }}">
             <button class="btn btn-primary btn-submit w-100" type="submit">Login</button>

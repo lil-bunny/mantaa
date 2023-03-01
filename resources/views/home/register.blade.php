@@ -27,10 +27,10 @@
                 <input type="text" placeholder="Phone" class="form-control" name="mobile">
             </div>
             <div class="form-group">
-                <input type="passowrd" placeholder="Password" class="form-control" name="password">
+                <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
             <div class="form-group">
-                <input type="passowrd" placeholder="Repeat Password" class="form-control" name="cnf_password">
+                <input type="password" placeholder="Repeat Password" class="form-control" name="cnf_password">
             </div>
             <button type="submit" class="btn btn-primary btn-submit w-100">Sign Up</button>
             <p class="text-muted mt-3">Already have an account? <a href="{{ route('frontend.login') }}">Login</a></p>

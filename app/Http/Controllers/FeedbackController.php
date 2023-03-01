@@ -30,7 +30,7 @@ class FeedbackController extends Controller
                 'status' => 1,
             ]);
         
-            return redirect()->route('area-details', $id)
+            return redirect()->route('area-details', $id);
         } else {
             $errors=$validator->errors();
             return redirect()->route('area-details', $id)->with('errors',$errors);
