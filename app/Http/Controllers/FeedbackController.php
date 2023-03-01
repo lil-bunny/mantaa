@@ -27,7 +27,7 @@ class FeedbackController extends Controller
                 'user_id' => $user->id,
                 'area_id' => $id,
                 'feedback' => $request->input('feedback'),
-                'status' => 1,
+                'status' => 0,
             ]);
         
             return redirect()->route('area-details', $id);

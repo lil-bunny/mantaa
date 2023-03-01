@@ -184,19 +184,29 @@
 			<div class="col-md-6">
 				<h2 class="sec-title">Recent Review</h2>
 				<ul class="review-sec">
-					@foreach($feedbacks as $feedback)
-					<li>
-						<div class="d-flex">
-							<figure>
-								<img src="../public/front-assets/images/avatar-icon.svg" alt="icon">
-							</figure>
-							<div>
-								<p>{{ $feedback -> user -> full_name }} <span>{{ $feedback-> created_at }}</span></p>
+					@if ($feedbacks->count())
+						@foreach($feedbacks as $feedback)
+						<li>
+							<div class="d-flex">
+								<figure>
+									<img src="../public/front-assets/images/avatar-icon.svg" alt="icon">
+								</figure>
+								<div>
+									<p>{{ $feedback->user-> full_name }} <span>{{ $feedback->created_at }}</span></p>
+								</div>
 							</div>
-						</div>
-						{{ $feedback -> feedback }}
-					</li>
-					@endforeach
+							{{$feedback->feedback }}
+						</li>
+						@endforeach
+					@else
+						<li>
+							<div class="d-flex">
+								<div>
+									<p>No reviews found</p>
+								</div>
+							</div>
+						</li>
+					@endif
 				</ul>
 			</div>
 		</div>
