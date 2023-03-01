@@ -466,13 +466,18 @@
 
             function initAutocomplete() {
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    center: { lat: 22.5726, lng: 88.3639 },
+                    center: { lat: {{ $area_data->lat }}, lng: {{ $area_data->lng }} },
                     zoom: 13,
                     mapTypeId: "roadmap",
                 });
+
+                var options = {
+                    types: ['geocode'],
+                    componentRestrictions: {country: "in"}
+                };
                 // Create the search box and link it to the UI element.
                 const input = document.getElementById("autocomplete");
-                const searchBox = new google.maps.places.SearchBox(input);
+                const searchBox = new google.maps.places.SearchBox(input, options);
 
                 //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
                 // Bias the SearchBox results towards current map's viewport.

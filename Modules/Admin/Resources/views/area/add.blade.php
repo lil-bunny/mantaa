@@ -485,7 +485,7 @@
        
 
         <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeK9JLWPV_0-BCT3A63jji-NymGtLWVW4&callback=initAutocomplete&libraries=places&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeK9JLWPV_0-BCT3A63jji-NymGtLWVW4&callback=initAutocomplete&libraries=places&v=weekly&region=in"
         defer
         ></script>
 
@@ -498,9 +498,20 @@
                     zoom: 13,
                     mapTypeId: "roadmap",
                 });
+
+                var options = {
+                    types: ['geocode'],
+                    componentRestrictions: {country: "in"}
+                };
                 // Create the search box and link it to the UI element.
                 const input = document.getElementById("autocomplete");
-                const searchBox = new google.maps.places.SearchBox(input);
+                const searchBox = new google.maps.places.SearchBox(input, options);
+
+                // Set initial restriction to the greater list of countries.
+                // searchBox.setComponentRestrictions({
+                //     country: ["in"],
+                // });
+
 
                 //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
                 // Bias the SearchBox results towards current map's viewport.
