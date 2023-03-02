@@ -465,8 +465,10 @@
         <script type="text/javascript">
 
             function initAutocomplete() {
+                const myLatLng = { lat: {{ $area_data->lat }}, lng: {{ $area_data->lng }} };
+
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    center: { lat: {{ $area_data->lat }}, lng: {{ $area_data->lng }} },
+                    center: myLatLng,
                     zoom: 13,
                     mapTypeId: "roadmap",
                 });
@@ -485,7 +487,26 @@
                     searchBox.setBounds(map.getBounds());
                 });
 
-                let markers = [];
+                //let markers = [];
+
+                // Add info window
+                const infowindow = new google.maps.InfoWindow({
+                    content: "{{ $area_data->title }}"
+                });
+
+                // The marker, positioned at selected location
+                const marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: "{{ $area_data->title }}"
+                });
+
+                // Marker click event: open info window
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);
+                });
+
+                infowindow.open(map, marker);
 
                 // Listen for the event fired when the user selects a prediction and retrieve
                 // more details for that place.
