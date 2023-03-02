@@ -487,7 +487,7 @@
                     searchBox.setBounds(map.getBounds());
                 });
 
-                //let markers = [];
+                let markers = [];
 
                 // Add info window
                 const infowindow = new google.maps.InfoWindow({
@@ -619,8 +619,7 @@
                             }
                         }
                     }
-                    console.log(city);
-                    console.log('Test');
+                    
                     // assigning the values in text boxes
                     document.querySelector("#site_location").value = address1;
                     document.querySelector("#road_name").value = road_name;
@@ -630,6 +629,35 @@
                     document.querySelector("#state_name").value = state;
                     document.querySelector("#lat").value = lat;
                     document.querySelector("#lng").value = lng;
+
+
+                    // setting marker for the selected place
+                    const myLatLngSelected = { lat: lat, lng: lng };
+
+                    const mapSelected = new google.maps.Map(document.getElementById("map"), {
+                        center: myLatLngSelected,
+                        zoom: 13,
+                        mapTypeId: "roadmap",
+                    });
+
+                    // Add info window
+                    const infowindow = new google.maps.InfoWindow({
+                        content: area_name
+                    });
+
+                    // The marker, positioned at selected location
+                    const markerSelected = new google.maps.Marker({
+                        position: myLatLngSelected,
+                        map: mapSelected,
+                        title: area_name
+                    });
+
+                    // Marker click event: open info window
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(mapSelected, markerSelected);
+                    });
+
+                    infowindow.open(mapSelected, markerSelected);
                 });
             }
 

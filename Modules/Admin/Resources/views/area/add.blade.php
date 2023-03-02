@@ -507,12 +507,6 @@
                 const input = document.getElementById("autocomplete");
                 const searchBox = new google.maps.places.SearchBox(input, options);
 
-                // Set initial restriction to the greater list of countries.
-                // searchBox.setComponentRestrictions({
-                //     country: ["in"],
-                // });
-
-
                 //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
                 // Bias the SearchBox results towards current map's viewport.
                 map.addListener("bounds_changed", () => {
@@ -643,6 +637,34 @@
                     document.querySelector("#state_name").value = state;
                     document.querySelector("#lat").value = lat;
                     document.querySelector("#lng").value = lng;
+
+                    // setting marker for the selected place
+                    const myLatLngSelected = { lat: lat, lng: lng };
+
+                    const mapSelected = new google.maps.Map(document.getElementById("map"), {
+                        center: myLatLngSelected,
+                        zoom: 13,
+                        mapTypeId: "roadmap",
+                    });
+
+                    // Add info window
+                    const infowindow = new google.maps.InfoWindow({
+                        content: area_name
+                    });
+
+                    // The marker, positioned at selected location
+                    const markerSelected = new google.maps.Marker({
+                        position: myLatLngSelected,
+                        map: mapSelected,
+                        title: area_name
+                    });
+
+                    // Marker click event: open info window
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(mapSelected, markerSelected);
+                    });
+
+                    infowindow.open(mapSelected, markerSelected);
                 });
             }
 
