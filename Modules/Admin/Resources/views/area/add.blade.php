@@ -233,18 +233,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <select name="illumination">
-                                                                    @foreach($illuminations as $key => $illumination)
-                                                                        <option value="{{ $key }}">{{ $illumination }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label>Media Tags</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="col s12 m6">
                                                         <div class="row">

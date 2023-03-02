@@ -25,38 +25,37 @@
 <section class="section-demand sec-ptb">
 	<div class="container"> 
 		<h4 class="search-title sec-pt">Additional Filters (Optional)</h4>
-		<div class="search-form row align-items-center">				
-			<div class="col-auto">
-				<select class="form-control">
-					<option>Minimum Price</option>
-					<option>1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option>4000</option>
-					<option>5000</option>
-				</select>
-			</div>				
-			<div class="col-auto">
-				<select class="form-control">
-					<option>Maximum Price</option>
-					<option>10000</option>
-					<option>20000</option>
-					<option>30000</option>
-					<option>40000</option>
-					<option>50000</option>
-				</select>
-			</div>	
-			<div class="col-auto">
-				<select class="form-control">
-					<option>Media Formats</option>
-					<option>Flex</option>
-					<option>Digital</option>
-				</select>
-			</div>
-			<div class="col-auto">
-				<button class="btn btn-warning">Search<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
-			</div>
-		</div>
+			<form method="get" action="{{ url()->full() }}">
+				<div class="search-form row align-items-center">				
+					<div class="col-auto">
+						<select class="form-control" name="min_price">
+							<option value="">Minimum Price</option>
+							@foreach($min_price as $min_price_info)
+								<option value="{{ $min_price_info }}">{{ $min_price_info }}</option>
+							@endforeach
+						</select>
+					</div>				
+					<div class="col-auto">
+						<select class="form-control" name="max_price">
+							<option value="">Maximum Price</option>
+							@foreach($max_price as $max_price_info)
+								<option value="{{ $max_price_info }}">{{ $max_price_info }}</option>
+							@endforeach
+						</select>
+					</div>	
+					<div class="col-auto">
+						<select class="form-control" name="media_formats">
+							<option value="">Media Formats</option>
+							@foreach($media_formats as $key => $media_format)
+								<option value="{{ $key }}">{{ $media_format }}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="col-auto">
+						<button type="submit" class="btn btn-warning">Search<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
+					</div>
+				</div>
+			</form>
 		<div class="row row-reverse search-results">
 			<div class="col-md-6">
 				<div class="map-search">

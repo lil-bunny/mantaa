@@ -224,18 +224,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12 input-field">
-                                                                <select name="media_tags">
-                                                                    @foreach($media_tags as $key => $media_tags)
-                                                                        <option value="{{ $key }}" {{ $area_data->media_tags==$media_tags ? 'selected' : ''}}>{{ $media_tags }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label>Media Tags</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="col s12 m6">
                                                         <div class="row">

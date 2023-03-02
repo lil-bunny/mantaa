@@ -31,14 +31,18 @@ class AreaDetailsController extends Controller
 
     public function autocompleteSearch(Request $request)
     {
-        $query = $request->get('search');
+        $query_text = $request->get('search');
         $res = [];
         
         // running the query for generating the result
         $filterResults = Area::select("title", "id", "site_location", "city_id")
-                                ->where('site_location', 'LIKE', '%'. $query. '%')
-                                ->orWhere('title', 'LIKE', '%'. $query. '%')
-                                ->limit(5)->get();
+                                ->where('is_deleted', '=', 0)
+                                ->Where('status', '=', 1)
+                                ->where(function($query) use ($query_text) {
+                                    $query->where('title', 'LIKE', '%'.$query_text.'%')
+                                    ->orWhere('site_location', 'LIKE', '%'.$query_text.'%');
+                                })->limit(5)->get();
+                                
         
         // preparing the results
         foreach($filterResults as $filterResult) {
@@ -58,26 +62,61 @@ class AreaDetailsController extends Controller
         $filters['area_id'] = $request->get('area_id');
         $filters['city_id'] = $request->get('city_id');
         $filters['search_text'] = $request->get('searchText');
+        $filters['min_price'] = $request->get('min_price');
+        $filters['max_price'] = $request->get('max_price');
+        $filters['media_formats'] = $request->get('media_formats');
+
         $res = [];
         
         $data = Area::where('is_deleted', '=', 0)
-                    ->where('status', '=', 1)
-                    ->where('id', '=', $filters['area_id'])
-                    ->orWhere('title', 'LIKE', '%'.$filters['search_text'].'%')
-                    ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
-                    ->orWhere('city_id', '=', $filters['city_id'])
-                    ->orderByRaw("CASE WHEN id = ".$filters['area_id']." THEN 0 ELSE 1 END, id")
-                    ->paginate(8);
+                    ->where('status', '=', 1);
+        if($filters['min_price']) {
+            $data->where('display_charge_pm', '>=', $filters['min_price']);
+        }
         
-        // $data = Area::where('is_deleted', '=', 0)
-        //             ->where('status', '=', 1)
-        //             ->paginate(8);
+        if($filters['max_price']) {
+            $data->where('display_charge_pm', '<=', $filters['max_price']);
+        }
+
+        if($filters['media_formats']) {
+            $data->where('media_formats', '<=', $filters['media_formats']);
+        }
+        
+        $data->where('id', '=', $filters['area_id'])->where(function($query) use ($filters) {
+            $query->where('title', 'LIKE', '%'.$filters['search_text'].'%')
+            ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
+            ->orWhere('city_id', '=', $filters['city_id']);
+        });
+
+        $data = $data->orderByRaw("CASE WHEN id = ".$filters['area_id']." THEN 0 ELSE 1 END, id")
+                ->paginate(8);
+        
+        // media formats assignment
+        $media_formats = [
+            'Billboard' => 'Billboard',
+            'Bus Stop' => 'Bus Stop',
+            'Digital POD' => 'Digital POD',
+            'Facedes' => 'Facedes',
+            'Wall Wraps' => 'Wall Wraps',
+            'Gantry' => 'Gantry',
+            'Panels' => 'Panels',
+            'LED Billboard' => 'LED Billboard',
+            'LED Walls(Indoor)' => 'LED Walls(Indoor)',
+            'Light Box' => 'Light Box',
+            'Utilities' => 'Utilities',
+            'Ambient(others)' => 'Ambient(others)',
+            'Street(others)' => 'Street(others)',
+        ];
+
+        // min price assignment
+        $min_price = [1000000, 2000000, 3000000, 4000000, 5000000];
+        $max_price = [6000000, 7000000, 8000000, 9000000, 10000000];
         
         if ($request->ajax()) {
             $view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
             return response()->json(['html'=>$view]);
         }
         
-        return view('area-details.area_search', ['area_lists' => $data, 'filters' => $filters]);
+        return view('area-details.area_search', ['area_lists' => $data, 'filters' => $filters, 'media_formats' => $media_formats, 'min_price' => $min_price, 'max_price' => $max_price]);
     }
 }
