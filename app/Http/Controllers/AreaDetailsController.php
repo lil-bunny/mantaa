@@ -59,9 +59,9 @@ class AreaDetailsController extends Controller
 
     public function areaSearch(Request $request)
     {
-        $filters['area_id'] = $request->get('area_id');
-        $filters['city_id'] = $request->get('city_id');
-        $filters['search_text'] = $request->get('searchText');
+        $filters['area_id'] = $request->get('area_id_filter')?$request->get('area_id_filter'):$request->get('area_id');
+        $filters['city_id'] = $request->get('city_id_filter')?$request->get('city_id_filter'):$request->get('city_id');
+        $filters['search_text'] = $request->get('searchText_filter')?$request->get('searchText_filter'):$request->get('searchText');
         $filters['min_price'] = $request->get('min_price');
         $filters['max_price'] = $request->get('max_price');
         $filters['media_formats'] = $request->get('media_formats');
@@ -79,7 +79,7 @@ class AreaDetailsController extends Controller
         }
 
         if($filters['media_formats']) {
-            $data->where('media_formats', '<=', $filters['media_formats']);
+            $data->where('media_formats', '=', $filters['media_formats']);
         }
         
         $data->where('id', '=', $filters['area_id'])->where(function($query) use ($filters) {

@@ -11,6 +11,7 @@
 		<div class="container">
 			<div class="search-widget">
 				<form method="get" action="{{ route('frontend.areaSearch') }}">
+					@csrf
                     <input type="text" name="searchText" value="{{ $filters['search_text'] }}" placeholder="Enter a location. Eg. City. locality or landmark" id="search"/>
                     <input type="hidden" name="area_id" id="area_id" value="{{ $filters['area_id'] }}" />
                     <input type="hidden" name="city_id" id="city_id" value="{{ $filters['city_id'] }}" />
@@ -26,7 +27,11 @@
 	<div class="container"> 
 		<h4 class="search-title sec-pt">Additional Filters (Optional)</h4>
 			<form method="get" action="{{ url()->full() }}">
-				<div class="search-form row align-items-center">				
+				@csrf
+				<input type="hidden" name="searchText_filter" value="{{ $filters['search_text'] }}" placeholder="Enter a location. Eg. City. locality or landmark" id="search_filter"/>
+				<input type="hidden" name="area_id_filter" id="area_id_filter" value="{{ $filters['area_id'] }}" />
+				<input type="hidden" name="city_id_filter" id="city_id_filter" value="{{ $filters['city_id'] }}" />
+                <div class="search-form row align-items-center">				
 					<div class="col-auto">
 						<select class="form-control" name="min_price">
 							<option value="">Minimum Price</option>
@@ -137,6 +142,9 @@
            $('#search').val(ui.item.label);
            $('#area_id').val(ui.item.id);
            $('#city_id').val(ui.item.city_id);
+		   $('#search_filter').val(ui.item.label);
+           $('#area_id_filter').val(ui.item.id);
+           $('#city_id_filter').val(ui.item.city_id);
            console.log(ui.item); 
            return false;
         }
