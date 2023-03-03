@@ -117,7 +117,7 @@ class UserController extends Controller
     public function edit($id)
     {
         // updating nottifications
-        Notification::where("object_id",$id)->where("is_read",0)->update(array('is_read' => 1));
+        Notification::where("object_id",$id)->where("is_read",0)->where("type","user")->update(array('is_read' => 1));
 
         // fetching roles
         $roles = Role::where('is_deleted', '=', 0)

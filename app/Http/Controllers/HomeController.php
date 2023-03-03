@@ -159,6 +159,7 @@ class HomeController extends Controller
                     'route' => 'admin.user_edit',
                     'object_id' => $user_obj->id,
                     'user_id' => $super_admin_user->id,
+                    'type' => 'user',
                     'is_read' => 0
                 ]);
             }

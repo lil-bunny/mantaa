@@ -39,7 +39,7 @@ class FeedbackController extends Controller
         if($filters['status'] != '') {
             $feedbacks->where('feedbacks.status', '=', $filters['status']);
         }
-        $feedbacks = $feedbacks->paginate(5);
+        $feedbacks = $feedbacks->orderBy('id', 'desc')->paginate(10);
         
         // fetching areas
         $areas = Area::where('is_deleted', '=', 0)
@@ -62,6 +62,9 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
+        // updating nottifications
+        Notification::where("object_id",$id)->where("is_read",0)->where("type", "feedback")->update(array('is_read' => 1));
+        
         // fetching user details
         $feedback_data = Feedback::find($id);
                     

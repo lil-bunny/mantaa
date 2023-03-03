@@ -287,6 +287,7 @@ class AreaController extends Controller
                     'route' => 'admin.area_edit',
                     'object_id' => $areas->id,
                     'user_id' => $super_admin_user->id,
+                    'type' => 'area',
                     'is_read' => 0
                 ]);
             }
@@ -306,7 +307,7 @@ class AreaController extends Controller
     {
 
         // updating nottifications
-        Notification::where("object_id",$id)->where("is_read",0)->update(array('is_read' => 1));
+        Notification::where("object_id",$id)->where("is_read",0)->where("type", "area")->update(array('is_read' => 1));
 
 
         // fetching user details
