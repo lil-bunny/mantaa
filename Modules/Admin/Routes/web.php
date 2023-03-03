@@ -78,6 +78,13 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/areas/area_delete/{id}', 'AreaController@area_delete')->name('admin.area_delete');
     ########## AREA SECTIONS ENDS HERE #####################
 
+    ########## FEEDBACKS SECTIONS STARTS HERE #####################
+    Route::get('/feedbacks', 'FeedbackController@index')->name('admin.feedback');
+    Route::get('/feedbacks/edit/{id}', 'FeedbackController@edit')->name('admin.feedback_edit');
+    Route::post('/feedbacks/update_feedback/{id}', 'FeedbackController@update_feedback')->name('admin.update_feedback');
+    Route::post('/feedbacks/feedback_delete/{id}', 'FeedbackController@feedback_delete')->name('admin.feedback_delete');
+    ########## FEEDBACKS SECTIONS ENDS HERE #####################
+
     ########## SETTINGS SECTIONS STARTS HERE #####################
     Route::get('/settings', 'SettingController@index')->name('admin.setting');
     ########## SETTINGS SECTIONS STARTS HERE #####################

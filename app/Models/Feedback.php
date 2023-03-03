@@ -29,12 +29,19 @@ class Feedback extends Authenticatable
         'status',
     ];
 
+    public $sortable = [
+        'id',
+        'area_id',
+        'user_id',
+        'created_at'
+    ];
+
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function area() {
-        return $this->belongsTo(User::class, 'area_id');
+        return $this->belongsTo(Area::class, 'area_id');
     }
 }
