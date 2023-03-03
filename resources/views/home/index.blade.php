@@ -65,7 +65,7 @@
             @foreach($cities as $city)
             <div>
                 <div class="city-box">
-                    <a href="javascript:void(0);" class="d-block img-elm">
+                    <a href="{{ route('frontend.areaSearch', ['city_id' => $city->id]) }}" class="d-block img-elm">
                         @if($city->image == NULL)
                             <span class="d-block"><img class="w-100" src="{{ url('public/application_files/city/no-image.png') }}" alt="img"/></span>
                         @else
@@ -74,7 +74,7 @@
                     </a>
                     <div class="botm-elmnt">
                         <h3>{{ $city->name }}</h3>
-                        <a href="javascript:void(0);" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('frontend.areaSearch', ['city_id' => $city->id]) }}" class="arrow-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

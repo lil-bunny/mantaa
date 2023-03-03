@@ -65,31 +65,45 @@ class AreaDetailsController extends Controller
         $filters['min_price'] = $request->get('min_price');
         $filters['max_price'] = $request->get('max_price');
         $filters['media_formats'] = $request->get('media_formats');
+        $ext_filter = false;
 
         $res = [];
         
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1);
         if($filters['min_price']) {
+            $ext_filter = true;
             $data->where('display_charge_pm', '>=', $filters['min_price']);
         }
         
         if($filters['max_price']) {
+            $ext_filter = true;
             $data->where('display_charge_pm', '<=', $filters['max_price']);
         }
 
         if($filters['media_formats']) {
+            $ext_filter = true;
             $data->where('media_formats', '=', $filters['media_formats']);
         }
         
-        $data->where('id', '=', $filters['area_id'])->where(function($query) use ($filters) {
-            $query->where('title', 'LIKE', '%'.$filters['search_text'].'%')
-            ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
-            ->orWhere('city_id', '=', $filters['city_id']);
-        });
+        if(!empty($filters['area_id']) && !empty($filters['search_text'])) {
+            $data->where('id', '=', $filters['area_id'])->where(function($query) use ($filters) {
+                $query->where('title', 'LIKE', '%'.$filters['search_text'].'%')
+                ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
+                ->orWhere('city_id', '=', $filters['city_id']);
+            });
 
-        $data = $data->orderByRaw("CASE WHEN id = ".$filters['area_id']." THEN 0 ELSE 1 END, id")
-                ->paginate(8);
+            $data = $data->orderByRaw("CASE WHEN id = ".$filters['area_id']." THEN 0 ELSE 1 END, id")
+                    ->paginate(8);
+        } else if($ext_filter == true) {
+            $data = $data->where(function($query) use ($filters) {
+                $query->where('title', 'LIKE', '%'.$filters['search_text'].'%')
+                ->orWhere('site_location', 'LIKE', '%'.$filters['search_text'].'%')
+                ->orWhere('city_id', '=', $filters['city_id']);
+            })->paginate(8);
+        } else if($filters['city_id']) {
+            $data = $data->where('city_id', '=', $filters['city_id'])->paginate(8);
+        }
         
         // media formats assignment
         $media_formats = [

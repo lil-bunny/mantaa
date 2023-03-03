@@ -36,7 +36,7 @@
 						<select class="form-control" name="min_price">
 							<option value="">Minimum Price</option>
 							@foreach($min_price as $min_price_info)
-								<option value="{{ $min_price_info }}">{{ $min_price_info }}</option>
+								<option value="{{ $min_price_info }}" {{ $filters['min_price']==$min_price_info ? 'selected' : ''}}>{{ $min_price_info }}</option>
 							@endforeach
 						</select>
 					</div>				
@@ -44,7 +44,7 @@
 						<select class="form-control" name="max_price">
 							<option value="">Maximum Price</option>
 							@foreach($max_price as $max_price_info)
-								<option value="{{ $max_price_info }}">{{ $max_price_info }}</option>
+								<option value="{{ $max_price_info }}" {{ $filters['max_price']==$max_price_info ? 'selected' : ''}}>{{ $max_price_info }}</option>
 							@endforeach
 						</select>
 					</div>	
@@ -52,7 +52,7 @@
 						<select class="form-control" name="media_formats">
 							<option value="">Media Formats</option>
 							@foreach($media_formats as $key => $media_format)
-								<option value="{{ $key }}">{{ $media_format }}</option>
+								<option value="{{ $key }}" {{ $filters['media_formats']==$media_format ? 'selected' : ''}}>{{ $media_format }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -70,34 +70,38 @@
 			<div class="col-md-6">
 				<div class="search-content" id="post-cont">
 					<div class="row sites-items" id="post-data">
-						@foreach($area_lists as $area_info)
-							<div class="site-item d-flex col-md-6 col-xxl-6 item-m6-l4-xxl3">
-								<div class="site-box">
-									<a href="{{ route('area-details', ['id' => $area_info->id]) }}" class="d-block img-elm">
-										<span class="d-block">
-											@if($area_info->area_pic1 == NULL)
-												<img class="w-100" src="{{asset('images/area/no-image.png')}}" alt="img"/>
-											@else
-												<img src="{{ url('public/application_files/area_images') . '/'. $area_info->area_pic1 }}" alt="img"/>
-											@endif
-										</span>
-									</a>
-									<div class="info-elmnt">
-										<h3><a href="{{ route('area-details', ['id' => $area_info->id]) }}">{{ $area_info->title }}</a></h3>
-										<ul>
-											<li><h4>State</h4><span>{{ $area_info->state->name ?? '' }}</span></li>
-											<li><h4>City</h4><span>{{ $area_info->city->name ?? '' }}</span></li>
-											<li><h4>Size</h4><span>{{ $area_info->height }}x{{ $area_info->width }}</span></li>
-										</ul>
-										
-									</div>
-									<div class="bottom-widget d-flex justify-content-between align-items-center">
-										<h6 class="mb-0">Display Charges PM</h6>
-										<h5 class="mb-0"><span class="currency">&#x20B9;</span> {{ $area_info->display_charge_pm }}</h5>
+						@if ($area_lists->count())
+							@foreach($area_lists as $area_info)
+								<div class="site-item d-flex col-md-6 col-xxl-6 item-m6-l4-xxl3">
+									<div class="site-box">
+										<a href="{{ route('area-details', ['id' => $area_info->id]) }}" class="d-block img-elm">
+											<span class="d-block">
+												@if($area_info->area_pic1 == NULL)
+													<img class="w-100" src="{{asset('images/area/no-image.png')}}" alt="img"/>
+												@else
+													<img src="{{ url('public/application_files/area_images') . '/'. $area_info->area_pic1 }}" alt="img"/>
+												@endif
+											</span>
+										</a>
+										<div class="info-elmnt">
+											<h3><a href="{{ route('area-details', ['id' => $area_info->id]) }}">{{ $area_info->title }}</a></h3>
+											<ul>
+												<li><h4>State</h4><span>{{ $area_info->state->name ?? '' }}</span></li>
+												<li><h4>City</h4><span>{{ $area_info->city->name ?? '' }}</span></li>
+												<li><h4>Size</h4><span>{{ $area_info->height }}x{{ $area_info->width }}</span></li>
+											</ul>
+											
+										</div>
+										<div class="bottom-widget d-flex justify-content-between align-items-center">
+											<h6 class="mb-0">Display Charges PM</h6>
+											<h5 class="mb-0"><span class="currency">&#x20B9;</span> {{ $area_info->display_charge_pm }}</h5>
+										</div>
 									</div>
 								</div>
-							</div>
-						@endforeach
+							@endforeach
+						@else
+							<P>No Items found</p>
+						@endif
 					</div>
 				</div>
 				<!-- end second row -->
@@ -164,6 +168,26 @@
 
 
 	function loadMoreData(page){
+		var url_gt = '?page='+page;
+
+		if(jQuery('#search').val() != '') {
+			url_gt += '&searchText='+jQuery('#search').val();
+		}
+		if(jQuery('#area_id').val() != '') {
+			url_gt += '&area_id='+jQuery('#area_id').val();
+		}
+		if(jQuery('#city_id').val() != '') {
+			url_gt += '&city_id='+jQuery('#city_id').val();
+		}
+		if(jQuery('#min_price').val() != '') {
+			url_gt += '&min_price='+jQuery('#min_price').val();
+		}
+		if(jQuery('#max_price').val() != '') {
+			url_gt += '&max_price='+jQuery('#max_price').val();
+		}
+		if(jQuery('#media_formats').val() != '') {
+			url_gt += '&media_formats='+jQuery('#media_formats').val();
+		}
 		jQuery.ajax(
 		{
 			url: '?page='+page+'&searchText='+jQuery('#search').val()+'&area_id='+jQuery('#area_id').val()+'&city_id='+jQuery('#city_id').val(),
