@@ -95,27 +95,29 @@
 						<h2 class="sec-title">Nearby Places</h2>
 						<ul class="list-plot-info">
 							<li>
-								<figure><img src="../public/front-assets/images/airport-icon.svg" alt="icon"></figure>
+								<figure>
+									<img src="{{ url('public/front-assets/images/airport-icon.svg') }}" alt="icon">
+								</figure>
 								<p>1.4 Km from Airport</p>
 							</li>
 							<li>
-								<figure><img src="../public/front-assets/images/hospital-icon.svg" alt="icon"></figure>
+								<figure><img src="{{ url('public/front-assets/images/hospital-icon.svg') }}" alt="icon"></figure>
 								<p>2.3 Km from Hospital</p>
 							</li>
 							<li>
-								<figure><img src="../public/front-assets/images/metro-icon.svg" alt="icon"></figure>
+								<figure><img src="{{ url('public/front-assets/images/metro-icon.svg') }}" alt="icon"></figure>
 								<p>500 m from Metro Station</p>
 							</li>
 							<li>
-								<figure><img src="../public/front-assets/images/train-icon.svg" alt="icon"></figure>
+								<figure><img src="{{ url('public/front-assets/images/train-icon.svg') }}" alt="icon"></figure>
 								<p>2 Km from Railway Station</p>
 							</li>
 							<li>
-								<figure><img src="../public/front-assets/images/school-icon.svg" alt="icon"></figure>
+								<figure><img src="{{ url('public/front-assets/images/school-icon.svg') }}" alt="icon"></figure>
 								<p>3 Km from School</p>
 							</li>
 							<li>
-								<figure><img src="../public/front-assets/images/mall-icon.svg" alt="icon"></figure>
+								<figure><img src="{{ url('public/front-assets/images/mall-icon.svg') }}" alt="icon"></figure>
 								<p>2 Km from Mall</p>
 							</li>
 						</ul>
@@ -124,30 +126,18 @@
 					<div class="col-md-6">
 						<h2 class="sec-title">Site Merits</h2>
 						<ul class="list-plot-info site-merit-info">
-							<li>
-								<figure><img src="../public/front-assets/images/location-icon-green.svg" alt="icon"></figure>
-								<p><strong>Site Position</strong>High Rise / Eye Level</p>
-							</li>	
-							<li>
-								<figure><img src="../public/front-assets/images/eye-icon.svg" alt="icon"></figure>
-								<p><strong>Visibility</strong>Long / Short</p>
-							</li>	
-							<li>
-								<figure><img src="../public/front-assets/images/direction-icon.svg" alt="icon"></figure>
-								<p><strong>Junction</strong>Yes / No</p>
-							</li>	
-							<li>
-								<figure><img src="../public/front-assets/images/clutter-icon.svg" alt="icon"></figure>
-								<p><strong>Clutter</strong>Solus / Mild / Heavy</p>
-							</li>	
-							<li>
-								<figure><img src="../public/front-assets/images/sign-board-icon.svg" alt="icon"></figure>
-								<p><strong>Obstruction</strong>None / Partial / Sever</p>
-							</li>	
-							<li>
-								<figure><img src="../public/front-assets/images/speedo-metter-icon.svg" alt="icon"></figure>
-								<p><strong>Visibility Score</strong>NA</p>
-							</li>	 
+							@if ($data->site_marit_values->count())
+								@foreach ($data->site_marit_values as $site_marit_value)
+									<li>
+										<figure><img src="{{ url('public/front-assets/images').'/'.$site_merits_arr[$site_marit_value->site_merit_id]['icon'] }}" alt="icon"></figure>
+										<p><strong>{{ $site_merits_arr[$site_marit_value->site_merit_id]['title'] }}</strong>{{ $site_marit_value->title }}</p>
+									</li>
+								@endforeach
+							@else
+								<li>
+									<p><strong>No data found</strong></p>
+								</li>
+							@endif
 						</ul>
 					</div>
 				</div>	

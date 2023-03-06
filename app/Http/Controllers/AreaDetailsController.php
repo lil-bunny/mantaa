@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Models\Area;
 use App\Models\Feedback;
+use App\Models\SiteMerit;
 use Session;
 use Validator;
 use Hash;
@@ -20,13 +21,27 @@ class AreaDetailsController extends Controller
         //area
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
+        
+        //dd($data->site_marit_values);exit;
+
+        // fetching site merits
+        $site_merits_arr = [];
+        $site_merits = SiteMerit::where('is_deleted', '=', 0)
+                            ->where('status', '=', 1)->get();
+        foreach($site_merits as $site_merit) {
+            $site_merits_arr[$site_merit->id] = [
+                'title' => $site_merit->title,
+                'icon' => $site_merit->icon
+            ];
+        }
+
         //feedback
         $feedbacks = Feedback::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)
                     ->where('area_id', '=', $id)
                     ->orderBy('id', 'desc')->limit(3)->get();
         
-        return view('area-details.index', compact('data', 'id'), ['feedbacks' => $feedbacks]); 
+        return view('area-details.index', compact('data', 'id'), ['feedbacks' => $feedbacks, 'site_merits_arr' => $site_merits_arr]); 
     }
 
     public function autocompleteSearch(Request $request)
