@@ -85,6 +85,12 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/feedbacks/feedback_delete/{id}', 'FeedbackController@feedback_delete')->name('admin.feedback_delete');
     ########## FEEDBACKS SECTIONS ENDS HERE #####################
 
+    ########## CONNECT REQUESTS SECTIONS STARTS HERE #####################
+    Route::get('/connect_requests', 'ConnectRequestController@index')->name('admin.connect_request');
+    Route::get('/connect_requests/view/{id}', 'ConnectRequestController@view')->name('admin.connect_request_view');
+    Route::post('/connect_requests/connect_request_delete/{id}', 'ConnectRequestController@connect_request_delete')->name('admin.connect_request_delete');
+    ########## CONNECT REQUESTS SECTIONS ENDS HERE #####################
+
     ########## SETTINGS SECTIONS STARTS HERE #####################
     Route::get('/settings', 'SettingController@index')->name('admin.setting');
     ########## SETTINGS SECTIONS STARTS HERE #####################
