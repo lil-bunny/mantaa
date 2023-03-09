@@ -31,7 +31,7 @@ class FeedbackController extends Controller
         
         // checks if search filters are set
         if($filters['user_id'] != '') {
-            $feedbacks->where('feedbacks.name', 'like', '%'.$filters['user_id'].'%');
+            $feedbacks->where('feedbacks.user_id', '=', $filters['user_id']);
         }
         if($filters['area_id'] != '') {
             $feedbacks->where('feedbacks.area_id', '=', $filters['area_id']);
