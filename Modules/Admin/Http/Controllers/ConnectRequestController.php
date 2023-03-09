@@ -11,6 +11,8 @@ use App\Models\ConnectRequest;
 use App\Models\Notification;
 use App\Models\Area;
 use App\Models\User;
+use App\Models\City;
+use App\Models\State;
 use Validator;
 
 class ConnectRequestController extends Controller
@@ -65,8 +67,14 @@ class ConnectRequestController extends Controller
         
         // fetching user details
         $connect_request_data = ConnectRequest::find($id);
+        
+        // fetching state data
+        $state_data = State::find($connect_request_data->area->state_id);
+
+        // fetching city data
+        $city_data = City::find($connect_request_data->area->city_id);
                     
-        return view('admin::connect_request.view', ['connect_request_data' => $connect_request_data]);
+        return view('admin::connect_request.view', ['connect_request_data' => $connect_request_data, 'state_data' => $state_data, 'city_data' => $city_data]);
     }
 
 

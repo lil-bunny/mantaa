@@ -92,7 +92,7 @@
                                                                 <td>{{ $connect_request->user->full_name }}</td>
                                                                 <td>{{ $connect_request->area->title ?? '' }} </td>
                                                                 <td>{{ $connect_request->created_at }}</td>
-                                                                <td><a href="{{ route('admin.connect_request_view', ['id' => $connect_request->id]) }}"  title="View"><i class="material-icons">view</i></a>
+                                                                <td><a href="{{ route('admin.connect_request_view', ['id' => $connect_request->id]) }}"  title="View"><i class="material-icons">remove_red_eye</i></a>
                                                                     <a class="waves-effect waves-light modal-trigger" href="#modal{{$connect_request->id}}"><i class="material-icons red-text">delete</i></a>    
                                                                     <form action="{{ route('admin.connect_request_delete', ['id' => $connect_request->id]) }}" id="connect-request-{{$connect_request->id}}" method="POST">
                                                                         @csrf    

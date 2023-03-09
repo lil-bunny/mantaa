@@ -36,7 +36,23 @@
                                                         <div class="row">
                                                             <div class="col s12 input-field">
                                                                 <label for="name">User</label>
-                                                                <p>{{ $connect_request_data->user->full_name ?? '' }}</p>
+                                                                <input id="user" name="user" type="text" class="validate" value="{{ $connect_request_data->user->full_name ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">User Email</label>
+                                                                <input id="user_email" name="user_email" type="text" class="validate" value="{{ $connect_request_data->user->email ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">User Mobile</label>
+                                                                <input id="user_mob" name="user_mob" type="text" class="validate" value="{{ $connect_request_data->user->mobile ?? '' }}" data-error=".errorTxt2" disabled="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -44,7 +60,39 @@
                                                         <div class="row">
                                                             <div class="col s12 input-field">
                                                                 <label for="name">Area</label>
-                                                                <p>{{ $connect_request_data->area->title ?? '' }}</p>
+                                                                <input id="area" name="area" type="text" class="validate" value="{{ $connect_request_data->area->title ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">Site Location</label>
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="{{ $connect_request_data->area->site_location ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">Pincode</label>
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="{{ $connect_request_data->area->pin_code ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">City</label>
+                                                                <input id="city" name="city" type="text" class="validate" value="{{ $city_data->name ?? '' }}" data-error=".errorTxt2" disabled="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12 input-field">
+                                                                <label for="name">State</label>
+                                                                <input id="state" name="state" type="text" class="validate" value="{{ $state_data->name ?? '' }}" data-error=".errorTxt2" disabled="">
                                                             </div>
                                                         </div>
                                                     </div>
