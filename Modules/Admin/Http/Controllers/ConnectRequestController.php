@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\ConnectRequest;
+use App\Models\Notification;
 use App\Models\Area;
 use App\Models\User;
 use Validator;
