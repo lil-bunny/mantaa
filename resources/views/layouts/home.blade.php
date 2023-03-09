@@ -35,7 +35,7 @@
         <script src="{{asset('front-assets/js/css3-animate-it.js') }}"></script>
         <script src="{{asset('front-assets/js/slick.min.js') }}"></script>
         <script src="{{asset('front-assets/js/jquery.fancybox.min.js') }}"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+        <script src="{{asset('front-assets/js/jquery.validate.min.js') }}"></script>
         <script src="{{asset('front-assets/js/custom.js') }}"></script>
         <!-- END FOOTER JS-->
 
