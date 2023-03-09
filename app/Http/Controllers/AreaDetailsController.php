@@ -10,6 +10,9 @@ use Illuminate\View\View;
 use App\Models\Area;
 use App\Models\Feedback;
 use App\Models\SiteMerit;
+use App\Models\ConnectRequest;
+use App\Models\Notification;
+use App\Models\User;
 use Session;
 use Validator;
 use Hash;
@@ -147,5 +150,40 @@ class AreaDetailsController extends Controller
         }
         
         return view('area-details.area_search', ['area_lists' => $data, 'filters' => $filters, 'media_formats' => $media_formats, 'min_price' => $min_price, 'max_price' => $max_price]);
+    }
+
+    public function connect_request(Request $request)
+    {
+         
+        $validatedData = $request->validate([
+          'user_id' => 'required',
+          'area_id' => 'required'
+        ]);
+ 
+        $save = new ConnectRequest;
+ 
+        $save->user_id = $request->user_id;
+        $save->area_id = $request->area_id;
+ 
+        $save ->save();
+
+        // adding notification
+        $super_admin_users = User::with('role')
+        ->whereRelation('role', 'role_id', '=', 'admin')
+        ->get();
+
+        
+        foreach($super_admin_users as $super_admin_user) {
+            $notifications = Notification::create([
+                'title' => 'A new connect request has been raised',
+                'route' => 'admin.connect_request_view',
+                'object_id' => $save->id,
+                'user_id' => $super_admin_user->id,
+                'type' => 'connect_request',
+                'is_read' => 0
+            ]);
+        }
+ 
+        return response()->json(['status'=>'200']);
     }
 }

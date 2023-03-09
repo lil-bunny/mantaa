@@ -60,7 +60,7 @@ class ConnectRequestController extends Controller
     public function view($id)
     {
         // updating nottifications
-        Notification::where("object_id",$id)->where("is_read",0)->where("type", "feedback")->update(array('is_read' => 1));
+        Notification::where("object_id",$id)->where("is_read",0)->where("type", "connect_request")->update(array('is_read' => 1));
         
         // fetching user details
         $connect_request_data = ConnectRequest::find($id);

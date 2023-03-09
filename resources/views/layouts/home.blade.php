@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Mantaray') }}</title>
 
         <link rel="apple-touch-icon" href="{{ asset('images/favicon/apple-touch-icon-152x152.png') }}">
@@ -34,7 +35,52 @@
         <script src="{{asset('front-assets/js/css3-animate-it.js') }}"></script>
         <script src="{{asset('front-assets/js/slick.min.js') }}"></script>
         <script src="{{asset('front-assets/js/jquery.fancybox.min.js') }}"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
         <script src="{{asset('front-assets/js/custom.js') }}"></script>
         <!-- END FOOTER JS-->
+
+        <script type="text/javascript">
+        if ($("#contactUsForm").length > 0) {
+            $("#contactUsForm").validate({
+                rules: {
+                    user_id: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    area_id: {
+                        required: true,
+                        maxlength: 50,
+                    },  
+                },
+                messages: {
+                    user_id: {
+                        required: "Invalid data",
+                        maxlength: "Invalid data"
+                    },
+                    area_id: {
+                        required: "Invalid data",
+                        maxlength: "Invalid data",
+                    },
+                },
+                submitHandler: function(form) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $('#submit').html('Please Wait...');
+                    $("#submit"). attr("disabled", true);
+                    $.ajax({
+                        url: "{{url('connect-request')}}",
+                        type: "POST",
+                        data: $('#contactUsForm').serialize(),
+                        success: function( response ) {
+                            $('#submit').html('Connect request raised successfully');
+                        }
+                    });
+                }
+            })
+        }
+        </script>
     </body>
 </html>
