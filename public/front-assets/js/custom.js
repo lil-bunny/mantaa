@@ -84,3 +84,4 @@ $('.plot-thumb-slider').slick({
     $(".sec-log-regi").css({ "padding-top": headerH });
  
   }
+

@@ -276,10 +276,8 @@ class AreaController extends Controller
 
             
             // adding notification
-            $super_admin_users = User::with(['role' => function($q) {
-                $q->select('id');
-                $q->where('role_id', '=', 'admin');
-            }])                    
+            $super_admin_users = User::with('role')
+            ->whereRelation('role', 'role_id', '=', 'admin')
             ->get();
             foreach($super_admin_users as $super_admin_user) {
                 $notifications = Notification::create([

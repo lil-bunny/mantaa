@@ -57,7 +57,12 @@
 							</div>
 							<div class="p-30 brdtop">
 								<p>To know more SMART insights about this site</p>
-								<a href="#" class="btn btn-warning">Connect<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></a>
+								<form name="contactUsForm" id="contactUsForm" method="post" action="javascript:void(0)">
+									@csrf
+									<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+									<input type="hidden" name="area_id" value="{{ $id }}">
+									<button type="submit" id="submit" class="btn btn-warning">Connect<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
+								</form>
 							</div>
 						</div>	
 					</div>

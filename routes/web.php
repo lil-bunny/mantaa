@@ -45,6 +45,7 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
 ########## AREA SEARCH AND LISTING SECTIONS STARTS HERE #####################
 Route::get('/autocomplete-search', 'App\Http\Controllers\AreaDetailsController@autocompleteSearch')->name('frontend.autocompleteSearch');
 Route::get('/area-search', 'App\Http\Controllers\AreaDetailsController@areaSearch')->name('frontend.areaSearch');
+Route::post('/connect-request', 'App\Http\Controllers\AreaDetailsController@connect_request')->name('frontend.connect_request');
 ########## AREA SEARCH AND LISTING ENDS HERE #####################
 
 

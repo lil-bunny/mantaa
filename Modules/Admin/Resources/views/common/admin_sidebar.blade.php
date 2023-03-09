@@ -5,7 +5,7 @@
         <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ route('admin.dashboard') }}"><span class="logo-text hide-on-med-and-down">Mantaray Admin</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_unchecked</i></a></h1>
     </div>
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
-        <li class="active bold"><a class="waves-effect waves-cyan" href="dashboard.html"><i class="material-icons">settings_input_svideo</i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+        <li class="active bold"><a class="waves-effect waves-cyan" href="{{ route('admin.dashboard') }}"><i class="material-icons">settings_input_svideo</i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
         </li>
         @foreach ($menus_sidebar as $menu)
             <li class="bold"><a class="waves-effect waves-cyan " href="{{ route($menu->route) }}"><i class="material-icons">person</i><span class="menu-title" data-i18n="Chat">{{ $menu->title }}</span></a>
