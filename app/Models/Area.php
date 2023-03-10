@@ -22,6 +22,7 @@ class Area extends Authenticatable
     protected $fillable = [
         'title',
         'site_location',
+        'priority',
         'road_name',
         'pin_code',
         'lat',

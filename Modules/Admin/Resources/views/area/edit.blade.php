@@ -162,6 +162,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col s12 m12">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <select name="priority">
+                                                                    @foreach($priority as $key => $priority_info)
+                                                                        <option value="{{ $key }}" {{ $area_data->priority==$priority_info ? 'selected' : ''}}>{{ $priority_info }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label>Priority</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- Location Details Ends Here -->
 

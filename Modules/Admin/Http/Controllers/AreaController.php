@@ -126,6 +126,13 @@ class AreaController extends Controller
             'Nonlit' => 'Nonlit',
         ];
 
+        // Illumination assignment
+        $priority = [
+            'priority1' => 'priority1',
+            'priority2' => 'priority2',
+            'priority3' => 'priority3',
+        ];
+
         // ad spot duration
         $ad_spot_durations = ['NA', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60'];
 
@@ -133,7 +140,7 @@ class AreaController extends Controller
                             ->where('status', '=', 1)->get();
 
         
-        return view('admin::area.add', ['city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits]);
+        return view('admin::area.add', ['priority' => $priority, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits]);
     }
 
     /**
@@ -235,6 +242,7 @@ class AreaController extends Controller
             $areas = Area::create([
                 'title' => $request->input('area_name'),
                 'site_location' => $request->input('site_location'),
+                'priority' => $request->input('priority'),
                 'road_name' => $request->input('road_name'),
                 'pin_code' => $request->input('pin_code'),
                 'lat' => $request->input('lat'),
@@ -363,6 +371,13 @@ class AreaController extends Controller
             'Nonlit' => 'Nonlit',
         ];
 
+        // Illumination assignment
+        $priority = [
+            'priority1' => 'priority1',
+            'priority2' => 'priority2',
+            'priority3' => 'priority3',
+        ];
+
         // ad spot duration
         $ad_spot_durations = ['NA', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60'];
 
@@ -374,7 +389,7 @@ class AreaController extends Controller
             $site_merits_values_assigned[] = $site_marit_value->id;
         }
         
-        return view('admin::area.edit', ['area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
+        return view('admin::area.edit', ['priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
     }
 
 
@@ -473,6 +488,7 @@ class AreaController extends Controller
 
             $model->title = $request->input('area_name');
             $model->site_location = $request->input('site_location');
+            $model->priority = $request->input('priority');
             $model->road_name = $request->input('road_name');
             $model->pin_code = $request->input('pin_code');
             $model->lat = $request->input('lat');
