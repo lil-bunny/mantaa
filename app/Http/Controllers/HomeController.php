@@ -100,6 +100,13 @@ class HomeController extends Controller
                 return redirect()->route('frontend.login')->with('errors',$errors)->with('prev_route',$prev_route);
             }
         } else {
+            // assigning previous route if exists
+            if($request->input('prev_route')) {
+                $prev_route = $request->input('prev_route');
+            } else {
+                $prev_route = '';
+            }
+
             $errors=$validator->errors();
             return redirect()->route('frontend.login')->with('errors',$errors)->with('prev_route',$prev_route);
         }
