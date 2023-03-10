@@ -10,6 +10,7 @@ use Session;
 use App\Models\Feedback;
 use App\Models\Area;
 use App\Models\User;
+use App\Models\Notification;
 use Validator;
 
 class FeedbackController extends Controller
