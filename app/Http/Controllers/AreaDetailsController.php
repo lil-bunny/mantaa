@@ -25,7 +25,7 @@ class AreaDetailsController extends Controller
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
         
-        dd($data->site_marit_values);exit;
+        
 
         // fetching site merits
         $site_merits_arr = [];
