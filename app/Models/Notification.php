@@ -24,6 +24,7 @@ class Notification extends Authenticatable
         'route',
         'object_id',
         'user_id',
+        'type',
         'updated_at',
         'created_at',
     ];
