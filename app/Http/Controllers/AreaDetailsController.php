@@ -13,6 +13,7 @@ use App\Models\SiteMerit;
 use App\Models\ConnectRequest;
 use App\Models\Notification;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 use Session;
 use Validator;
 use Hash;
@@ -37,6 +38,21 @@ class AreaDetailsController extends Controller
                 'icon' => $site_merit->icon
             ];
         }
+
+
+        // finding the recommendation lists with respect to city of the area
+        // $api_url = env('RECO_ENGINE_URL');
+        // $response = Http::post($api_url, [
+        //     "recommendation" => "Karol Bagh, 1415"
+        // ]);
+
+        // $statusCode = $response->status();
+        // $responseBody = json_decode($response->getBody(), true);
+      
+        // echo "Status code: ". $statusCode;  // status code
+
+        // dd($responseBody); // body response
+        // exit;
 
         //feedback
         $feedbacks = Feedback::where('is_deleted', '=', 0)
