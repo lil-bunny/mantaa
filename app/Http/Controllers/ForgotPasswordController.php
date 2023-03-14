@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB; 
 use Carbon\Carbon; 
 use App\Models\User; 
+use App\Models\PasswordReset;
 use Mail; 
 use Hash;
 use Illuminate\Support\Str;
@@ -37,10 +38,10 @@ class ForgotPasswordController extends Controller
   
           $token = Str::random(64);
   
-          DB::table('password_resets')->insert([
-              'email' => $request->email, 
-              'token' => $token, 
-              'created_at' => Carbon::now()
+          $password_obj = PasswordReset::create([
+                'email' => $request->email, 
+                'token' => $token, 
+                'created_at' => Carbon::now()
             ]);
   
         //   Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
@@ -69,26 +70,21 @@ class ForgotPasswordController extends Controller
     public function submitResetPasswordForm(Request $request)
     {
           $request->validate([
-              'email' => 'required|email|exists:users',
-              'password' => 'required|string|min:6|confirmed',
-              'password_confirmation' => 'required'
+                'password' => 'required|string|min:6|confirmed',
+                'password_confirmation' => 'required'
           ]);
   
-          $updatePassword = DB::table('password_resets')
-                              ->where([
-                                'email' => $request->email, 
-                                'token' => $request->token
-                              ])
+          $updatePassword = PasswordReset::where('token', $request->token)
                               ->first();
-  
-          if(!$updatePassword){
+            
+            if(!$updatePassword){
               return back()->withInput()->with('error', 'Invalid token!');
           }
   
-          $user = User::where('email', $request->email)
+          $user = User::where('email', $updatePassword->email)
                       ->update(['password' => Hash::make($request->password)]);
  
-          DB::table('password_resets')->where(['email'=> $request->email])->delete();
+          PasswordReset::where(['email'=> $updatePassword->email])->delete();
   
           return redirect('/login')->with('message', 'Your password has been changed!');
     }

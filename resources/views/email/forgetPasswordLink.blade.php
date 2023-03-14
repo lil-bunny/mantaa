@@ -17,10 +17,7 @@
         <form action="{{ route('frontend.submitResetPasswordForm') }}" method="POST">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
-            <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control" name="email">
-            </div>
-  
+            
             <div class="form-group">
                 <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
