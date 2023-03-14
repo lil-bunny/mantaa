@@ -532,7 +532,7 @@ class AreaController extends Controller
             foreach($site_merits as $site_merit) {
                 $site_merit_values[] = $request->input('site_merit_'.$site_merit->id);
             }
-            $model->site_marit_values()->attach($site_merit_values);
+            $model->site_marit_values()->sync($site_merit_values);
 
             return redirect()->intended('admin/areas')->withSuccess('Area updated successfully');
         } else {
