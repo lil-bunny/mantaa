@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AreaDetailsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ForgotPasswordController;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +52,8 @@ Route::get('/area-search', 'App\Http\Controllers\AreaDetailsController@areaSearc
 Route::post('/connect-request', 'App\Http\Controllers\AreaDetailsController@connect_request')->name('frontend.connect_request');
 ########## AREA SEARCH AND LISTING ENDS HERE #####################
 
+Route::get('/forgot-password', 'App\Http\Controllers\ForgotPasswordController@showForgetPasswordForm')->name('frontend.showForgetPasswordForm');
+Route::post('/forgot-password', 'App\Http\Controllers\ForgotPasswordController@submitForgetPasswordForm')->name('frontend.submitForgetPasswordForm'); 
 
-
+Route::get('/reset-password/{token}', 'App\Http\Controllers\ForgotPasswordController@showResetPasswordForm')->name('frontend.showResetPasswordForm');
+Route::post('/reset-password', 'App\Http\Controllers\ForgotPasswordController@submitResetPasswordForm')->name('frontend.submitResetPasswordForm');
