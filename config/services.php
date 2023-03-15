@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '280731527403-bn317lv1qqr02ahj5jvef2bdfbseje58.apps.googleusercontent.com', 
         'client_secret' => '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', 
-        'redirect' => 'http://localhost/mantaray/google/callback'
+        'redirect' => env('APP_URL').'/google/callback'
     ],
 
 ];
