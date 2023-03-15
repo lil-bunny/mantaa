@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AreaDetailsController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\GoogleController;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,13 +45,23 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
     ########## AREA DETAILS ENDS HERE #####################
 });
 
-
-
 ########## AREA SEARCH AND LISTING SECTIONS STARTS HERE #####################
 Route::get('/autocomplete-search', 'App\Http\Controllers\AreaDetailsController@autocompleteSearch')->name('frontend.autocompleteSearch');
 Route::get('/area-search', 'App\Http\Controllers\AreaDetailsController@areaSearch')->name('frontend.areaSearch');
 Route::post('/connect-request', 'App\Http\Controllers\AreaDetailsController@connect_request')->name('frontend.connect_request');
 ########## AREA SEARCH AND LISTING ENDS HERE #####################
 
+########## FORGET PASSWORD SECTIONS STARTS HERE #####################
+Route::get('/forgot-password', 'App\Http\Controllers\ForgotPasswordController@showForgetPasswordForm')->name('frontend.showForgetPasswordForm');
+Route::post('/forgot-password', 'App\Http\Controllers\ForgotPasswordController@submitForgetPasswordForm')->name('frontend.submitForgetPasswordForm'); 
 
+Route::get('/reset-password/{token}', 'App\Http\Controllers\ForgotPasswordController@showResetPasswordForm')->name('frontend.showResetPasswordForm');
+Route::post('/reset-password', 'App\Http\Controllers\ForgotPasswordController@submitResetPasswordForm')->name('frontend.submitResetPasswordForm');
+########## FORGET PASSWORD SECTIONS END HERE #####################
 
+########## GOOGLE LOGIN SECTIONS STARTS HERE #####################
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('login', 'App\Http\Controllers\GoogleController@loginWithGoogle')->name('login');
+    Route::any('callback', 'App\Http\Controllers\GoogleController@callbackFromGoogle')->name('callback');
+});
+########## GOOGLE LOGIN SECTIONS ENDS HERE #####################
