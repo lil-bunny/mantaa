@@ -1032,3 +1032,21 @@ select.form-control {background-image: url("../images/select-bg.svg");background
   }
 .row-reverse {flex-direction: row-reverse}
 .search-content {max-height: 830px;overflow-x: hidden;padding: 0 15px}
+
+button.profile-btn.dropdown-toggle {
+  border-radius: 50%;
+  padding: 2px 12px 0 6px;
+  margin: 0 0 0 12px;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.profile-dropdown ul > li {
+  text-align: center;
+}
+.profile-dropdown ul > li:hover{
+  background: #e1e0e0;
+}
+.profile-menu.dropdown-menu.show{
+  margin-top: 5px;
+}

@@ -65,3 +65,8 @@ Route::prefix('google')->name('google.')->group( function(){
     Route::any('callback', 'App\Http\Controllers\GoogleController@callbackFromGoogle')->name('callback');
 });
 ########## GOOGLE LOGIN SECTIONS ENDS HERE #####################
+
+########## EDIT USER SECTIONS STARTS HERE #####################
+Route::get('/users/edit/', 'App\Http\Controllers\HomeController@edit')->name('frontend.user_edit');
+Route::post('/users/update_user/', 'App\Http\Controllers\HomeController@update_user')->name('frontend.update_user');
+########## EDIT USER SECTIONS ENDS HERE #####################

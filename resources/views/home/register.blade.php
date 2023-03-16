@@ -36,7 +36,7 @@
             <p class="text-muted mt-3">Already have an account? <a href="{{ route('frontend.login') }}">Login</a></p>
         </form>
         <div class="or-text mt-2 mt-sm-5"><span>OR</span></div>
-        <a href="#" class="mt-4 mt-sm-5 d-block gbtn"><img src="{{ asset('front-assets/images/google-login.png') }}" alt="icon"></a>
+        <a href="{{ route('google.login') }}" class="mt-4 mt-sm-5 d-block gbtn"><img src="{{ asset('front-assets/images/google-login.png') }}" alt="icon"></a>
     </div>
 </section>
 <!-- // END REGISTER BODY -->
