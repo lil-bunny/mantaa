@@ -209,18 +209,19 @@ class HomeController extends Controller
     public function update_user(Request $request)
     {
         $password = $request->input('password');
-        $password_confirm = $request->input('cnf_password');
+        $password_confirmation = $request->input('password_confirmation');
         
         // Validation
-        if($password || $password_confirm){
+        if($password || $password_confirmation){
             $validator = Validator::make($request->all(), [
                 'email' => 'required|max:255',
                 'name' => 'required',
                 'mobile' => 'required',
                 'password' => 'required|string|min:6|confirmed',
-                'confirm password' => 'required'
+                'password_confirmation' => 'required'
             ]);
-        }else{
+        }
+        else{
             $validator = Validator::make($request->all(), [
                 'email' => 'required|max:255',
                 'name' => 'required',
@@ -258,7 +259,7 @@ class HomeController extends Controller
             }
             
             $model->save();
-            return redirect()->intended('/')->withSuccess('User updated successfully');
+            return redirect()->intended('/users/edit/')->with('message',"User updated successfully");
         }
         else{
             // fetching roles

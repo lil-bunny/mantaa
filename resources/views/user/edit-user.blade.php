@@ -15,6 +15,11 @@
                 </ul>
             </div>
         @endif
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <form method="POST" enctype='multipart/form-data' action="{{ route('frontend.update_user') }}">
             @csrf
             <div class="form-group">
@@ -27,18 +32,49 @@
                 <input type="text" placeholder="Phone" value="{{ $user_data->mobile }}" class="form-control" name="mobile">
             </div>
             <div class="form-group">
-                <input id="password" type="password" placeholder="Password" class="form-control" name="password">
+                <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
             <div class="form-group">
-                <input id="cnf_password" type="password" placeholder="Repeat Password" class="form-control" name="cnf_password">
+                <input type="password" placeholder="Repeat Password" class="form-control" name="password_confirmation">
             </div>
             <div class="form-group">
                 <input type="file" placeholder="Upload Image" class="form-control" name="profile_pic">
-                <img src="{{ url('public/application_files/user_images') . '/'. $user_data->image }}" alt="" class="image mt-3" height="100" width="100">
+                <img 
+                    id="prof-image"
+                    onclick="imageModal(this);"
+                    src="{{ url('public/application_files/user_images') . '/'. $user_data->image }}" 
+                    alt="" 
+                    class="image mt-3" 
+                    height="100" width="100">
             </div>
             <button type="submit" class="btn btn-primary btn-submit w-100">Update</button>
         </form>
     </div>
 </section>
 <!-- // END EDIT USER BODY -->
+
+<!-- Profile Image Modal -->
+        
+<div id="prof-img-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+</div>
+        
+<!-- End Profile Image Modal -->
+
+<script type="text/javascript">
+    var imgModal = document.getElementById('prof-img-modal');
+    var modalImg = document.getElementById("img01");
+    
+    function imageModal(e){
+        imgModal.style.display = "block";
+        modalImg.src = e.src;
+    }
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        imgModal.style.display = "none";
+    }
+</script> 
+
 @endsection
+
