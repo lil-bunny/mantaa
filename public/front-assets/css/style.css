@@ -1078,7 +1078,7 @@ button.profile-btn.dropdown-toggle {
   margin: auto;
   display: block;
   width: 80%;
-  max-width: 300px;
+  max-width: 500px;
 }
 .modal-content{
   -webkit-animation-name: zoom;
