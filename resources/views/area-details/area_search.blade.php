@@ -33,7 +33,7 @@
 				<input type="hidden" name="city_id_filter" id="city_id_filter" value="{{ $filters['city_id'] }}" />
                 <div class="search-form row align-items-center">				
 					<div class="col-auto">
-						<select class="form-control" name="min_price">
+						<select class="form-control" name="min_price" id="min">
 							<option value="">Minimum Price</option>
 							@foreach($min_price as $min_price_info)
 								<option value="{{ $min_price_info }}" {{ $filters['min_price']==$min_price_info ? 'selected' : ''}}>{{ $min_price_info }}</option>
@@ -41,7 +41,7 @@
 						</select>
 					</div>				
 					<div class="col-auto">
-						<select class="form-control" name="max_price">
+						<select class="form-control" name="max_price" id="max">
 							<option value="">Maximum Price</option>
 							@foreach($max_price as $max_price_info)
 								<option value="{{ $max_price_info }}" {{ $filters['max_price']==$max_price_info ? 'selected' : ''}}>{{ $max_price_info }}</option>
@@ -212,6 +212,35 @@
 			alert('server not responding...');
 		});
 	}
+</script>
+
+<script type="text/javascript">
+	 $("#min").change(function (){
+        var $this = $(this);
+        $("select option").prop("disabled", false);
+
+        $("#max option").filter(function(){
+            return parseInt(this.value) < parseInt($this.val());
+        }).prop("disabled", true);
+        
+        $("#min option").filter(function(){
+            return parseInt(this.value) > parseInt($this.val());
+        }).prop("disabled", true);
+    });
+
+	$("#max").change(function (){
+		var $this = $(this);
+		$("select option").prop("disabled", false);
+
+		$("#min option").filter(function(){
+			return parseInt(this.value) > parseInt($this.val());
+		}).prop("disabled", true);
+
+		$("#max option").filter(function(){
+			return parseInt(this.value) < parseInt($this.val());
+		}).prop("disabled", true);
+
+	});
 </script>
 
 @endsection
