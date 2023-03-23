@@ -178,12 +178,18 @@ class AreaDetailsController extends Controller
                     4500000, 4550000, 4600000, 4650000, 4700000, 4750000, 4800000, 4850000, 4900000, 4950000, 5000000                                        
                     ];
         
+        
+        // generating the location data
+        foreach($data as $data_info) {
+            $locations[] = [$data_info->title, $data_info->lat, $data_info->lng];
+        }
+
         if ($request->ajax()) {
             $view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
             return response()->json(['html'=>$view]);
         }
         
-        return view('area-details.area_search', ['area_lists' => $data, 'filters' => $filters, 'media_formats' => $media_formats, 'min_price' => $min_price, 'max_price' => $max_price]);
+        return view('area-details.area_search', ['locations' => json_encode($locations), 'area_lists' => $data, 'filters' => $filters, 'media_formats' => $media_formats, 'min_price' => $min_price, 'max_price' => $max_price]);
     }
 
     public function connect_request(Request $request)

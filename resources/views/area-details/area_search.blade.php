@@ -2,7 +2,12 @@
 @extends('layouts.home')
 
 @section('content') 
-
+<style type="text/css">
+	#mapCanvas{
+		width: 100%;
+		height: 400px;
+	}
+</style>
 <!-- BANNER -->
 <div class="home-banner banner-search">
 	<img src="{{asset('front-assets/images/search-page-banner.jpg') }}" alt="Banner" />
@@ -63,8 +68,8 @@
 			</form>
 		<div class="row row-reverse search-results">
 			<div class="col-md-6">
-				<div class="map-search">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10420.161365955086!2d88.43267758710955!3d22.57598455697892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1672218003341!5m2!1sen!2sin" width="100%" height="820" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="map-search" id="mapCanvas">
+					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10420.161365955086!2d88.43267758710955!3d22.57598455697892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1672218003341!5m2!1sen!2sin" width="100%" height="820" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -119,11 +124,16 @@
 		<!-- end main row -->
 	</div>
 </section>
+<div id="location_result" style="display:none">{{$locations}}</div>
 <!-- ens search result -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap"
+defer
+></script>
 <script type="text/javascript">
     var path = "{{ url('autocomplete-search') }}";
 
@@ -243,6 +253,67 @@
 	});
 </script>
 
+
+<script type="text/javascript">
+// Initialize and add the map
+function initMap() {
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Display a map on the web page
+    map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+    map.setTilt(50);
+        
+    // Multiple markers location, latitude, and longitude
+	var el = document.getElementById('location_result');
+	var marker_ht = el.innerHTML;
+    // var markers = [
+    //     ['Brooklyn Museum, NY', 40.671349546127146, -73.96375730105808],
+    //     ['Central Library, Brooklyn, NY', 40.67254944015601, -73.9682162170653],
+    //     ['Prospect Park Zoo, NY', 40.66427511834109, -73.96512605857858],
+    //     ['Barclays Center, Brooklyn, NY', 40.68268267107631, -73.97546296241961]
+    // ];
+	var markers = JSON.parse(marker_ht);
+	//console.log(markers);
+	//return true;
+	
+    // Add multiple markers to map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Place each marker on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0]
+        });
+        
+        // Add info window to marker    
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(markers[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Center the map to fit all markers on the screen
+        map.fitBounds(bounds);
+    }
+
+    // Set zoom level
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(14);
+        google.maps.event.removeListener(boundsListener);
+    });
+}
+
+window.initMap = initMap;
+</script>
 @endsection
 
 

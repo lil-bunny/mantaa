@@ -486,7 +486,7 @@
        
 
         <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeK9JLWPV_0-BCT3A63jji-NymGtLWVW4&callback=initAutocomplete&libraries=places&v=weekly&region=in"
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initAutocomplete&libraries=places&v=weekly&region=in"
         defer
         ></script>
 
