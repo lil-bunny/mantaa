@@ -214,6 +214,18 @@ defer
 				return;
 			}
 
+			// fetching the data
+			if(data.locations_ajax != '') {
+				var location_ht = jQuery('#location_result').html();
+				var location_json = JSON.parse(location_ht);
+				var location_ajax_json = JSON.parse(data.locations_ajax);
+				var new_loc = location_json.concat(location_ajax_json);
+				var new_json_loc = JSON.stringify(new_loc);console.log(new_json_loc);
+				jQuery('#location_result').html(new_json_loc);
+				initMap();
+			}
+			
+
 			jQuery('#ajax_loader').hide();
 			jQuery("#post-data").append(data.html);
 		})
@@ -257,28 +269,23 @@ defer
 <script type="text/javascript">
 // Initialize and add the map
 function initMap() {
+	// Multiple markers location, latitude, and longitude
+	var el = document.getElementById('location_result');
+	var marker_ht = el.innerHTML;
+	var markers = JSON.parse(marker_ht);
+
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
-        mapTypeId: 'roadmap'
+		center: { lat: markers[0][1], lng: markers[0][2] },
+        mapTypeId: 'roadmap',
+		zoom: 2,
     };
                     
     // Display a map on the web page
     map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
-    map.setTilt(50);
-        
-    // Multiple markers location, latitude, and longitude
-	var el = document.getElementById('location_result');
-	var marker_ht = el.innerHTML;
-    // var markers = [
-    //     ['Brooklyn Museum, NY', 40.671349546127146, -73.96375730105808],
-    //     ['Central Library, Brooklyn, NY', 40.67254944015601, -73.9682162170653],
-    //     ['Prospect Park Zoo, NY', 40.66427511834109, -73.96512605857858],
-    //     ['Barclays Center, Brooklyn, NY', 40.68268267107631, -73.97546296241961]
-    // ];
-	var markers = JSON.parse(marker_ht);
-	//console.log(markers);
-	//return true;
+    //map.setTilt(50);
+	
 	
     // Add multiple markers to map
     var infoWindow = new google.maps.InfoWindow(), marker, i;
@@ -306,10 +313,10 @@ function initMap() {
     }
 
     // Set zoom level
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
+    // var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+    //     this.setZoom(14);
+    //     google.maps.event.removeListener(boundsListener);
+    // });
 }
 
 window.initMap = initMap;

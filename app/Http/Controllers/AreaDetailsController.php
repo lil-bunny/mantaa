@@ -180,13 +180,19 @@ class AreaDetailsController extends Controller
         
         
         // generating the location data
+        $locations = [];
         foreach($data as $data_info) {
             $locations[] = [$data_info->title, $data_info->lat, $data_info->lng];
         }
 
         if ($request->ajax()) {
             $view = view('area-details.area_search_ajax', ['area_lists_ajax' => $data])->render();
-            return response()->json(['html'=>$view]);
+            if(count($locations) > 0) {
+                return response()->json(['html'=>$view, 'locations_ajax' => json_encode($locations)]);
+            } else {
+                return response()->json(['html'=>$view, 'locations_ajax' => '']);
+            }
+            
         }
         
         return view('area-details.area_search', ['locations' => json_encode($locations), 'area_lists' => $data, 'filters' => $filters, 'media_formats' => $media_formats, 'min_price' => $min_price, 'max_price' => $max_price]);
