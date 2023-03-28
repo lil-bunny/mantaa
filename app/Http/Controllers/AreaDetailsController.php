@@ -137,6 +137,8 @@ class AreaDetailsController extends Controller
             })->paginate(8);
         } else if($filters['city_id']) {
             $data = $data->where('city_id', '=', $filters['city_id'])->paginate(8);
+        } else {
+            $data = $data->paginate(8);
         }
         
         // media formats assignment
