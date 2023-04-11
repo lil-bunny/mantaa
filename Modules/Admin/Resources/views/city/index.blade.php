@@ -45,7 +45,7 @@
                                                 </div>
                                             </div>
                                             <div class="col s12 m6 l3">
-                                                <label for="users-list-role">Role</label>
+                                                <label for="users-list-role">States</label>
                                                 <div class="input-field">
                                                     <select class="form-control" id="city-list-state" name="state_id">
                                                         <option value="">Any</option>
