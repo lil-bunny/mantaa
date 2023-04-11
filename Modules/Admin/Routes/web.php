@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::get('/areas/edit/{id}', 'AreaController@edit')->name('admin.area_edit');
     Route::post('/areas/update_area/{id}', 'AreaController@update_area')->name('admin.update_area');
     Route::post('/areas/area_delete/{id}', 'AreaController@area_delete')->name('admin.area_delete');
+    Route::get('/campaign_generate', 'AreaController@campaign_generate_pdf')->name('admin.campaign_generate');
     ########## AREA SECTIONS ENDS HERE #####################
 
     ########## FEEDBACKS SECTIONS STARTS HERE #####################
