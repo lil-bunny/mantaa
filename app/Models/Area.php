@@ -23,6 +23,7 @@ class Area extends Authenticatable
         'title',
         'site_location',
         'priority',
+        'income_group',
         'road_name',
         'pin_code',
         'lat',
