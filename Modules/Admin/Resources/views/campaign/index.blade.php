@@ -11,7 +11,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col s10 m6 l6">
-                                <h5 class="breadcrumbs-title mt-0 mb-0"><span>Admin Areas</span></h5>
+                                <h5 class="breadcrumbs-title mt-0 mb-0"><span>Campaign Management</span></h5>
                                 <ol class="breadcrumbs mb-0">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a>
                                     </li>
@@ -74,32 +74,40 @@
                                         <!-- datatable start -->
                                         <div class="responsive-table">
                                             @if($areas->count())
-                                                <table id="users-list-datatable1" class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="sub-cechbox"><input type="checkbox" class="check_all"/></th>
-                                                            <th>@sortablelink('id', 'ID')</th>
-                                                            <th>@sortablelink('title', 'Area Name')</th>
-                                                            <th>@sortablelink('state_id', 'State')</th>
-                                                            <th>@sortablelink('city_id', 'City')</th>
-                                                            <th>@sortablelink('site_location', 'Location Name')</th>
-                                                            <th>@sortablelink('created_at', 'Created')</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($areas as $area)
+                                                <form method="POST" action="{{ route('admin.review_campaign') }}">
+                                                    @csrf
+                                                    <table id="users-list-datatable1" class="table">
+                                                        <thead>
                                                             <tr>
-                                                                <td class="sub-cechbox"><input type="checkbox" id="area_{{$area->id}}" name="area_selected[]" value="{{$area->id}}" class="area_select"></td>
-                                                                <td>{{ $area->id }}</td>
-                                                                <td>{{ $area->title }}</td>
-                                                                <td>{{ $area->state->name }} </td>
-                                                                <td>{{ $area->city->name }} </td>
-                                                                <td>{{ $area->site_location }} </td>
-                                                                <td>{{ $area->created_at }}</td>
+                                                                <th class="sub-cechbox"><input type="checkbox" class="check_all"/></th>
+                                                                <th>@sortablelink('id', 'ID')</th>
+                                                                <th>@sortablelink('title', 'Area Name')</th>
+                                                                <th>@sortablelink('state_id', 'State')</th>
+                                                                <th>@sortablelink('city_id', 'City')</th>
+                                                                <th>@sortablelink('site_location', 'Location Name')</th>
+                                                                <th>@sortablelink('created_at', 'Created')</th>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach($areas as $area)
+                                                                <tr>
+                                                                    <td class="sub-cechbox"><input type="checkbox" id="area_{{$area->id}}" name="area_selected[]" value="{{$area->id}}" class="area_select"></td>
+                                                                    <td>{{ $area->id }}</td>
+                                                                    <td>{{ $area->title }}</td>
+                                                                    <td>{{ $area->state->name }} </td>
+                                                                    <td>{{ $area->city->name }} </td>
+                                                                    <td>{{ $area->site_location }} </td>
+                                                                    <td>{{ $area->created_at }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col s12 display-flex justify-content-end mt-3">
+                                                            <button type="submit" class="btn indigo">Next</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             @else
                                                 <p>No records found</p>
                                             @endif
@@ -117,4 +125,18 @@
             </div>
         </div>
         <!-- END: Page Main-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    jQuery(".check_all").on("click", function(){
+        if(jQuery(".check_all").prop('checked')==true){ 
+            jQuery(".area_select").each(function(){
+                jQuery(this).attr("checked", true);
+            });
+        } else {
+            jQuery(".area_select").each(function(){
+                jQuery(this).attr("checked", false);
+            });
+        }
+    });
+</script>
 @endsection

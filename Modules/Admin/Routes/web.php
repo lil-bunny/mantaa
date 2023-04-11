@@ -93,6 +93,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
 
     ########## CONNECT REQUESTS SECTIONS STARTS HERE #####################
     Route::get('/campaign_search', 'CampaignController@index')->name('admin.campaign_search');
+    Route::post('/review_campaign', 'CampaignController@review_campaign')->name('admin.review_campaign');
     ########## CONNECT REQUESTS SECTIONS ENDS HERE #####################
 
     ########## SETTINGS SECTIONS STARTS HERE #####################

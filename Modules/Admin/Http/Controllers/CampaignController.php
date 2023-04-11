@@ -58,5 +58,21 @@ class CampaignController extends Controller
         return view('admin::campaign.index', ['areas'=>$areas, 'filters' => $filters, 'cities' => $cities, 'income_groups' => $income_groups]);
     }
 
-
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function review_campaign(Request $request)
+    {
+        // assigning the input value to the variables
+        $area_ids = $request->input('area_selected');
+        
+        // checking if area ids selected or not
+        if(count($area_ids) > 0) {
+            $areas = Area::where('areas.is_deleted', '=', 0)->where('areas.status', '=', 1)->whereIn('areas.id', $area_ids)->get();
+            return view('admin::campaign.review_campaign', ['areas'=>$areas, 'area_ids'=>json_encode($area_ids)]);
+        } else {
+            return redirect()->route('admin.campaign_search');
+        }
+    }
 }
