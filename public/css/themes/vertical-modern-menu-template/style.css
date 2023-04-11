@@ -12191,3 +12191,12 @@ tr.group:hover
         max-width: 90%;
     }
 }
+
+.campaign-generate-panel{
+    margin:0;
+    padding: 0;
+}
+.campaign-generate-panel img{
+    object-fit: cover;
+    width: 100%;
+}

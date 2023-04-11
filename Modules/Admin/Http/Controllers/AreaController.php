@@ -44,6 +44,15 @@ class AreaController extends Controller
         return view('admin::area.index', ['areas'=>$areas, 'filters' => $filters]);
     }
 
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function campaign_generate_pdf(Request $request)
+    {
+        return view('admin::area.campaign_generate');
+    }
+
 
     /**
      * Display Add city template
