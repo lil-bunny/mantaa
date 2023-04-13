@@ -14,6 +14,11 @@ class Area extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, Sortable;
     //protected $guard = 'user';
 
+    // Cast attributes JSON to array
+    protected $casts = [
+        'gridTrends' => 'array'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -50,6 +55,7 @@ class Area extends Authenticatable
         'area_pic2',
         'area_video',
         'nearby_places',
+        'gridTrends',
         'status',
         'created_by',
     ];

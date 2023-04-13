@@ -77,6 +77,9 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/areas/update_area/{id}', 'AreaController@update_area')->name('admin.update_area');
     Route::post('/areas/area_delete/{id}', 'AreaController@area_delete')->name('admin.area_delete');
     Route::get('/campaign_generate', 'AreaController@campaign_generate_pdf')->name('admin.campaign_generate');
+    Route::get('/areas/fetch_poi/{id}', 'AreaController@fetch_poi')->name('admin.fetch_poi');
+    Route::post('/areas/add_poi', 'AreaController@add_poi')->name('admin.add_poi');
+    Route::get('/areas/view_poi/{id}', 'AreaController@view_poi')->name('admin.view_poi');
     ########## AREA SECTIONS ENDS HERE #####################
 
     ########## FEEDBACKS SECTIONS STARTS HERE #####################
@@ -92,10 +95,10 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/connect_requests/connect_request_delete/{id}', 'ConnectRequestController@connect_request_delete')->name('admin.connect_request_delete');
     ########## CONNECT REQUESTS SECTIONS ENDS HERE #####################
 
-    ########## CONNECT REQUESTS SECTIONS STARTS HERE #####################
+    ########## CAMPAIGN SECTIONS STARTS HERE #####################
     Route::get('/campaign_search', 'CampaignController@index')->name('admin.campaign_search');
     Route::post('/review_campaign', 'CampaignController@review_campaign')->name('admin.review_campaign');
-    ########## CONNECT REQUESTS SECTIONS ENDS HERE #####################
+    ########## CAMPAIGN SECTIONS ENDS HERE #####################
 
     ########## SETTINGS SECTIONS STARTS HERE #####################
     Route::get('/settings', 'SettingController@index')->name('admin.setting');

@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Notification;
 use App\Models\SiteMerit;
 use App\Models\SiteMeritValue;
+use Illuminate\Support\Facades\Http;
 use Validator;
 
 class AreaController extends Controller
@@ -306,6 +307,9 @@ class AreaController extends Controller
                     'is_read' => 0
                 ]);
             }
+
+            // redirecting to the fetch poi section
+            return redirect()->route('admin.fetch_poi', ['id' => $areas->id]);
         } else {
             $errors=$validator->errors();
             return redirect()->route('admin.area_add')->with('errors',$errors);
@@ -315,7 +319,7 @@ class AreaController extends Controller
     }
 
     /**
-     * Display Edit city template
+     * Display Edit area template
      * @return Renderable
      */
     public function edit($id)
@@ -399,6 +403,96 @@ class AreaController extends Controller
         }
         
         return view('admin::area.edit', ['priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
+    }
+
+
+    /**
+     * Display Fetch poi template
+     * @return Renderable
+     */
+    public function fetch_poi($id)
+    {
+        // fetching user details
+        $area_data = Area::find($id);
+
+        // fetching api key and url
+        $api_url = env('FETCH_POI_URL');
+        $api_key = env('FETCH_POI_KEY');
+        
+        // setting the header
+        $headers = [
+            'apikey' => $api_key
+        ];
+
+        // setting the post input
+        $post_input = [
+            'lat' => $area_data->lat,
+            'lng' => $area_data->lng,
+        ];
+        
+        // fetching the response
+        $response = Http::withHeaders($headers)->post($api_url, $post_input);
+
+        $statusCode = $response->status();
+        $responseBody = json_decode($response->getBody(), true);
+      
+        
+        $poi_data = [];
+        if($statusCode == '201') {
+            $gridTrends = $responseBody['gridTrends'];
+
+            foreach($gridTrends as $key => $value) {
+                $poi_data[$key]['value'] = $value;
+                $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
+            }
+        }
+        
+        return view('admin::area.fetch_poi', ['area_id' => $id, 'poi_data' => $poi_data]);
+    }
+
+    /**
+     * Display Fetch poi template
+     * @return Renderable
+     */
+    public function add_poi(Request $request) {
+        // fetching area details
+        $model= Area::find($request->input('area_id'));
+        
+        $poi_data = [];
+        foreach($request->all() as $key => $value) {
+            if($key != '_token' && $key != 'area_id') {
+                $poi_data[$key] = $value;
+            }
+        }
+        $model->gridTrends = $poi_data;
+        $model->save();
+
+        return redirect()->route('admin.view_poi', ['id' => $request->input('area_id')]);
+    }
+
+
+    /**
+     * Display Fetch poi template
+     * @return Renderable
+     */
+    public function view_poi($id) {
+        // fetching area details
+        $model= Area::find($id);
+        
+        if(!empty($model->gridTrends)) {
+            $poi_data = [];
+            foreach($model->gridTrends as $key => $value) {
+                if($value != '0' && $value != '') {
+                    $poi_data[$key]['value'] = $value;
+                    $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
+                }
+            }
+        } else {
+            return redirect()->intended('admin/areas')->withSuccess('Area created successfully');
+        }
+        
+        
+        return view('admin::area.view_poi', ['poi_data' => $poi_data]);
     }
 
 
