@@ -403,6 +403,27 @@
                                                 </div>
                                                 <!-- Site Merits Ends Here -->
 
+
+
+                                                <!-- POIStarts Here -->
+                                                @if (count($poi_data) > 0)
+                                                    <div class="row">
+                                                        <h4>POI Details</h4>
+
+                                                        @foreach($poi_data as $key => $poi_info)
+                                                            <div class="col s12 m6">
+                                                                <div class="row">
+                                                                    <div class="col s12">
+                                                                        <input id="{{ $key }}" name="{{ $key }}" type="text" class="validate" value="{{ $poi_info['value'] }}" readonly>
+                                                                        <label>{{ $poi_info['label'] }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                                <!-- POI Ends Here -->
+
                                                 <div class="col s12 m6">
                                                     <div class="row">
                                                         <div class="col s12 input-field">

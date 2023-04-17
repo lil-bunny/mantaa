@@ -401,8 +401,18 @@ class AreaController extends Controller
         foreach($area_data->site_marit_values as $site_marit_value) {
             $site_merits_values_assigned[] = $site_marit_value->id;
         }
+
+        $poi_data = [];
+        if(!empty($area_data->gridTrends)) {
+            foreach($area_data->gridTrends as $key => $value) {
+                if($value != '0' && $value != '') {
+                    $poi_data[$key]['value'] = $value;
+                    $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
+                }
+            }
+        }
         
-        return view('admin::area.edit', ['priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
+        return view('admin::area.edit', ['poi_data' => $poi_data, 'priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
     }
 
 
