@@ -98,34 +98,40 @@
 				<div class="row">
 					<div class="col-md-6">
 						<h2 class="sec-title">Nearby Places</h2>
-						<ul class="list-plot-info">
-							<li>
-								<figure>
-									<img src="{{ url('public/front-assets/images/airport-icon.svg') }}" alt="icon">
-								</figure>
-								<p>1.4 Km from Airport</p>
-							</li>
-							<li>
-								<figure><img src="{{ url('public/front-assets/images/hospital-icon.svg') }}" alt="icon"></figure>
-								<p>2.3 Km from Hospital</p>
-							</li>
-							<li>
-								<figure><img src="{{ url('public/front-assets/images/metro-icon.svg') }}" alt="icon"></figure>
-								<p>500 m from Metro Station</p>
-							</li>
-							<li>
-								<figure><img src="{{ url('public/front-assets/images/train-icon.svg') }}" alt="icon"></figure>
-								<p>2 Km from Railway Station</p>
-							</li>
-							<li>
-								<figure><img src="{{ url('public/front-assets/images/school-icon.svg') }}" alt="icon"></figure>
-								<p>3 Km from School</p>
-							</li>
-							<li>
-								<figure><img src="{{ url('public/front-assets/images/mall-icon.svg') }}" alt="icon"></figure>
-								<p>2 Km from Mall</p>
-							</li>
-						</ul>
+						@if (count($nearby_places) > 0)
+							<ul class="list-plot-info">
+								@foreach($nearby_places as $key => $nearby_places_info)
+									<li>
+										<figure>
+											<img src="{{ $nearby_places_info['image'] }}" alt="icon">
+										</figure>
+										<p>{{ $nearby_places_info['value'] }} {{ $nearby_places_info['label'] }}</p>
+									</li>
+								@endforeach
+								<!-- <li>
+									<figure><img src="{{ url('public/front-assets/images/hospital-icon.svg') }}" alt="icon"></figure>
+									<p>2.3 Km from Hospital</p>
+								</li>
+								<li>
+									<figure><img src="{{ url('public/front-assets/images/metro-icon.svg') }}" alt="icon"></figure>
+									<p>500 m from Metro Station</p>
+								</li>
+								<li>
+									<figure><img src="{{ url('public/front-assets/images/train-icon.svg') }}" alt="icon"></figure>
+									<p>2 Km from Railway Station</p>
+								</li>
+								<li>
+									<figure><img src="{{ url('public/front-assets/images/school-icon.svg') }}" alt="icon"></figure>
+									<p>3 Km from School</p>
+								</li>
+								<li>
+									<figure><img src="{{ url('public/front-assets/images/mall-icon.svg') }}" alt="icon"></figure>
+									<p>2 Km from Mall</p>
+								</li> -->
+							</ul>
+						@else
+							<p>No nearby places found</p>
+						@endif
 					</div>
 					<!-- end column -->
 					<div class="col-md-6">

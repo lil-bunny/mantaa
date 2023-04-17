@@ -39,6 +39,32 @@ class AreaDetailsController extends Controller
             ];
         }
 
+        // generating poi data from area details
+        $nearby_places = [];
+        if(!empty($data->gridTrends)) {
+            foreach($data->gridTrends as $key => $value) {
+                if(strpos($key,"nearest") !== false && strpos($key,"distance") !== false) {
+                    $nearest_arr[$key] = $value; 
+                }
+            }
+
+            asort($nearest_arr);
+            $nearest_arr_sliced = array_slice($nearest_arr,0, 6);
+            foreach($nearest_arr_sliced as $k => $v) {
+                $k_arr = explode('_', $k);
+                $nearby_places_arr[implode('_', array_slice($k_arr, 1, (count($k_arr)-2)))] = $v;
+            }
+
+            // formatting the data
+            foreach($nearby_places_arr as $ke => $val) {
+                $val_arr = explode('.', $val);
+                $nearby_places[$ke]['label'] = ucwords(str_replace('_', ' ', $ke));
+                $nearby_places[$ke]['value'] = $val_arr[0] == '0' ? (round($val, 2)*1000).' meters from':round($val, 2).' km from';
+                $nearby_places[$ke]['image'] = url('public/front-assets/images').'/'.$ke.'.svg';
+            }
+        }
+        
+        
 
         // finding the recommendation lists with respect to city of the area
         // $api_url = env('RECO_ENGINE_URL');
@@ -60,7 +86,7 @@ class AreaDetailsController extends Controller
                     ->where('area_id', '=', $id)
                     ->orderBy('id', 'desc')->limit(3)->get();
         
-        return view('area-details.index', compact('data', 'id'), ['feedbacks' => $feedbacks, 'site_merits_arr' => $site_merits_arr]); 
+        return view('area-details.index', compact('data', 'id'), ['nearby_places' => $nearby_places, 'feedbacks' => $feedbacks, 'site_merits_arr' => $site_merits_arr]); 
     }
 
     public function autocompleteSearch(Request $request)
