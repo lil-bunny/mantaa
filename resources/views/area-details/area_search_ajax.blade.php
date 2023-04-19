@@ -18,7 +18,7 @@
 				<ul>
 					<li><h4>State</h4><span>{{ $area_info->state->name ?? '' }}</span></li>
 					<li><h4>City</h4><span>{{ $area_info->city->name ?? '' }}</span></li>
-					<li><h4>Size</h4><span>{{ $area_info->height }}x{{ $area_info->width }}</span></li>
+					<li><h4>Size</h4><span>{{ $area_info->width }}x{{ $area_info->height }}</span></li>
 				</ul>
 				
 			</div>

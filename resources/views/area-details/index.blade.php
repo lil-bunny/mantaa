@@ -53,7 +53,7 @@
 								<h4><img src="../public/front-assets/images/dimension-icon.svg" alt="icon"> Available Dimension</h4>
 								<h3 class="sec-title">{{ $data['width'] }} ft x {{ $data['height'] }} ft</h3>
 								<h4><img src="../public/front-assets/images/area-icon.svg" alt="icon"> Available Area</h4>
-								<h3 class="sec-title m-0">{{ $data['display_area'] }} sq.ft</h3>
+								<h3 class="sec-title m-0">{{ $data['width']*$data['height'] }} sq.ft</h3>
 							</div>
 							<div class="p-30 brdtop">
 								<p>To know more SMART insights about this site</p>
@@ -108,26 +108,6 @@
 										<p>{{ $nearby_places_info['value'] }} {{ $nearby_places_info['label'] }}</p>
 									</li>
 								@endforeach
-								<!-- <li>
-									<figure><img src="{{ url('public/front-assets/images/hospital-icon.svg') }}" alt="icon"></figure>
-									<p>2.3 Km from Hospital</p>
-								</li>
-								<li>
-									<figure><img src="{{ url('public/front-assets/images/metro-icon.svg') }}" alt="icon"></figure>
-									<p>500 m from Metro Station</p>
-								</li>
-								<li>
-									<figure><img src="{{ url('public/front-assets/images/train-icon.svg') }}" alt="icon"></figure>
-									<p>2 Km from Railway Station</p>
-								</li>
-								<li>
-									<figure><img src="{{ url('public/front-assets/images/school-icon.svg') }}" alt="icon"></figure>
-									<p>3 Km from School</p>
-								</li>
-								<li>
-									<figure><img src="{{ url('public/front-assets/images/mall-icon.svg') }}" alt="icon"></figure>
-									<p>2 Km from Mall</p>
-								</li> -->
 							</ul>
 						@else
 							<p>No nearby places found</p>

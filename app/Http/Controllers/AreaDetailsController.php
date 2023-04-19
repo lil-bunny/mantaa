@@ -59,7 +59,7 @@ class AreaDetailsController extends Controller
             foreach($nearby_places_arr as $ke => $val) {
                 $val_arr = explode('.', $val);
                 $nearby_places[$ke]['label'] = ucwords(str_replace('_', ' ', $ke));
-                $nearby_places[$ke]['value'] = $val_arr[0] == '0' ? (round($val, 2)*1000).' meters from':round($val, 2).' km from';
+                $nearby_places[$ke]['value'] = round($val, 2).' km from';
                 $nearby_places[$ke]['image'] = url('public/front-assets/images').'/'.$ke.'.svg';
             }
         }
@@ -210,7 +210,7 @@ class AreaDetailsController extends Controller
         // generating the location data
         $locations = [];
         foreach($data as $data_info) {
-            $locations[] = [$data_info->title, $data_info->lat, $data_info->lng];
+            $locations[] = [$data_info->title.' ('.$data_info->width.' x '.$data_info->height.')', $data_info->lat, $data_info->lng];
         }
 
         if ($request->ajax()) {
