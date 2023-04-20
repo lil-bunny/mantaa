@@ -105,7 +105,7 @@
 										<figure>
 											<img src="{{ $nearby_places_info['image'] }}" alt="icon">
 										</figure>
-										<p>{{ $nearby_places_info['value'] }} {{ $nearby_places_info['label'] }}</p>
+										<p><b>{{ $nearby_places_info['value'] }}</b><br /> {{ $nearby_places_info['label'] }}</p>
 									</li>
 								@endforeach
 							</ul>

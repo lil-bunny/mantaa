@@ -40,7 +40,7 @@ class AddPOI extends Command
     public function handle()
     {
         // Fetching the area data for adding the poi informations
-        $area_list = Area::where('areas.is_deleted', '=', 0)->get();
+        $area_list = Area::where('areas.is_deleted', '=', 0)->whereNull('areas.gridTrends')->get();
         
 
         // iterating the list data and calling the coordinate API
@@ -81,6 +81,7 @@ class AddPOI extends Command
                 } else {
                     $error = $responseBody['error'];
                     $area_nof[] = $area_info->id;
+                    $this->info("Error occured during POI addition for the area ".$area_info->id);
                 }
 
                 // assigning data to object

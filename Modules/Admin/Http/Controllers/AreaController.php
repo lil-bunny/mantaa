@@ -443,21 +443,33 @@ class AreaController extends Controller
         // fetching the response
         $response = Http::withHeaders($headers)->post($api_url, $post_input);
 
-        $statusCode = $response->status();
-        $responseBody = json_decode($response->getBody(), true);
-      
+        if($response) {
+            $statusCode = $response->status();
+            $responseBody = json_decode($response->getBody(), true);
         
-        $poi_data = [];
-        if($statusCode == '201') {
-            $gridTrends = $responseBody['gridTrends'];
+            
+            $poi_data = [];
+            if($statusCode == '201') {
+                $gridTrends = $responseBody['gridTrends'];
 
-            foreach($gridTrends as $key => $value) {
-                $poi_data[$key]['value'] = $value;
-                $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
+                foreach($gridTrends as $key => $value) {
+                    $poi_data[$key]['value'] = $value;
+                    $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
+                }
+            } else {
+                $error = $responseBody['error'];
+                $area_data->error_response = $error != ''?$error:'';
+                $area_data->save();
+                return redirect()->intended('admin/areas')->withError('Something went wrong');
             }
-        }
-        
-        return view('admin::area.fetch_poi', ['area_id' => $id, 'poi_data' => $poi_data]);
+            
+            return view('admin::area.fetch_poi', ['area_id' => $id, 'poi_data' => $poi_data]);
+        } else {
+            $error = 'No data received';
+            $area_data->error_response = $error != ''?$error:'';
+            $area_data->save();
+            return redirect()->intended('admin/areas')->withError('Something went wrong');
+        }    
     }
 
     /**
