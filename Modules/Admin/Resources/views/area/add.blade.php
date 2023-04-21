@@ -229,11 +229,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
+
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="height" name="height" type="text" class="validate" value="">
-                                                                <label>Height</label>
+                                                                <input id="width" name="width" type="text" class="validate" value="">
+                                                                <label>Width</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,8 +243,8 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="width" name="width" type="text" class="validate" value="">
-                                                                <label>Width</label>
+                                                                <input id="height" name="height" type="text" class="validate" value="">
+                                                                <label>Height</label>
                                                             </div>
                                                         </div>
                                                     </div>
