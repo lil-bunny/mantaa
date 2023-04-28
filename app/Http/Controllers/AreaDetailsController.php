@@ -67,13 +67,20 @@ class AreaDetailsController extends Controller
         
 
         // finding the recommendation lists with respect to city of the area
-        // $api_url = env('RECO_ENGINE_URL');
-        // $response = Http::post($api_url, [
-        //     "recommendation" => "Karol Bagh, 1415"
-        // ]);
+        $api_url = env('RECO_ENGINE_URL');
+        $response = Http::post($api_url, [
+            "title" => $data->title,
+            "city_id" => $data->city_id
+        ]);
 
-        // $statusCode = $response->status();
-        // $responseBody = json_decode($response->getBody(), true);
+        $statusCode = $response->status();
+        $responseBody = json_decode($response->getBody(), true);
+
+        if($statusCode == 200) {
+            $reco_sites = $responseBody;
+        } else {
+            $reco_sites = [];
+        }
       
         // echo "Status code: ". $statusCode;  // status code
 
@@ -86,7 +93,7 @@ class AreaDetailsController extends Controller
                     ->where('area_id', '=', $id)
                     ->orderBy('id', 'desc')->limit(3)->get();
         
-        return view('area-details.index', compact('data', 'id'), ['nearby_places' => $nearby_places, 'feedbacks' => $feedbacks, 'site_merits_arr' => $site_merits_arr]); 
+        return view('area-details.index', compact('data', 'id'), ['reco_sites' => $reco_sites, 'nearby_places' => $nearby_places, 'feedbacks' => $feedbacks, 'site_merits_arr' => $site_merits_arr]); 
     }
 
     public function autocompleteSearch(Request $request)

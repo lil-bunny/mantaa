@@ -194,102 +194,44 @@
 	</div>
 </section>
 <!--  -->
-	<!-- CHOOSE CITIES -->
-	<section class="section-cities sec-ptb">
-		<div class="container">
-			<h2 class="sec-title text-center">Featured Sites</h2>
-			<div class="city-items">
-				<div>
-					<div class="site-item">
-						<div class="site-box">
-							<a href="javascript:void(0);" class="d-block img-elm">
-								<span class="d-block"><img src="../public/front-assets/images/sites-img.jpg" alt="img"/></span>
-							</a>
-							<div class="info-elmnt">
-								<h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-								<h4>Etiam viverra auctor</h4>
-							</div>
-							<div class="bottom-widget d-flex justify-content-between align-items-center">
-								<h6 class="mb-0">Starting from</h6>
-								<h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-							</div>
+<!-- CHOOSE CITIES -->
+@if (count($reco_sites) > 0)
+<section class="section-cities sec-ptb">
+	<div class="container">
+		<h2 class="sec-title text-center">Featured Sites</h2>
+		<div class="city-items">
+			@foreach($reco_sites as $reco_sites_info)
+			<div>
+				<div class="site-item">
+					<div class="site-box">
+						<a href="{{ route('area-details', ['id' => $reco_sites_info['id']]) }}" class="d-block img-elm">
+							<span class="d-block">
+								@if($reco_sites_info['area_pic1'] == NULL)	
+									<img src="{{asset('images/area/no-image.png')}}" alt="img"/>
+								@else
+									<img src="{{ url('public/application_files/area_images') . '/'. $reco_sites_info['area_pic1'] }}" alt="img"/>
+								@endif
+							</span>
+						</a>
+						<div class="info-elmnt">
+							<h3><a href="{{ route('area-details', ['id' => $reco_sites_info['id']]) }}">{{ $reco_sites_info['site_location'] }}</a></h3>
+							<h4>{{ $reco_sites_info['title'] }}</h4>
+						</div>
+						<div class="bottom-widget d-flex justify-content-between align-items-center">
+							<h6 class="mb-0">Starting from</h6>
+							<h5 class="mb-0"><span class="currency">&#x20B9;</span> {{ $reco_sites_info['display_charge_pm'] }}</h5>
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="site-item">
-						<div class="site-box">
-							<a href="javascript:void(0);" class="d-block img-elm">
-								<span class="d-block"><img src="../public/front-assets/images/sites-img.jpg" alt="img"/></span>
-							</a>
-							<div class="info-elmnt">
-								<h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-								<h4>Etiam viverra auctor</h4>
-							</div>
-							<div class="bottom-widget d-flex justify-content-between align-items-center">
-								<h6 class="mb-0">Starting from</h6>
-								<h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="site-item">
-						<div class="site-box">
-							<a href="javascript:void(0);" class="d-block img-elm">
-								<span class="d-block"><img src="../public/front-assets/images/sites-img.jpg" alt="img"/></span>
-							</a>
-							<div class="info-elmnt">
-								<h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-								<h4>Etiam viverra auctor</h4>
-							</div>
-							<div class="bottom-widget d-flex justify-content-between align-items-center">
-								<h6 class="mb-0">Starting from</h6>
-								<h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="site-item">
-						<div class="site-box">
-							<a href="javascript:void(0);" class="d-block img-elm">
-								<span class="d-block"><img src="../public/front-assets/images/sites-img.jpg" alt="img"/></span>
-							</a>
-							<div class="info-elmnt">
-								<h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-								<h4>Etiam viverra auctor</h4>
-							</div>
-							<div class="bottom-widget d-flex justify-content-between align-items-center">
-								<h6 class="mb-0">Starting from</h6>
-								<h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="site-item">
-						<div class="site-box">
-							<a href="javascript:void(0);" class="d-block img-elm">
-								<span class="d-block"><img src="../public/front-assets/images/sites-img.jpg" alt="img"/></span>
-							</a>
-							<div class="info-elmnt">
-								<h3><a href="javascript:void(0);">Cras eu nulla sed tellus</a></h3>
-								<h4>Etiam viverra auctor</h4>
-							</div>
-							<div class="bottom-widget d-flex justify-content-between align-items-center">
-								<h6 class="mb-0">Starting from</h6>
-								<h5 class="mb-0"><span class="currency">&#x20B9;</span> 4950.00</h5>
-							</div>
-						</div>
-					</div>
-				</div> 
 			</div>
-		</div>	
-	</section>	
+			@endforeach 
+		</div>
+	</div>	
+</section>	
+@endif
 	
-	<!-- // END CHOOSE CITIES -->
-	@endsection
+<!-- // END CHOOSE CITIES -->
+@endsection
 
 
 	
