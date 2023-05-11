@@ -72,11 +72,11 @@
 				<ul class="sec-plot-info">
 					<li>
 						<span>Media Type:</span>
-						<p>{{ $data['media_type'] }}</p>
+						<p>{{ $data['place_type'] }}</p>
 					</li>
 					<li>
-						<span>Environment:</span>
-						<p>{{ $data['environment'] }}</p>
+						<span>Orientation:</span>
+						<p>{{ $data['orientation'] }}</p>
 					</li>
 					<li>
 						<span>Illumination:</span>
@@ -88,11 +88,11 @@
 					</li>
 					<li>
 						<span>Spot / Loop (in sec.)</span>
-						<p>{{ $data['loop_per_second'] }}</p>
+						<p>{{ $data['ad_spot_per_second'] }}</p>
 					</li>
 					<li class="no-brd">
 						<span>Partner Name:</span>
-						<p>{{ $data['media_partner_name'] }}</p>
+						<p>{{ $data['media_partner_name'] ?? 'NA' }}</p>
 					</li>
 				</ul>
 				<!-- end info -->
