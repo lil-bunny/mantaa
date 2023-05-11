@@ -3,17 +3,18 @@
 @section('content')
 
 <!-- // START LOGIN BODY -->
-<section class="sec-ptb sec-log-regi">
+<div class="inner-shade"></div>
+<section class="sec-pb sec-log-regi">
     <div class="container">
         <h1>Login</h1>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
         <form method="POST" action="{{ route('frontend.loginSubmit') }}">
             @csrf

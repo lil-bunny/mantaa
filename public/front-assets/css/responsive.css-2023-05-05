@@ -1,9 +1,9 @@
 
 @media screen and (min-width:576px) { 
-
+  
 }
 @media screen and (min-width:768px) {	 
-
+  
   .main-header .fullmenu .menu li {
     margin-left: 26px;
   }
@@ -12,7 +12,7 @@
   }
 }
 @media screen and (min-width:992px) {			
-
+  
 }
 @media screen and (min-width:1400px) {  
   .item-m6-l4-xxl3:not(:nth-child(-n+4)) {
@@ -26,7 +26,6 @@
   .map-search iframe {height: 100% !important}
 } 
 @media (max-width:1300px) {
-  .sec-plot-info li {min-height: 77px;}
   .sec-plot-info li span {font-size: 14px}
   .sec-plot-info li p {font-size: 24px}
   .home-banner .search-widget input {
@@ -42,7 +41,7 @@
 }
 
 @media screen and (max-width:1199px) {
-  .search-content {padding: 0;overflow: inherit;max-height: inherit;margin-left: 0}
+  .search-content {padding: 0;overflow: inherit;max-height: inherit;}
   .plot-banner > img {height: 360px;object-fit: cover;}
   .site-box .bottom-widget {padding: 0 10px}
   .site-box .bottom-widget h6 {font-size: 0.9rem;}
@@ -57,13 +56,9 @@
   .search-results > div [class*="col-"] {width: 33.333%}
   .map-search {padding: 0;height: 200px;}
 
-  .map-search iframe {
+.map-search iframe {
     height: 100%;
-  }
-  .alert ul {
-    margin: 0;
-    padding: 0;
-  }
+}
 }
 @media screen and (max-width:991px) {
   .banner-search .search-widget {margin-bottom: -97px}
@@ -71,14 +66,14 @@
   .banner-cont p {font-size: 18px}
   .banner-cont p img {width: 15px}
   .section-cities .container {max-width: 85%;}
-  .section-demand h2 {
-    margin-top: 3rem;
+   .section-demand h2 {
+      margin-top: 3rem;
   } 
   .sec-log-regi {padding:0 15px}
   .sec-log-regi .container {margin: 15px auto;}
   .p-30 {padding: 20px;}
   .display-info h4 {font-size: 16px}
-  .sec-plot-info li {padding: 10px 15px;margin: 10px 0;min-height: 54px}
+  .sec-plot-info li {padding: 10px 15px;margin: 10px 0}
   .sec-plot-info li p {font-size: 14px}
   .sec-plot-info li span {font-size: 13px}
   .sec-plot-info {margin: 0 0 40px}
@@ -93,23 +88,21 @@
   .list-plot-info {height: calc(100% - 30px);}
 }
 @media screen and (max-width:767px) {
-  .header-right p {font-size: 13px;}
   .search-title {margin-top: 30px}
   .sec-plot-info {
-    margin: 20px 0 40px;
-    padding: 20px;
+      margin: 20px 0 40px;
+      padding: 20px;
   }
   .sec-plot-info li {
-    min-height: inherit;
     padding: 10px 15px;
     margin: 5px;
     border: rgba(112, 112, 112, 0.2) 1px solid;
-  }
-  .plot-banner .banner-wrap {
+}
+.plot-banner .banner-wrap {
     padding-top: 80px;
-  }
-  .list-plot-info figure {width: 40px;height: 40px;min-width: 40px}
-  .list-plot-info figure img {width: auto;}
+}
+.list-plot-info figure {width: 40px;height: 40px;min-width: 40px}
+.list-plot-info figure img {width: auto;}
   .sec-plot-info li::before {display: none;}
   .plot-banner > img {height: 310px}
   .container, .container-sm {max-width: 620px;}
@@ -118,27 +111,9 @@
   .home-banner .search-widget {padding: 25px;}
   .home-banner .search-widget input {font-size: 14px}
   .display-info {margin: 0}
-  #mapCanvas,
-  .location-sec iframe {
-    height: 350px;
-  }
-
-
-  .alert ul li {
-    font-size: 14px;
-    line-height: 1.5;
-  }
   
 }
 @media screen and (max-width:575px) {
-  .header-right p span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 90px;
-    display: inline-block;
-    vertical-align: middle;
-  }
   .site-box,
   .site-box .img-elm img,
   .search-results > div [class*="col-"],
@@ -185,103 +160,69 @@
   body {font-size: 1rem}
   .sec-log-regi h1 {font-size: 24px}
   .home-banner > img {
-    min-height: 300px;
-    object-fit: cover;
+      min-height: 300px;
+      object-fit: cover;
   }
   .banner-search > img {min-height: 100px;}
   .header-right .btn {
-   padding: 10px 15px;
-   font-size: 14px;
- }
- .header-right .btn svg {
-  width: 15px;
-  height: 15px;
-  margin-right: 2px;
-}
-.logo {
-  display: block;
-  max-width: 130px;
-}
-.search-title {margin-top: 50px;}
-.section-cities .container {max-width: 80%}
-.city-items button.slick-next {right: -40px;}
-.city-items button.slick-prev {left: -40px}
-.city-items button {width: 30px;height: 26px}
-.main-header {padding: 10px 0}
-.home-banner .search-widget form {display: block;text-align: center;}
-.home-banner .search-widget .btn-search {margin-top: 10px}
-.home-banner .search-widget {padding: 15px}
-.main-footer .footer-bottom {font-size: 0.75rem}
-.home-banner .search-widget input {
-  font-size: 13px;
-  padding: 15px 5px 15px 30px;
-  background-position: left 9px center;
-  background-size: 15px auto;
-}
-.search-form {padding-bottom: 20px}
-.site-box h3 {
-  min-height: inherit;
-  display: block;
-  -webkit-line-clamp: inherit;
-  -webkit-box-orient: vertical;
-  overflow: inherit;
-}
-#mapCanvas,
-.location-sec iframe {
-  height: 300px;
-}
+     padding: 10px 15px;
+      font-size: 14px;
+  }
+  .header-right .btn svg {
+      width: 15px;
+      height: 15px;
+      margin-right: 2px;
+  }
+  .logo {
+      display: block;
+      max-width: 130px;
+  }
+  .search-title {margin-top: 50px;}
+  .section-cities .container {max-width: 80%}
+  .city-items button.slick-next {right: -40px;}
+  .city-items button.slick-prev {left: -40px}
+  .city-items button {width: 30px;height: 26px}
+  .main-header {padding: 10px 0}
+  .home-banner .search-widget form {display: block;text-align: center;}
+  .home-banner .search-widget .btn-search {margin-top: 10px}
+  .home-banner .search-widget {padding: 15px}
+  .main-footer .footer-bottom {font-size: 0.75rem}
+  .home-banner .search-widget input {
+    font-size: 13px;
+    padding: 15px 5px 15px 30px;
+    background-position: left 9px center;
+    background-size: 15px auto;
+  }
+  .search-form {padding-bottom: 20px}
 }
 @media (max-width:380px) {
   .header-right .btn.ms-3 {margin-left: 0.5rem !important;}
   .logo {max-width: 120px}
   .header-right .btn svg {
-    width: 13px;
-    height: 13px;
+      width: 13px;
+      height: 13px;
   }
   .header-right .btn {
-    padding: 6px 13px;
-    font-size: 13px;
+      padding: 6px 13px;
+      font-size: 13px;
   }
-  h1.sec-title, h2.sec-title {font-size: 1.1rem}
+  h1.sec-title, h2.sec-title {font-size: 1.3rem}
   .home-banner .search-widget input {
-    font-size: 11px;
-    padding-left: 30px;
+    font-size: 12px;
   }
-  .section-demand .mt-5 {
-    margin-top: 1.5rem!important;
-  }
-  .site-box h3 {
-    font-size: 0.9rem;
-  }
-  .site-box .bottom-widget h6 {
-    font-size: 0.8rem;
-  }
-  .btn-more {
-    font-size: 14px;
-    padding: 13px 20px;
-  }
-  .btn-more svg {width: 12px}
-  .profile-dropdown ul > li {font-size: 14px}
-
 }
 @media (max-width:350px) {
-  .home-banner .search-widget input {
-    font-size: 10px;
-    padding: 10px 10px 10px 30px;
-  }
   body {
     font-size: 0.93rem;
-  }
+}
   .home-banner h1 {font-size: 1.35rem}
   .header-right .btn {
     padding: 5px 11px;
     font-size: 11px;
   }
   .header-right .btn svg {
-    width: 10px;
-    height: 10px;
+      width: 10px;
+      height: 10px;
   }
   .list-plot-info li {flex-basis: 100%}
-  .header-right p {font-size: 10px}
-  button.profile-btn.dropdown-toggle {margin-left: 5px}
 }

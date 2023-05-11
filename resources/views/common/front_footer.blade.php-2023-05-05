@@ -3,7 +3,7 @@
     <div class="footer-bottom">
         <div class="container d-lg-flex d-sm-flex flex-wrap justify-content-lg-between justify-content-sm-between text-center">				
             <ul class="copyright-widget list-unstyled d-flex flex-wrap justify-content-center mb-0">
-                <li>© <span id="copyright"><script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script></span> Mantaray</li>
+                <li>© 2022 Mantaray</li>
                 
             </ul>
             <ul class="bottom-links list-unstyled mb-0 d-flex flex-wrap justify-content-center">
