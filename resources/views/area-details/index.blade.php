@@ -18,23 +18,25 @@
 		</div>
 	</div>
 	<!-- // END BANNER -->
-		<section class="plot-thumb-slider-sec sec-ptb">
-			<div class="container">
-				<div class="plot-thumb-slider">
-					<div>
-						<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
-					</div>
-					<div>
-						<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
-					</div>
-					@if($data['area_pic2'] != NULL)
+		@if($data['area_pic1'] != NULL)
+			<section class="plot-thumb-slider-sec sec-ptb">
+				<div class="container">
+					<div class="plot-thumb-slider">
 						<div>
 							<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
 						</div>
-					@endif
+						<div>
+							<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
+						</div>
+						@if($data['area_pic2'] != NULL)
+							<div>
+								<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic2'] }}" alt="Thumbnail">
+							</div>
+						@endif
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		@endif
 		<!-- plot thumbnail slider end -->
 
 		<section class="location-sec sec-pb">
