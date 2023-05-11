@@ -19,7 +19,7 @@
 	</div>
 	<!-- // END BANNER -->
 		@if($data['area_pic1'] != NULL)
-			<section class="plot-thumb-slider-sec sec-ptb">
+			<section class="plot-thumb-slider-sec sec-ptb" oncontextmenu="return false;">
 				<div class="container">
 					<div class="plot-thumb-slider">
 						<div>
