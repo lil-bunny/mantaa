@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- BANNER -->
-<div class="home-banner">
+<div class="home-banner" oncontextmenu="return false;">
     <img src="{{asset('front-assets/images/banner-img-2.jpg') }}"/>
     <div class="banner-wrap d-flex align-items-end">
         <h1 class="primary-color w-100">
