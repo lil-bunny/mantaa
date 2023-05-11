@@ -4,7 +4,7 @@
 
 <!-- BANNER -->
 <div class="home-banner">
-    <img src="{{asset('front-assets/images/banner-img.jpg') }}"/>
+    <img src="{{asset('front-assets/images/banner-img-2.jpg') }}"/>
     <div class="banner-wrap d-flex align-items-end">
         <h1 class="primary-color w-100">
             <div class="container">
