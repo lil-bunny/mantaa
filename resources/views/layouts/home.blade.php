@@ -16,10 +16,10 @@
         <link href="{{asset('front-assets/css/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('front-assets/css/style.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('front-assets/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+        <link rel="stylesheet" href="{{asset('front-assets/css/jquery-ui.min.css') }}" />
         
         <script src="{{asset('front-assets/js/jquery-3.3.1.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="{{asset('front-assets/js/jquery-ui.min.js') }}"></script>
     </head>
     <body>
         <!-- Topbar -->
