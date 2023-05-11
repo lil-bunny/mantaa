@@ -83,7 +83,7 @@
     </div>	
 </section>	
 <!-- // END CHOOSE CITIES -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
 <script type="text/javascript">
     var path = "{{ url('autocomplete-search') }}";
 
