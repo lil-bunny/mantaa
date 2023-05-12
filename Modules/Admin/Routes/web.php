@@ -95,6 +95,12 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
     Route::post('/connect_requests/connect_request_delete/{id}', 'ConnectRequestController@connect_request_delete')->name('admin.connect_request_delete');
     ########## CONNECT REQUESTS SECTIONS ENDS HERE #####################
 
+    ########## DOWNLOAD SECTIONS STARTS HERE #####################
+    Route::get('/downloads', 'DownloadController@index')->name('admin.download');
+    Route::get('/downloads/view/{id}', 'DownloadController@view')->name('admin.download_view');
+    Route::post('/downloads/download_delete/{id}', 'DownloadController@download_delete')->name('admin.download_delete');
+    ########## DOWNLOAD SECTIONS STARTS HERE #####################
+
     ########## CAMPAIGN SECTIONS STARTS HERE #####################
     Route::get('/campaign_search', 'CampaignController@index')->name('admin.campaign_search');
     Route::post('/review_campaign', 'CampaignController@review_campaign')->name('admin.review_campaign');
