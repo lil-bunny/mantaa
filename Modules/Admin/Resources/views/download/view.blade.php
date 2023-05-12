@@ -99,7 +99,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col m6 s12">
-                                                                <label for="Feedback">Created At</label><br>
+                                                                <label for="Feedback">Downloaded At</label><br>
                                                                 <p>{{ $download_data->created_at }}</p>
                                                             </div>
                                                         </div>
