@@ -498,7 +498,8 @@
 
                 var options = {
                     types: ['geocode'],
-                    componentRestrictions: {country: "in"}
+                    componentRestrictions: {country: "in"},
+                    streetViewControl: true,
                 };
                 // Create the search box and link it to the UI element.
                 const input = document.getElementById("autocomplete");

@@ -277,6 +277,7 @@ function initMap() {
 		center: { lat: markers[0][1], lng: markers[0][2] },
         mapTypeId: 'roadmap',
 		zoom: 2,
+		streetViewControl: true,
     };
                     
     // Display a map on the web page

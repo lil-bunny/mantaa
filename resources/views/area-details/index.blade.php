@@ -52,8 +52,8 @@
 			<div class="container">
 				<h2 class="sec-title">Location Map</h2>
 				<div class="row">
-					<div class="col-md-7">
-						<iframe src = "https://maps.google.com/maps?q={{ $data['lat'] }},{{ $data['lng'] }}&hl=es;streetViewControl=true;z=14&amp;output=embed" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<div class="col-md-7" id="map">
+						<!-- <iframe src = "https://maps.google.com/maps?q={{ $data['lat'] }},{{ $data['lng'] }}&hl=es;streetViewControl=true;z=14&amp;output=embed" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 					</div>
 					<div class="col-md-5">
 						<div class="display-info">
@@ -242,6 +242,63 @@
 @endif
 	
 <!-- // END CHOOSE CITIES -->
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initAutocomplete&libraries=places&v=weekly"
+defer
+></script>
+
+<script type="text/javascript">
+
+function initAutocomplete() {
+	const myLatLng = { lat: {{ $data['lat'] }}, lng: {{ $data['lng'] }} };
+
+	const map = new google.maps.Map(document.getElementById("map"), {
+		center: myLatLng,
+		zoom: 13,
+		mapTypeId: "roadmap",
+	});
+
+	var options = {
+		types: ['geocode'],
+		componentRestrictions: {country: "in"},
+		streetViewControl: true,
+	};
+	// Create the search box and link it to the UI element.
+	const input = document.getElementById("autocomplete");
+	const searchBox = new google.maps.places.SearchBox(input, options);
+
+	//map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	// Bias the SearchBox results towards current map's viewport.
+	map.addListener("bounds_changed", () => {
+		searchBox.setBounds(map.getBounds());
+	});
+
+	let markers = [];
+
+	// Add info window
+	const infowindow = new google.maps.InfoWindow({
+		content: "{{ $data['title'] }}"
+	});
+
+	// The marker, positioned at selected location
+	const marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		title: "{{ $data['title'] }}"
+	});
+
+	// Marker click event: open info window
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map, marker);
+	});
+
+	infowindow.open(map, marker);
+}
+
+window.initAutocomplete = initAutocomplete;
+
+</script>
 @endsection
 
 
