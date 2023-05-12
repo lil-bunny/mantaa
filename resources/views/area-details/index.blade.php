@@ -20,7 +20,7 @@
 	<!-- // END BANNER -->
 		@if($data['area_pic1'] != NULL)
 			<section class="plot-thumb-slider-sec sec-ptb" oncontextmenu="return false;">
-				<div class="container">
+				<div class="container position-relative">
 					<div class="dloadLink">
 						<form name="dloadForm" id="dloadForm" method="post" action="javascript:void(0)">
 							@csrf
