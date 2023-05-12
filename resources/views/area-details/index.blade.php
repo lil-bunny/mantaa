@@ -21,6 +21,15 @@
 		@if($data['area_pic1'] != NULL)
 			<section class="plot-thumb-slider-sec sec-ptb" oncontextmenu="return false;">
 				<div class="container">
+					<div class="dloadLink">
+						<form name="dloadForm" id="dloadForm" method="post" action="javascript:void(0)">
+							@csrf
+							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+							<input type="hidden" name="area_id" value="{{ $id }}">
+							<button type="submit" id="dloadSubmit" class="btn btn-warning">Download<svg id="right-circle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="Left_Arrow_5_" d="M6.5,12.5a.5.5,0,0,0,.354-.146l4-4a.5.5,0,0,0,0-.707l-4-4a.5.5,0,1,0-.707.707L9.793,8,6.147,11.646A.5.5,0,0,0,6.5,12.5ZM0,8a8,8,0,1,1,8,8A8.009,8.009,0,0,1,0,8ZM1,8A7,7,0,1,0,8,1,7.008,7.008,0,0,0,1,8Z" fill="#fff"></path></svg></button>
+						</form>
+					</div>
+
 					<div class="plot-thumb-slider">
 						<div>
 							<img class="w-100" src="{{ url('public/application_files/area_images') . '/'. $data['area_pic1'] }}" alt="Thumbnail">
@@ -44,7 +53,7 @@
 				<h2 class="sec-title">Location Map</h2>
 				<div class="row">
 					<div class="col-md-7">
-						<iframe src = "https://maps.google.com/maps?q={{ $data['lat'] }},{{ $data['lng'] }}&hl=es;z=14&amp;output=embed" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						<iframe src = "https://maps.google.com/maps?q={{ $data['lat'] }},{{ $data['lng'] }}&hl=es;streetViewControl=true;z=14&amp;output=embed" width="100%" height="553" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 					<div class="col-md-5">
 						<div class="display-info">

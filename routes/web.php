@@ -38,6 +38,8 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
 {
     ########## AREA DETAILS SECTIONS STARTS HERE #####################
     Route::get('/area-details/{id}', 'App\Http\Controllers\AreaDetailsController@index')->name('area-details');
+    Route::post('/connect-request', 'App\Http\Controllers\AreaDetailsController@connect_request')->name('frontend.connect_request');
+    Route::post('/dload-file', 'App\Http\Controllers\AreaDetailsController@dload_file')->name('frontend.dload_file');
     ########## AREA DETAILS ENDS HERE #####################
     
     ########## AREA DETAILS SECTIONS STARTS HERE #####################
@@ -48,7 +50,6 @@ Route::group(['middleware' => 'customerloggedinCheck'], function()
 ########## AREA SEARCH AND LISTING SECTIONS STARTS HERE #####################
 Route::get('/autocomplete-search', 'App\Http\Controllers\AreaDetailsController@autocompleteSearch')->name('frontend.autocompleteSearch');
 Route::get('/area-search', 'App\Http\Controllers\AreaDetailsController@areaSearch')->name('frontend.areaSearch');
-Route::post('/connect-request', 'App\Http\Controllers\AreaDetailsController@connect_request')->name('frontend.connect_request');
 ########## AREA SEARCH AND LISTING ENDS HERE #####################
 
 ########## FORGET PASSWORD SECTIONS STARTS HERE #####################

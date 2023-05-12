@@ -13,6 +13,7 @@ use App\Models\SiteMerit;
 use App\Models\ConnectRequest;
 use App\Models\Notification;
 use App\Models\User;
+use App\Models\Download;
 use Illuminate\Support\Facades\Http;
 use Session;
 use Validator;
@@ -266,5 +267,26 @@ class AreaDetailsController extends Controller
         }
  
         return response()->json(['status'=>'200']);
+    }
+
+    public function dload_file(Request $request)
+    {
+         
+        $validatedData = $request->validate([
+          'user_id' => 'required',
+          'area_id' => 'required'
+        ]);
+        
+        // saving download data
+        $save = new Download;
+        $save->user_id = $request->user_id;
+        $save->area_id = $request->area_id;
+        $save ->save();
+
+        // fetching area data
+        $area_data = Area::find($request->area_id);
+        $file_url = url('public/application_files/area_images').'/'.$area_data->area_pic1;
+
+        return response()->json(['status'=>'200', 'file_name' => $area_data->area_pic1, 'file_url' => $file_url]);
     }
 }
