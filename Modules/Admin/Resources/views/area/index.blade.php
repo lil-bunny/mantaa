@@ -38,6 +38,12 @@
                                 <div class="card-panel">
                                     <div class="row">
                                         <form method="GET">
+                                        <div class="col s12 m3 l3">
+                                                <label for="users-list-verified">ID</label>
+                                                <div class="input-field">
+                                                    <input type="text" name="area_id" class="form-control" id="users-list-verified" value="{{ $filters['area_id'] }}">
+                                                </div>
+                                            </div>
                                             <div class="col s12 m3 l3">
                                                 <label for="users-list-verified">Name</label>
                                                 <div class="input-field">

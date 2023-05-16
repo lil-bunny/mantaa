@@ -26,6 +26,7 @@ class AreaController extends Controller
     public function index(Request $request)
     {
         $filters = [
+            'area_id' => $request->query('area_id'),
             'area_name' => $request->query('area_name'),
             'status' => $request->query('status'),
         ];
@@ -34,6 +35,9 @@ class AreaController extends Controller
         $areas = Area::sortable()->where('areas.is_deleted', '=', 0);
         
         // checks if search filters are set
+        if($filters['area_id'] != '') {
+            $areas->where('areas.id', 'like', '%'.$filters['area_id'].'%');
+        }
         if($filters['area_name'] != '') {
             $areas->where('areas.title', 'like', '%'.$filters['area_name'].'%');
         }
