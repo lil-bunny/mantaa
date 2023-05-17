@@ -23,7 +23,7 @@ class LoggedInCheck
     {
         if(Auth::check()) {
             $user = Auth::user();
-
+            print_r($user);
             // checking user has the admin access or not
             $role_data = Role::find($user->role_id);
             if($role_data->admin_access != 1) {
