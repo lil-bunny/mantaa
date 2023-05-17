@@ -52,7 +52,7 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 display-flex justify-content-end mt-3">
-                                    <a href="{{route('admin.areas')}}" class="btn indigo">Back</a>
+                                    <a href="{{route('admin.area')}}" class="btn indigo">Back</a>
                                 </div>
                             </div>
                         </div>
