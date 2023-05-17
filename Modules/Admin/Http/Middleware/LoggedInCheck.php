@@ -23,7 +23,7 @@ class LoggedInCheck
     {
         if(Auth::check()) {
             $user = Auth::user();
-            echo "<pre>"; print_r($user);die;
+
             // checking user has the admin access or not
             $role_data = Role::find($user->role_id);
             if($role_data->admin_access != 1) {
@@ -39,8 +39,9 @@ class LoggedInCheck
                 if($notification->is_read == 0) {
                     $notification_count_unread++;
                 }
+                $notification['user_name'] = $user->full_name;
             }
-
+            echo "<pre>"; print_r($notification); die;
             View::share('menus_sidebar', $role_data->menus);
             View::share('notifications', $notifications);
             View::share('notification_count_unread', $notification_count_unread);
