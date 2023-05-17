@@ -39,9 +39,8 @@ class LoggedInCheck
                 if($notification->is_read == 0) {
                     $notification_count_unread++;
                 }
-                $notification['user_name'] = $user->full_name;
             }
-            echo "<pre>"; print_r($notification); die;
+
             View::share('menus_sidebar', $role_data->menus);
             View::share('notifications', $notifications);
             View::share('notification_count_unread', $notification_count_unread);
