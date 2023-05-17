@@ -160,6 +160,7 @@
                                                     </div>
 
                                                     <div class="col s12 m12">
+                                                        <label>Location Type</label>
                                                         <div class="row">
                                                             <div class="col s12">
                                                                 <select name="place_type">
@@ -167,7 +168,7 @@
                                                                         <option value="{{ $key }}">{{ $location_type }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Location Type</label>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -180,7 +181,7 @@
                                                                         <option value="{{ $key }}">{{ $priority_info }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Priority</label>
+                                                                <!-- <label>Priority</label> -->
                                                             </div>
                                                         </div>
                                                     </div>
