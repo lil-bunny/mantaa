@@ -82,7 +82,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="area_name" name="area_name" type="text" class="validate" value="" readonly>
+                                                                <input id="area_name" name="area_name" type="text" class="validate" value="">
                                                                 <label>Area Name</label>
                                                             </div>
                                                         </div>
@@ -90,7 +90,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="" readonly>
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
                                                                 <label>Pincode</label>
                                                             </div>
                                                         </div>
@@ -99,7 +99,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lat" name="lat" type="text" class="validate" value="" readonly>
+                                                                <input id="lat" name="lat" type="text" class="validate" value="">
                                                                 <label>Latitude</label>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lng" name="lng" type="text" class="validate" value="" readonly>
+                                                                <input id="lng" name="lng" type="text" class="validate" value="">
                                                                 <label>Longitude</label>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="city_name" name="city_name" type="text" class="validate" value="" readonly>
+                                                                <input id="city_name" name="city_name" type="text" class="validate" value="">
                                                                 <label>City</label>
                                                             </div>
                                                         </div>
@@ -124,7 +124,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="state_name" name="state_name" type="text" class="validate" value="" readonly>
+                                                                <input id="state_name" name="state_name" type="text" class="validate" value="">
                                                                 <label>State</label>
                                                             </div>
                                                         </div>
