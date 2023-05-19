@@ -208,7 +208,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="orientation">
+                                                                <select name="orientation" id="orientation">
                                                                     @foreach($orientations as $key => $orientation)
                                                                         <option value="{{ $key }}">{{ $orientation }}</option>
                                                                     @endforeach
@@ -495,6 +495,16 @@
 
 
         <script type="text/javascript">
+
+            $("#orientation").change(fucntion(){
+
+                if($(this).val() === "Digital")
+                {
+                   alert("hello"); 
+                }
+
+            });
+
 
             function initAutocomplete() {
                 const map = new google.maps.Map(document.getElementById("map"), {
