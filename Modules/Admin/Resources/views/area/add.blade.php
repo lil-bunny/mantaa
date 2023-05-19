@@ -676,7 +676,7 @@
             window.initAutocomplete = initAutocomplete;
         </script>
         <script type="text/javascript">
-        $("#orientation").click(fucntion(){
+        $("#orientation").click(fucntion() {
             alert("hello"); 
             if($(this).val() === "Digital")
             {
