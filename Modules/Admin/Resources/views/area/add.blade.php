@@ -681,8 +681,8 @@
             if(val === "Digital")
             {
                 alert("aa");
-                document.getElementById("ad_spot_per_second").removeAttributeNode("disabled");
-                document.getElementById("total_ad_spot_perday").removeAttributeNode("readonly");
+                document.getElementById("ad_spot_per_second").removeAttribute("disabled");
+                document.getElementById("total_ad_spot_perday").removeAttribute("readonly");
             }
         }
            
