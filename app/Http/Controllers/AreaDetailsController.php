@@ -236,7 +236,8 @@ class AreaDetailsController extends Controller
 
     public function connect_request(Request $request)
     {
-         
+        $user = Auth::user();
+
         $validatedData = $request->validate([
           'user_id' => 'required',
           'area_id' => 'required'
@@ -255,9 +256,10 @@ class AreaDetailsController extends Controller
         ->get();
 
         
+        
         foreach($super_admin_users as $super_admin_user) {
             $notifications = Notification::create([
-                'title' => 'A new connect request has been raised',
+                'title' => 'A new connect request has been raised by '.$user->full_name,
                 'route' => 'admin.connect_request_view',
                 'object_id' => $save->id,
                 'user_id' => $super_admin_user->id,

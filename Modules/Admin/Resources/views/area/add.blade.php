@@ -82,7 +82,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="area_name" name="area_name" type="text" class="validate" value="" readonly>
+                                                                <input id="area_name" name="area_name" type="text" class="validate" value="">
                                                                 <label>Area Name</label>
                                                             </div>
                                                         </div>
@@ -90,7 +90,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="" readonly>
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
                                                                 <label>Pincode</label>
                                                             </div>
                                                         </div>
@@ -99,7 +99,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lat" name="lat" type="text" class="validate" value="" readonly>
+                                                                <input id="lat" name="lat" type="text" class="validate" value="">
                                                                 <label>Latitude</label>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lng" name="lng" type="text" class="validate" value="" readonly>
+                                                                <input id="lng" name="lng" type="text" class="validate" value="">
                                                                 <label>Longitude</label>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="city_name" name="city_name" type="text" class="validate" value="" readonly>
+                                                                <input id="city_name" name="city_name" type="text" class="validate" value="">
                                                                 <label>City</label>
                                                             </div>
                                                         </div>
@@ -124,7 +124,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="state_name" name="state_name" type="text" class="validate" value="" readonly>
+                                                                <input id="state_name" name="state_name" type="text" class="validate" value="">
                                                                 <label>State</label>
                                                             </div>
                                                         </div>
@@ -160,6 +160,7 @@
                                                     </div>
 
                                                     <div class="col s12 m12">
+                                                        <label>Location Type</label>
                                                         <div class="row">
                                                             <div class="col s12">
                                                                 <select name="place_type">
@@ -167,7 +168,7 @@
                                                                         <option value="{{ $key }}">{{ $location_type }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Location Type</label>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -180,7 +181,7 @@
                                                                         <option value="{{ $key }}">{{ $priority_info }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Priority</label>
+                                                                <!-- <label>Priority</label> -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -207,7 +208,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="orientation">
+                                                                <select name="orientation" id="orientation" onchange="orientationChange(this.value)">
                                                                     @foreach($orientations as $key => $orientation)
                                                                         <option value="{{ $key }}">{{ $orientation }}</option>
                                                                     @endforeach
@@ -264,7 +265,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="ad_spot_per_second">
+                                                                <select name="ad_spot_per_second" id="ad_spot_per_second" disabled="true">
                                                                     @foreach($ad_spot_durations as $ad_spot_duration)
                                                                         <option value="{{ $ad_spot_duration }}">{{ $ad_spot_duration }}</option>
                                                                     @endforeach
@@ -277,7 +278,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="">
+                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="" readonly="readonly">
                                                                 <label>Total Ad spot per day</label>
                                                             </div>
                                                         </div>
@@ -492,8 +493,8 @@
         defer
         ></script>
 
+        <script type="text/javascript">           
 
-        <script type="text/javascript">
 
             function initAutocomplete() {
                 const map = new google.maps.Map(document.getElementById("map"), {
@@ -673,5 +674,16 @@
             }
 
             window.initAutocomplete = initAutocomplete;
+        </script>
+        <script type="text/javascript">
+        function orientationChange(val)
+        {
+            if(val === "Digital")
+            {
+                document.getElementById("ad_spot_per_second").setAttribute("disabled", "false");
+                document.getElementById("total_ad_spot_perday").setAttribute("readonly", "");
+            }
+        }
+           
         </script>
 @endsection
