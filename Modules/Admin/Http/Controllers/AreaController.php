@@ -315,8 +315,9 @@ class AreaController extends Controller
             // redirecting to the fetch poi section
             return redirect()->route('admin.fetch_poi', ['id' => $areas->id]);
         } else {
+            $test = 'test';
             $errors=$validator->errors();
-            return redirect()->route('admin.area_add')->with('errors',$errors);
+            return redirect()->route('admin.area_add')->with('errors',$errors)->with('requestInput',request()->all());
         }
 
         return redirect()->intended('admin/areas')->withSuccess('Area created successfully');

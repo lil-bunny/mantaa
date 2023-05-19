@@ -66,7 +66,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="site_location" name="site_location" type="text" class="validate" value="">
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="{{ Session::get('test.site_location') }}">
                                                                 <label>Location Name</label>
                                                             </div>
                                                         </div>
