@@ -208,7 +208,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="orientation" id="orientation">
+                                                                <select name="orientation" id="orientation" onchange="orientationChange(this.value)">
                                                                     @foreach($orientations as $key => $orientation)
                                                                         <option value="{{ $key }}">{{ $orientation }}</option>
                                                                     @endforeach
@@ -265,7 +265,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="ad_spot_per_second" readonly>
+                                                                <select name="ad_spot_per_second" id="ad_spot_per_second" disabled="true">
                                                                     @foreach($ad_spot_durations as $ad_spot_duration)
                                                                         <option value="{{ $ad_spot_duration }}">{{ $ad_spot_duration }}</option>
                                                                     @endforeach
@@ -278,7 +278,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="" readonly>
+                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="" readonly="readonly">
                                                                 <label>Total Ad spot per day</label>
                                                             </div>
                                                         </div>
@@ -676,13 +676,14 @@
             window.initAutocomplete = initAutocomplete;
         </script>
         <script type="text/javascript">
-        jQuery("#orientation").click(function() {
-            alert("hello"); 
-            if(jQuery(this).val() === "Digital")
+        function orientationChange(val)
+        {
+            if(val === "Digital")
             {
-               alert("hello"); 
+                document.getElementById("ad_spot_per_second").setAttribute("disabled", "false");
+                document.getElementById("total_ad_spot_perday").setAttribute("readonly", "");
             }
-
-        });
+        }
+           
         </script>
 @endsection
