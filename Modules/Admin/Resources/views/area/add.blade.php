@@ -680,6 +680,7 @@
         {
             if(val === "Digital")
             {
+                alert("aa");
                 document.getElementById("ad_spot_per_second").setAttribute("disabled", "false");
                 document.getElementById("total_ad_spot_perday").setAttribute("readonly", "");
             }
