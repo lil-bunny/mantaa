@@ -676,13 +676,13 @@
             window.initAutocomplete = initAutocomplete;
         </script>
         <script type="text/javascript">
-        $("#orientation").change(fucntion(){
+        $("#orientation").click(fucntion(){
+            alert("hello"); 
+            if($(this).val() === "Digital")
+            {
+               alert("hello"); 
+            }
 
-                if($(this).val() === "Digital")
-                {
-                   alert("hello"); 
-                }
-
-            });
+        });
         </script>
 @endsection
