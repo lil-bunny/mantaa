@@ -265,7 +265,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="ad_spot_per_second">
+                                                                <select name="ad_spot_per_second" readonly>
                                                                     @foreach($ad_spot_durations as $ad_spot_duration)
                                                                         <option value="{{ $ad_spot_duration }}">{{ $ad_spot_duration }}</option>
                                                                     @endforeach
@@ -278,7 +278,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="">
+                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="" readonly>
                                                                 <label>Total Ad spot per day</label>
                                                             </div>
                                                         </div>
