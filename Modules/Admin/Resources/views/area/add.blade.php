@@ -208,7 +208,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <select name="orientation" id="orientation">
+                                                                <select name="orientation" onchange="orientionChange(this.value)">
                                                                     @foreach($orientations as $key => $orientation)
                                                                         <option value="{{ $key }}">{{ $orientation }}</option>
                                                                     @endforeach
@@ -676,13 +676,10 @@
             window.initAutocomplete = initAutocomplete;
         </script>
         <script type="text/javascript">
-        $("#orientation").click(function() {
-            alert("hello"); 
-            if($(this).val() === "Digital")
-            {
-               alert("hello"); 
-            }
+        function orientionChange(val) {
+            alert(val); 
+            
 
-        });
+        }
         </script>
 @endsection
