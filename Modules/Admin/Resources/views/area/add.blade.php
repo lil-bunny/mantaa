@@ -493,17 +493,7 @@
         defer
         ></script>
 
-
-        <script type="text/javascript">
-
-            $("#orientation").change(fucntion(){
-
-                if($(this).val() === "Digital")
-                {
-                   alert("hello"); 
-                }
-
-            });
+        <script type="text/javascript">           
 
 
             function initAutocomplete() {
@@ -684,5 +674,15 @@
             }
 
             window.initAutocomplete = initAutocomplete;
+        </script>
+        <script type="text/javascript">
+        $("#orientation").change(fucntion(){
+
+                if($(this).val() === "Digital")
+                {
+                   alert("hello"); 
+                }
+
+            });
         </script>
 @endsection
