@@ -4,8 +4,8 @@
 @section('content') 
 
 <!-- BANNER -->
-	<div class="home-banner plot-banner">
-		<img src="../public/front-assets/images/plot-banner-photo.jpg"/>
+	<div class="banner inner-banner plot-banner">
+		<!-- <img src="../public/front-assets/images/plot-banner-photo.jpg"/> -->
 		<div class="banner-wrap d-flex align-items-center sec-pt">
 			<div class="container">
 				<h1 class="primary-color w-100">{{ $data['title'] }}</h1>

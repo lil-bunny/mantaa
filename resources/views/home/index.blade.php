@@ -3,10 +3,10 @@
 @section('content')
 
 <!-- BANNER -->
-<div class="home-banner" oncontextmenu="return false;">
+<div class="banner home-banner" oncontextmenu="return false;">
     <img src="{{asset('front-assets/images/banner-img-2.jpg') }}"/>
     <div class="banner-wrap d-flex align-items-end">
-        <h1 class="primary-color w-100">
+        <h1 class="white-color w-100">
             <div class="container">
                 <div class="col-xxl-7 col-lg-6 col-md-6 px-0">The best place to explore your desired Out-Of-Home Advertising Formats</div>
             </div>

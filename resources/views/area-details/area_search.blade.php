@@ -9,8 +9,8 @@
 	}
 </style>
 <!-- BANNER -->
-<div class="home-banner banner-search">
-	<img src="{{asset('front-assets/images/search-page-banner.jpg') }}" alt="Banner" />
+<div class="banner inner-banner banner-search">
+	<!-- <img src="{{asset('front-assets/images/search-page-banner.jpg') }}" alt="Banner" /> -->
 	<div class="banner-wrap d-flex align-items-end">
 			
 		<div class="container">
