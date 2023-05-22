@@ -66,7 +66,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="site_location" name="site_location" type="text" class="validate" value="{{ Session::get('test.site_location') }}">
+                                                                <input id="site_location" name="site_location" type="text" class="validate" value="{{ Session::get('requestInput.site_location') }}">
                                                                 <label>Location Name</label>
                                                             </div>
                                                         </div>
@@ -74,7 +74,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="road_name" name="road_name" type="text" class="validate" value="">
+                                                                <input id="road_name" name="road_name" type="text" class="validate" value="{{ Session::get('requestInput.road_name') }}">
                                                                 <label>Road Name</label>
                                                             </div>
                                                         </div>
@@ -82,7 +82,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="area_name" name="area_name" type="text" class="validate" value="">
+                                                                <input id="area_name" name="area_name" type="text" class="validate" value="{{ Session::get('requestInput.area_name') }}">
                                                                 <label>Area Name</label>
                                                             </div>
                                                         </div>
@@ -90,7 +90,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="">
+                                                                <input id="pin_code" name="pin_code" type="text" class="validate" value="{{ Session::get('requestInput.pin_code') }}">
                                                                 <label>Pincode</label>
                                                             </div>
                                                         </div>
@@ -99,7 +99,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lat" name="lat" type="text" class="validate" value="">
+                                                                <input id="lat" name="lat" type="text" class="validate" value="{{ Session::get('requestInput.lat') }}">
                                                                 <label>Latitude</label>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="lng" name="lng" type="text" class="validate" value="">
+                                                                <input id="lng" name="lng" type="text" class="validate" value="{{ Session::get('requestInput.lng') }}">
                                                                 <label>Longitude</label>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="city_name" name="city_name" type="text" class="validate" value="">
+                                                                <input id="city_name" name="city_name" type="text" class="validate" value="{{ Session::get('requestInput.city_name') }}">
                                                                 <label>City</label>
                                                             </div>
                                                         </div>
@@ -124,7 +124,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                <input id="state_name" name="state_name" type="text" class="validate" value="">
+                                                                <input id="state_name" name="state_name" type="text" class="validate" value="{{ Session::get('requestInput.state_name') }}">
                                                                 <label>State</label>
                                                             </div>
                                                         </div>
@@ -137,7 +137,7 @@
                                                             <div class="col s12">
                                                                 <select name="city_tag">
                                                                     @foreach($city_tags as $key => $city_tag)
-                                                                        <option value="{{ $key }}">{{ $city_tag }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.city_tag')==$key ? 'selected' : ''}}>{{ $city_tag }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label>City Tags</label>
@@ -153,7 +153,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                            <input id="face_traffic_from" name="face_traffic_from" type="text" class="validate" value="">
+                                                            <input id="face_traffic_from" name="face_traffic_from" type="text" class="validate" value="{{ Session::get('requestInput.face_traffic_from') }}">
                                                                 <label>FTF (Facing Traffic From)</label>
                                                             </div>
                                                         </div>
@@ -165,7 +165,7 @@
                                                             <div class="col s12">
                                                                 <select name="place_type">
                                                                     @foreach($location_types as $key => $location_type)
-                                                                        <option value="{{ $key }}">{{ $location_type }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.place_type')==$key ? 'selected' : ''}}>{{ $location_type }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 
@@ -178,7 +178,7 @@
                                                             <div class="col s12">
                                                                 <select name="priority">
                                                                     @foreach($priority as $key => $priority_info)
-                                                                        <option value="{{ $key }}">{{ $priority_info }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.priority')==$key ? 'selected' : ''}}>{{ $priority_info }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <!-- <label>Priority</label> -->
@@ -198,7 +198,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="media_formats">
                                                                     @foreach($media_formats as $key => $media_format)
-                                                                        <option value="{{ $key }}">{{ $media_format }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.media_formats')==$key ? 'selected' : ''}}>{{ $media_format }}</option>
                                                                     @endforeach 
                                                                 </select>
                                                                 <label>Media Formats</label>
@@ -210,7 +210,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="orientation" id="orientation" onchange="orientationChange(this.value)">
                                                                     @foreach($orientations as $key => $orientation)
-                                                                        <option value="{{ $key }}">{{ $orientation }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.orientation')==$key ? 'selected' : ''}}>{{ $orientation }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label>Orientation</label>
@@ -223,7 +223,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="media_tags">
                                                                     @foreach($media_tags as $key => $media_tag)
-                                                                        <option value="{{ $key }}">{{ $media_tag }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.media_tags')==$key ? 'selected' : ''}}>{{ $media_tag }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label>Media Tags</label>
@@ -235,7 +235,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="width" name="width" type="text" class="validate" value="">
+                                                                <input id="width" name="width" type="text" class="validate" value="{{ Session::get('requestInput.width') }}">
                                                                 <label>Width</label>
                                                             </div>
                                                         </div>
@@ -244,7 +244,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="height" name="height" type="text" class="validate" value="">
+                                                                <input id="height" name="height" type="text" class="validate" value="{{ Session::get('requestInput.height') }}">
                                                                 <label>Height</label>
                                                             </div>
                                                         </div>
@@ -255,7 +255,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="illumination">
                                                                     @foreach($illuminations as $key => $illumination)
-                                                                        <option value="{{ $key }}">{{ $illumination }}</option>
+                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.illumination')==$key ? 'selected' : ''}}>{{ $illumination }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label>Illuminations</label>
@@ -267,7 +267,7 @@
                                                             <div class="col s12 input-field">
                                                                 <select name="ad_spot_per_second" id="ad_spot_per_second" disabled="true">
                                                                     @foreach($ad_spot_durations as $ad_spot_duration)
-                                                                        <option value="{{ $ad_spot_duration }}">{{ $ad_spot_duration }}</option>
+                                                                        <option value="{{ $ad_spot_duration }}" {{ Session::get('requestInput.ad_spot_per_second')==$ad_spot_duration ? 'selected' : ''}}>{{ $ad_spot_duration }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label>Ad Spot (Duration in seconds)</label>
@@ -278,7 +278,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="" readonly="readonly">
+                                                                <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" readonly="readonly" value="{{ Session::get('requestInput.total_ad_spot_perday') }}">
                                                                 <label>Total Ad spot per day</label>
                                                             </div>
                                                         </div>
@@ -286,7 +286,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="total_advertiser" name="total_advertiser" type="text" class="validate" value="">
+                                                                <input id="total_advertiser" name="total_advertiser" type="text" class="validate" value="{{ Session::get('requestInput.total_advertiser') }}">
                                                                 <label>Total Advertisers</label>
                                                             </div>
                                                         </div>
@@ -301,7 +301,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="display_charge_pm" name="display_charge_pm" type="text" class="validate" value="">
+                                                                <input id="display_charge_pm" name="display_charge_pm" type="text" class="validate" value="{{ Session::get('requestInput.display_charge_pm') }}">
                                                                 <label>Display Charges PM</label>
                                                             </div>
                                                         </div>
@@ -309,7 +309,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="production_cost" name="production_cost" type="text" class="validate" value="">
+                                                                <input id="production_cost" name="production_cost" type="text" class="validate" value="{{ Session::get('requestInput.production_cost') }}">
                                                                 <label>Production Cost</label>
                                                             </div>
                                                         </div>
@@ -318,7 +318,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="installation_cost" name="installation_cost" type="text" class="validate" value="">
+                                                                <input id="installation_cost" name="installation_cost" type="text" class="validate" value="{{ Session::get('requestInput.installation_cost') }}">
                                                                 <label>Installation Cost</label>
                                                             </div>
                                                         </div>
@@ -326,7 +326,7 @@
                                                     <div class="col s12 m6">
                                                         <div class="row">
                                                             <div class="col s12 input-field">
-                                                                <input id="media_partner_name" name="media_partner_name" type="text" class="validate" value="">
+                                                                <input id="media_partner_name" name="media_partner_name" type="text" class="validate" value="{{ Session::get('requestInput.media_partner_name') }}">
                                                                 <label>Media Partner Name</label>
                                                             </div>
                                                         </div>
@@ -369,80 +369,6 @@
                                                 <!-- Area Picture and Video Details Ends Here -->
 
 
-                                                <!-- Nearby Details Starts Here -->
-                                                <!-- <div class="row">
-                                                    <h4>Nearby Places</h4>
-
-                                                    <div class="col s12 input-field">
-                                                        <fieldset class="main-cechbox-holder">
-                                                            <legend>Choose Option (Any 6):</legend>
-                                                            <div class="main-cechbox">
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Airport">
-                                                                    <label for="scales">Airport</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Hospital">
-                                                                    <label for="scales">Hospital</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="School">
-                                                                    <label for="scales">School</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="College">
-                                                                    <label for="scales">College</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="University">
-                                                                    <label for="scales">University</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Mall">
-                                                                    <label for="scales">Mall</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Multiplexes">
-                                                                    <label for="scales">Multiplexes</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Metro Station">
-                                                                    <label for="scales">Metro Station</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Train Station">
-                                                                    <label for="scales">Train Station</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Bus Stop">
-                                                                    <label for="scales">Bus Stop</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Bus Depot">
-                                                                    <label for="scales">Bus Depot</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Taxi Stand">
-                                                                    <label for="scales">Taxi Stand</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Auto Stand">
-                                                                    <label for="scales">Auto Stand</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Police Station">
-                                                                    <label for="scales">Police Station</label>
-                                                                </div>
-                                                                <div class="sub-cechbox">
-                                                                    <input type="checkbox" name="nearby_places[]" value="Charging Station">
-                                                                    <label for="scales">Charging Station</label>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                </div> -->
-                                                <!-- Nearby Details Ends Here -->
-
                                                 <!-- Site Merits Starts Here -->
                                                 <div class="row">
                                                     <h4>Site Merits</h4>
@@ -453,7 +379,7 @@
                                                                 <div class="col s12 input-field">
                                                                     <select name="site_merit_{{ $site_merit->id }}">
                                                                         @foreach($site_merit->site_merit_values as $site_merit_value)
-                                                                            <option value="{{ $site_merit_value->id }}">{{ $site_merit_value->title }}</option>
+                                                                            <option value="{{ $site_merit_value->id }}" {{ Session::get('requestInput.ad_spot_per_second')==$site_merit_value->id ? 'selected' : ''}}>{{ $site_merit_value->title }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                     <label>{{ $site_merit->title }}</label>
