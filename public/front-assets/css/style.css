@@ -451,7 +451,7 @@ h2.sec-title {
   top:0;
   z-index: 999;
   transition: var(--primary-transition);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .main-header.fixed {background-color: rgba(255, 255, 255, 0.9);}
 .main-header.banner-left {
@@ -459,21 +459,36 @@ h2.sec-title {
 }
 
 /* BANNER */
-.home-banner {
+.banner {
   position: relative;
 /*  height: calc(100vh - 77px);*/
 z-index: 1;
+/* background-color: var(--dark-color); */
 }
-.home-banner h1 {
+.home-banner::before {
+  content: '';
+  position: absolute;
+  background-color: var(--dark-color);
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 96px);
+  opacity: 0.6;
+}
+/* .banner > img {
+  opacity: 0.5;
+} */
+.banner h1 {
   position: absolute;
   z-index: 3;
   top: 50%;
   transform: translateY(-50%);
 }
-.home-banner h1 {
+.banner h1 {
   font-size: clamp(1.5rem,3vw,3.125rem);  
 }
-.home-banner > img {
+.banner > img {
 /*  position: absolute;*/
 width: 100%;
 /*  height: 100%;
@@ -486,7 +501,7 @@ width: 100%;
 .plot-banner .banner-wrap {
   padding-top: 120px;
 }
-.home-banner::before {
+.banner::before {
 /*  content: '';
   position: absolute;
   width: 100%;
@@ -497,18 +512,18 @@ width: 100%;
   background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
   opacity: 0.35;*/
 }
-.home-banner .search-widget {
+.banner .search-widget {
   background-color: var(--white-color);
   border-bottom: 4px solid var(--secondary-color);
   padding: 41px 66px;
   margin-bottom: -77px;
   box-shadow: 0 29px 90px rgb(0 0 0 / 11%);
 }
-.home-banner .search-widget form {
+.banner .search-widget form {
   position: relative;
   display: flex;
 }
-.home-banner .search-widget input {
+.banner .search-widget input {
   background: var(--light-grey-color) url("../images/search-icon.svg") no-repeat left 24px center;
   padding: 26px 15px 26px 65px;
   border-radius: 5px 0 0 5px;
@@ -517,14 +532,17 @@ width: 100%;
   font-size: 16px;
   line-height: normal;
 }
-.home-banner .search-widget input:focus {
+.banner .search-widget input:focus {
   outline: 0 none;
 }
-.home-banner .search-widget .btn-search {
+.banner .search-widget .btn-search {
   padding: 13px 60px;
   font-size: 20px;
   line-height: normal;
   font-weight: normal;
+}
+.inner-banner {
+  background-color: #cae9fd;
 }
 /* SITE BOX */
 .site-box {

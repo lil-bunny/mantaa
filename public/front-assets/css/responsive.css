@@ -14,6 +14,10 @@
 @media screen and (min-width:992px) {			
 
 }
+@media screen and (min-width:1200px) {			
+  .inner-banner {min-height: 240px;}
+  .inner-banner.plot-banner {min-height: 400px;}
+}
 @media screen and (min-width:1400px) {  
   .item-m6-l4-xxl3:not(:nth-child(-n+4)) {
     margin-top: 30px;
@@ -29,21 +33,22 @@
   .sec-plot-info li {min-height: 77px;}
   .sec-plot-info li span {font-size: 14px}
   .sec-plot-info li p {font-size: 24px}
-  .home-banner .search-widget input {
+  .banner .search-widget input {
     padding: 20px 15px 20px 52px;
     background-position: left 20px center;
     background-size: 18px auto;
   }
-  .home-banner .search-widget .btn-search {
+  .banner .search-widget .btn-search {
     padding: 12px 40px;
     font-size: 16px;
   }
-  .home-banner .search-widget {padding: 35px 45px}
+  .banner .search-widget {padding: 35px 45px}
 }
 
 @media screen and (max-width:1199px) {
   .search-content {padding: 0;overflow: inherit;max-height: inherit;margin-left: 0}
-  .plot-banner > img {height: 360px;object-fit: cover;}
+  .inner-banner.plot-banner {min-height: 360px;}
+  .inner-banner {min-height: 200px;}
   .site-box .bottom-widget {padding: 0 10px}
   .site-box .bottom-widget h6 {font-size: 0.9rem;}
   .site-box .bottom-widget h5 {font-size: 0.92rem;}
@@ -94,6 +99,7 @@
 }
 @media screen and (max-width:767px) {
   .header-right p {font-size: 13px;}
+  .inner-banner {min-height: 160px;}
   .search-title {margin-top: 30px}
   .sec-plot-info {
     margin: 20px 0 40px;
@@ -115,8 +121,8 @@
   .container, .container-sm {max-width: 620px;}
   .col-xs-cs-6 {width: 50%;}
   .section-cities .container {max-width: 83%}
-  .home-banner .search-widget {padding: 25px;}
-  .home-banner .search-widget input {font-size: 14px}
+  .banner .search-widget {padding: 25px;}
+  .banner .search-widget input {font-size: 14px}
   .display-info {margin: 0}
   #mapCanvas,
   .location-sec iframe {
@@ -146,6 +152,7 @@
   
 }
 @media (max-width:479px) {
+  .inner-banner {min-height: 120px;}
   .dloadLink {
     right: 25px;
     top: 12px;
@@ -196,7 +203,7 @@
   .w-100-xs {width: 100%}
   body {font-size: 1rem}
   .sec-log-regi h1 {font-size: 24px}
-  .home-banner > img {
+  .banner > img {
     min-height: 300px;
     object-fit: cover;
   }
@@ -220,11 +227,11 @@
 .city-items button.slick-prev {left: -40px}
 .city-items button {width: 30px;height: 26px}
 .main-header {padding: 10px 0}
-.home-banner .search-widget form {display: block;text-align: center;}
-.home-banner .search-widget .btn-search {margin-top: 10px}
-.home-banner .search-widget {padding: 15px}
+.banner .search-widget form {display: block;text-align: center;}
+.banner .search-widget .btn-search {margin-top: 10px}
+.banner .search-widget {padding: 15px}
 .main-footer .footer-bottom {font-size: 0.75rem}
-.home-banner .search-widget input {
+.banner .search-widget input {
   font-size: 13px;
   padding: 15px 5px 15px 30px;
   background-position: left 9px center;
@@ -242,6 +249,9 @@
 .location-sec iframe {
   height: 300px;
 }
+.home-banner::before {
+  height: calc(100% - 61px);
+}
 }
 @media (max-width:380px) {
   .header-right .btn.ms-3 {margin-left: 0.5rem !important;}
@@ -255,7 +265,7 @@
     font-size: 13px;
   }
   h1.sec-title, h2.sec-title {font-size: 1.1rem}
-  .home-banner .search-widget input {
+  .banner .search-widget input {
     font-size: 11px;
     padding-left: 30px;
   }
@@ -274,17 +284,19 @@
   }
   .btn-more svg {width: 12px}
   .profile-dropdown ul > li {font-size: 14px}
-
+  .home-banner::before {
+    height: calc(100% - 51px);
+  }
 }
 @media (max-width:350px) {
-  .home-banner .search-widget input {
+  .banner .search-widget input {
     font-size: 10px;
     padding: 10px 10px 10px 30px;
   }
   body {
     font-size: 0.93rem;
   }
-  .home-banner h1 {font-size: 1.35rem}
+  .banner h1 {font-size: 1.35rem}
   .header-right .btn {
     padding: 5px 11px;
     font-size: 11px;

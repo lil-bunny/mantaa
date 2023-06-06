@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Mantaray') }}</title>
-
-        <link rel="apple-touch-icon" href="{{ asset('images/favicon/apple-touch-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('front-assets/images/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('front-assets/images/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('front-assets/images/favicon-16x16.png') }}">
         <link rel="stylesheet" href="{{asset('front-assets/font-awesome/css/font-awesome.min.css') }}" type="text/css"/>
         <link href="{{asset('front-assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('front-asset/css/animations.css') }}" rel="stylesheet" type="text/css"/>
