@@ -31,7 +31,6 @@
                 </ul>
                 <!-- profile-dropdown-->
                 <ul class="dropdown-content" id="profile-dropdown">
-                    <li><a class="grey-text text-darken-1" href="javascript:void(0)"><i class="material-icons">person_outline</i> Profile</a></li>
                     <li><a class="grey-text text-darken-1" href="{{ route('admin.logout') }}"><i class="material-icons">keyboard_tab</i> Logout</a></li>
                 </ul>
             </div>

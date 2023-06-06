@@ -2,7 +2,7 @@
 <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square" id="sidebar">
     <!-- BEGIN: SideNav-->
     <div class="brand-sidebar">
-        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ route('admin.dashboard') }}"><span class="logo-text hide-on-med-and-down">Mantaray Admin</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_unchecked</i></a></h1>
+        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ route('admin.dashboard') }}"><img src="{{asset('front-assets/images/mantaray-logo.png') }}" alt="Mantaray"></a></h1>
     </div>
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold"><a class="waves-effect waves-cyan" href="{{ route('admin.dashboard') }}"><i class="material-icons">settings_input_svideo</i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
