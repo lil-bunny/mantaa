@@ -187,7 +187,7 @@ class AreaController extends Controller
 
             // finding city name and if not found then create city
             $states = State::where('is_deleted', '=', 0)
-                            ->where('name', 'like', '%'.$request->input('state_name').'%')
+                            ->where('name', '=', $request->input('state_name'))
                             ->where('status', '=', 1)->get();
             if($states->count()) {
                 foreach($states as $state) {
@@ -204,7 +204,7 @@ class AreaController extends Controller
             
             // finding city name and if not found then create city
             $cities = City::where('is_deleted', '=', 0)
-                            ->where('name', 'like', '%'.$request->input('city_name').'%')
+                            ->where('name', '=', $request->input('city_name'))
                             ->where('status', '=', 1)->get();
             if($cities->count()) {
                 foreach($cities as $city) {
@@ -548,7 +548,7 @@ class AreaController extends Controller
         if ($validator->passes()) {
             // finding city name and if not found then create city
             $states = State::where('is_deleted', '=', 0)
-                            ->where('name', 'like', '%'.$request->input('state_name').'%')
+                            ->where('name', '=', $request->input('state_name'))
                             ->where('status', '=', 1)->get();
             if($states->count()) {
                 foreach($states as $state) {
@@ -565,7 +565,7 @@ class AreaController extends Controller
             
             // finding city name and if not found then create city
             $cities = City::where('is_deleted', '=', 0)
-                            ->where('name', 'like', '%'.$request->input('city_name').'%')
+                            ->where('name', '=', $request->input('city_name'))
                             ->where('status', '=', 1)->get();
             if($cities->count()) {
                 foreach($cities as $city) {

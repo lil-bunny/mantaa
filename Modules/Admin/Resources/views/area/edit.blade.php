@@ -158,7 +158,7 @@
                                                                         <option value="{{ $key }}" {{ $area_data->place_type==$location_type ? 'selected' : ''}}>{{ $location_type }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Location Type</label>
+                                                                <label>Site Tag</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -171,7 +171,7 @@
                                                                         <option value="{{ $key }}" {{ $area_data->priority==$priority_info ? 'selected' : ''}}>{{ $priority_info }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                <label>Priority</label>
+                                                                <label>City Priority</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,7 +185,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="media_formats">
                                                                     @foreach($media_formats as $key => $media_format)
                                                                         <option value="{{ $key }}" {{ $area_data->media_formats==$media_format ? 'selected' : ''}}>{{ $media_format }}</option>
@@ -197,7 +197,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="orientation">
                                                                     @foreach($orientations as $key => $orientation)
                                                                         <option value="{{ $key }}" {{ $area_data->orientation==$orientation ? 'selected' : ''}}>{{ $orientation }}</option>
@@ -210,7 +210,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="media_tags">
                                                                     @foreach($media_tags as $key => $media_tag)
                                                                         <option value="{{ $key }}" {{ $area_data->media_tags==$media_tag ? 'selected' : ''}}>{{ $media_tag }}</option>
@@ -224,7 +224,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="width" name="width" type="text" class="validate" value="{{ $area_data->width }}">
                                                                 <label>Width</label>
                                                             </div>
@@ -232,7 +232,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="height" name="height" type="text" class="validate" value="{{ $area_data->height }}">
                                                                 <label>Height</label>
                                                             </div>
@@ -241,7 +241,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="illumination">
                                                                     @foreach($illuminations as $key => $illumination)
                                                                         <option value="{{ $key }}" {{ $area_data->illumination==$illumination ? 'selected' : ''}}>{{ $illumination }}</option>
@@ -253,7 +253,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="ad_spot_per_second">
                                                                     @foreach($ad_spot_durations as $ad_spot_duration)
                                                                         <option value="{{ $ad_spot_duration }}" {{ $area_data->ad_spot_per_second==$ad_spot_duration ? 'selected' : ''}}>{{ $ad_spot_duration }}</option>
@@ -266,7 +266,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="total_ad_spot_perday" name="total_ad_spot_perday" type="text" class="validate" value="{{ $area_data->total_ad_spot_perday }}">
                                                                 <label>Total Ad spot per day</label>
                                                             </div>
@@ -274,7 +274,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="total_advertiser" name="total_advertiser" type="text" class="validate" value="{{ $area_data->total_advertiser }}">
                                                                 <label>Total Advertisers</label>
                                                             </div>
@@ -289,7 +289,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="display_charge_pm" name="display_charge_pm" type="text" class="validate" value="{{ $area_data->display_charge_pm }}">
                                                                 <label>Display Charges PM</label>
                                                             </div>
@@ -297,7 +297,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="production_cost" name="production_cost" type="text" class="validate" value="{{ $area_data->production_cost }}">
                                                                 <label>Production Cost</label>
                                                             </div>
@@ -306,7 +306,7 @@
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="installation_cost" name="installation_cost" type="text" class="validate" value="{{ $area_data->installation_cost }}">
                                                                 <label>Installation Cost</label>
                                                             </div>
@@ -314,7 +314,7 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="media_partner_name" name="media_partner_name" type="text" class="validate" value="{{ $area_data->media_partner_name }}">
                                                                 <label>Media Partner Name</label>
                                                             </div>
@@ -329,9 +329,9 @@
 
                                                     <div class="col s12 m12">
                                                         <div class="row area-image">
-                                                            <div class="col m6 s12 input-field">
-                                                                <label for="upload_image">Area Picture1</label><br>
-                                                                <input type="file" class="mt-4" name="area_pic1" />
+                                                            <div class="col m6 s12">
+                                                                <input type="file" class="mt-4" name="area_pic1" /><br>
+                                                                <label for="upload_image">Area Picture1</label>
                                                             </div>
                                                             <img 
                                                                 onclick="imageModal(this);"
@@ -345,30 +345,29 @@
 
                                                     <div class="col s12 m12">
                                                         <div class="row area-image">
-                                                            <div class="col m6 s12 input-field">
-                                                                <label for="upload_image">Area Picture2</label><br>
-                                                                <input type="file" class="mt-4" name="area_pic2" />
-                                                                @if ($area_data->area_pic2)
-                                                                <img 
-                                                                    onclick="imageModal(this);"
-                                                                    src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic2 }}" 
-                                                                    alt="" 
-                                                                    id="areaImage2" 
-                                                                    height="100" 
-                                                                    width="100">
-                                                                @endif
+                                                            <div class="col m6 s12">
+                                                                <input type="file" class="mt-4" name="area_pic2" /><br>
+                                                                <label for="upload_image">Area Picture2</label>
                                                             </div>
+                                                            @if ($area_data->area_pic2)
+                                                            <img 
+                                                                onclick="imageModal(this);"
+                                                                src="{{ url('public/application_files/area_images') . '/'. $area_data->area_pic2 }}" 
+                                                                alt="" 
+                                                                id="areaImage2" 
+                                                                height="100" 
+                                                                width="100">
+                                                            @endif
                                                         </div>
                                                     </div>
 
                                                     <div class="col s12 m12">
                                                         <div class="row area-video">
-                                                            <div class="col m6 s12 input-field">
-                                                                <label for="upload_image">Area Video</label><br>
-                                                                <input type="file" class="mt-4" name="area_video" />
+                                                            <div class="col m6 s12">
+                                                                <input type="file" class="mt-4" name="area_video" /><br>
+                                                                <label for="upload_image">Area Video</label>
                                                             </div>
                                                             @if ($area_data->area_video)
-                                                            <!-- <a href="{{ url('public/application_files/area_videos') . '/'. $area_data->area_video }}" target="_blank">Video Link</a> -->
                                                             <video
                                                                 onclick="toggle();"
                                                                 width="150" 
@@ -390,7 +389,7 @@
                                                     @foreach($site_merits as $site_merit)
                                                         <div class="col s12 m6">
                                                             <div class="row">
-                                                                <div class="col s12 input-field">
+                                                                <div class="col s12">
                                                                     <select name="site_merit_{{ $site_merit->id }}">
                                                                         @foreach($site_merit->site_merit_values as $site_merit_value)
                                                                             <option value="{{ $site_merit_value->id }}" {{ in_array($site_merit_value->id, $site_merits_values_assigned) ? 'selected' : '' }}>{{ $site_merit_value->title }}</option>
@@ -427,7 +426,7 @@
 
                                                 <div class="col s12 m6">
                                                     <div class="row">
-                                                        <div class="col s12 input-field">
+                                                        <div class="col s12">
                                                             <select name="status">
                                                                 <option value="1" {{ $area_data->status==1 ? 'selected' : ''}}>Active</option>
                                                                 <option value="0" {{ $area_data->status==0 ? 'selected' : ''}}>Inactive</option>
