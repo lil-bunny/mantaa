@@ -31,6 +31,61 @@
                                 <div class="card-content">
                                     <div class="divider mb-3"></div>
                                     <div class="row">
+                                        <div class="col s12 m12">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h4><b>Important Points</b></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>Affluance :</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>{{ $area_data->gridTrends['affluence'] ?? '' }}</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>Income Group :</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>{{ $area_data->gridTrends['income_group'] ?? '' }}</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>Traffic Count :</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>{{ $area_data->gridTrends['traffic_0-6_count']+$area_data->gridTrends['traffic_6-12_count']+$area_data->gridTrends['traffic_12-18_count']+$area_data->gridTrends['traffic_18-24_count'] ?? '' }}</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divider mb-3"></div>
+                                    <div class="row">
                                         <div class="col s12" id="account">
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">

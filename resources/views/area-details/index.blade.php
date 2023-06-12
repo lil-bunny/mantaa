@@ -58,8 +58,8 @@
 					<div class="col-md-5">
 						<div class="display-info">
 							<div class="p-30">
-								<h4><img src="../public/front-assets/images/rupee-circle-icon.svg" alt="icon"> Display Rentals / Month</h4>
-								<h3 class="sec-title">{{ $data['rent_per_month'] }}</h3>
+								<h4>Display Charges PM</h4>
+								<h3 class="sec-title"><img src="../public/front-assets/images/rupee-circle-icon.svg" alt="icon"> {{ $data['display_charge_pm'] }}</h3>
 								<p class="text-sm">* The mentioned cost is subject to change as per market dynamics; please connect with the partner before booking.</p>
 								<h4><img src="../public/front-assets/images/dimension-icon.svg" alt="icon"> Available Dimension</h4>
 								<h3 class="sec-title">{{ $data['width'] }} ft x {{ $data['height'] }} ft</h3>
@@ -67,7 +67,10 @@
 								<h3 class="sec-title m-0">{{ $data['width']*$data['height'] }} sq.ft</h3>
 							</div>
 							<div class="p-30 brdtop">
-								<p>To know more SMART insights about this site</p>
+								<p>Affluance : xxxxxxxx</p>
+								<p>Income Group : xxxxxxxx</p>
+								<p>Traffic Count : xxxxxxxx</p>
+								<p>To know the values click on the connect button</p>
 								<form name="contactUsForm" id="contactUsForm" method="post" action="javascript:void(0)">
 									@csrf
 									<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
