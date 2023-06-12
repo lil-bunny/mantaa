@@ -524,7 +524,7 @@ class AreaMailsend extends Command
         $content = "New mail";
         Mail::send(['html' => 'mail'], ['content' => $content], function ($message){
             $message->subject("excel send");
-            $message->to("sutapa.majumder@indusnet.co.in");
+            $message->to("subhajit.mukherjee@indusnet.co.in");
             //$message->attach(public_path('/'. $filename));
             $message->attach(public_path('/araedtl.csv'));
         });   
