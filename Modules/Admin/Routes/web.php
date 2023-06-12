@@ -22,6 +22,8 @@ Route::prefix('admin')->group(function() {
 Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
 {
     Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
+
+    Route::get('/test', 'AreaController@test');
     
     ########## USERS SECTIONS STARTS HERE #####################
     Route::get('/users', 'UserController@index')->name('admin.user');
