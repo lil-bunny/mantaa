@@ -110,5 +110,6 @@ Route::group(['prefix' => 'admin',  'middleware' => 'loggedinCheck'], function()
 
     ########## SETTINGS SECTIONS STARTS HERE #####################
     Route::get('/settings', 'SettingController@index')->name('admin.setting');
+    Route::post('/update_settings', 'SettingController@update_setting')->name('admin.update_setting');
     ########## SETTINGS SECTIONS STARTS HERE #####################
 });

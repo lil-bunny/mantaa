@@ -42,7 +42,16 @@ class AreaMailsend extends Command
     public function handle()
     {
         
-        //$filename = time().'.csv';
+        
+        // fetching the settings data and find whether sending dump is enabled or not
+        $settings_data = Setting::latest()->first();
+        if($settings_data->send_site_dump == 'no') {
+            $this->info("Sending dump is not enabled");
+            return true;
+        } else {
+            $this->info("Creation of csv for sending dump is started");
+        }
+
         $filename = 'araedtl.csv';
         $area_list = Area::where('areas.is_deleted', '=', 0)->get();
 
@@ -526,6 +535,9 @@ class AreaMailsend extends Command
             $message->subject("Site Details");
             $message->to("subhajit.mukherjee@indusnet.co.in");
             $message->attach(public_path('/araedtl.csv'));
-        });   
+        });
+        
+        $this->info("Mail sent successfull");
+        return true;
     }
 }

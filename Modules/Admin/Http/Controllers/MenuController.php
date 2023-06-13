@@ -28,7 +28,7 @@ class MenuController extends Controller
         
         // checks if search filters are set
         if($filters['menu_name'] != '') {
-            $menus->where('menus.name', 'like', '%'.$filters['menu_name'].'%');
+            $menus->where('menus.title', 'like', '%'.$filters['menu_name'].'%');
         }
         if($filters['status'] != '') {
             $menus->where('menus.status', '=', $filters['status']);
