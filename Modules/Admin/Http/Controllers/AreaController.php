@@ -652,6 +652,7 @@ class AreaController extends Controller
                 $model->area_video = $area_video;
             }
             $model->status = $request->input('status');
+            $model->updated_at = date("Y-m-d H:i:s");
 
             // update user record
             $model->save();

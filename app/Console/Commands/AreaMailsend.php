@@ -521,11 +521,10 @@ class AreaMailsend extends Command
         }
         
         fclose($myfilePath);
-        $content = "New mail";
+        $content = "Please find the site details attached";
         Mail::send(['html' => 'mail'], ['content' => $content], function ($message){
-            $message->subject("excel send");
+            $message->subject("Site Details");
             $message->to("subhajit.mukherjee@indusnet.co.in");
-            //$message->attach(public_path('/'. $filename));
             $message->attach(public_path('/araedtl.csv'));
         });   
     }

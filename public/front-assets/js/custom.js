@@ -48,15 +48,14 @@ $('.city-items').slick({
 });
 $('.plot-thumb-slider').slick({
   slidesToShow: 1,
-  slidesToScroll: 2,
-  rows: 1,
-  dots: true,
+  slidesToScroll: 1,
+  dots: false,
   centerMode: false,
   focusOnSelect: true,
   infinite: false,
   autoplay: false,
   autoplaySpeed: 5000,
-  arrows: false,
+  arrows: true,
 
 });
 //  $(window).scroll(function(){

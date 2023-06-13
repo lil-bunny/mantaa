@@ -833,6 +833,18 @@ width: 100%;
   vertical-align: middle;
   margin: 0 5px;
 }
+.plot-thumb-slider .slick-prev {
+  left:25px;
+  z-index: 1;
+}
+.plot-thumb-slider .slick-next {
+  right:25px;
+  z-index: 1;
+}
+.plot-thumb-slider .slick-arrow::before {
+  font-size: 30px;
+  color:var(--primary-color);
+}
 .display-info {background-color: #EEF2F8;border-radius: 5px;margin-left: 15px}
 .display-info h4 {
   color: var(--primary-color);

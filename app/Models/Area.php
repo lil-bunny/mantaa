@@ -59,6 +59,8 @@ class Area extends Authenticatable
         'error_response',
         'status',
         'created_by',
+        'updated_at',
+        'created_at',
     ];
 
 
