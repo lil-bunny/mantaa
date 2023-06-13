@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Area;
 use App\Models\SiteMerit;
 use Illuminate\Support\Facades\Http;
+use App\Models\Setting;
 use Mail; 
 
 class AreaMailsend extends Command
