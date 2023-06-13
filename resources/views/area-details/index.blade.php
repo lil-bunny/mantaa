@@ -67,9 +67,9 @@
 								<h3 class="sec-title m-0">{{ $data['width']*$data['height'] }} sq.ft</h3>
 							</div>
 							<div class="p-30 brdtop">
-								<p>Affluance : xxxxxxxx</p>
-								<p>Income Group : xxxxxxxx</p>
-								<p>Traffic Count : xxxxxxxx</p>
+								<p><b>Affluance :</b> xxxxxxxx</p>
+								<p><b>Income Group :</b> xxxxxxxx</p>
+								<p><b>Traffic Count :</b> xxxxxxxx</p>
 								<p>To know the values click on the connect button</p>
 								<form name="contactUsForm" id="contactUsForm" method="post" action="javascript:void(0)">
 									@csrf
