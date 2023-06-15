@@ -153,9 +153,15 @@ class AreaController extends Controller
 
         $site_merits = SiteMerit::where('is_deleted', '=', 0)
                             ->where('status', '=', 1)->get();
-
         
-        return view('admin::area.add', ['priority' => $priority, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits]);
+        
+        // site count generation
+        $site_count = [];
+        for($sCount = 1; $sCount <=50; $sCount++) {
+            $site_count[] = $sCount;
+        }
+
+        return view('admin::area.add', ['site_count' => $site_count, 'priority' => $priority, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits]);
     }
 
     /**
@@ -280,6 +286,7 @@ class AreaController extends Controller
                 'production_cost' => $request->input('production_cost'),
                 'installation_cost' => $request->input('installation_cost'),
                 'media_partner_name' => $request->input('media_partner_name'),
+                'site_count' => $request->input('site_count'),
                 'area_pic1' => $area_pic1,
                 'area_pic2' => $area_pic2,
                 'area_video' => $area_video,
@@ -337,7 +344,7 @@ class AreaController extends Controller
 
         // fetching user details
         $area_data = Area::find($id);
-
+        
         // city tags assignment
         $city_tags = [
             'Mega' => 'Mega',
@@ -417,8 +424,21 @@ class AreaController extends Controller
                 }
             }
         }
+
+        // site count generation
+        $site_count = [];
+        for($sCount = 1; $sCount <=50; $sCount++) {
+            $site_count[] = $sCount;
+        }
+
+        if(isset($area_data->gridTrends['average_daily_traffic_12am-6am_count']) && isset($area_data->gridTrends['average_daily_traffic_12pm-6pm_count']) && isset($area_data->gridTrends['average_daily_traffic_6am-12pm_count']) && isset($area_data->gridTrends['average_daily_traffic_6pm-12am_count'])) {
+            $weekly_traffic_count = ($area_data->gridTrends['average_daily_traffic_12am-6am_count']+$area_data->gridTrends['average_daily_traffic_12pm-6pm_count']+$area_data->gridTrends['average_daily_traffic_6am-12pm_count']+$area_data->gridTrends['average_daily_traffic_6pm-12am_count'])*6;
+        } else {
+            $weekly_traffic_count = 'NA';
+        }
         
-        return view('admin::area.edit', ['poi_data' => $poi_data, 'priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
+        
+        return view('admin::area.edit', ['weekly_traffic_count' => $weekly_traffic_count, 'site_count' => $site_count, 'poi_data' => $poi_data, 'priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
     }
 
 
@@ -642,6 +662,7 @@ class AreaController extends Controller
             $model->production_cost = $request->input('production_cost');
             $model->installation_cost = $request->input('installation_cost');
             $model->media_partner_name = $request->input('media_partner_name');
+            $model->site_Count = $request->input('site_count');
             if($area_pic1 != '') {
                 $model->area_pic1 = $area_pic1;
             }

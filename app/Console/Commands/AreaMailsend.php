@@ -56,7 +56,7 @@ class AreaMailsend extends Command
         $filename = 'araedtl.csv';
         $area_list = Area::where('areas.is_deleted', '=', 0)->get();
 
-        $columns = array('Location Name', 'Road Name', 'Area Name', 'Pincode', 'Latitude','Longitude','City','State', 'Location Type','Media Formats','Orientation','Media Tags','Width','Height','Illumination','Ad Spot (Duration in seconds)','Total Ad spot per day', 'Total Advertisers', 'Display Charges PM','Production Cost','Installation Cost', 'Media Partner Name','Site Position','Junction','Obstruction','Visibility','Clutter','Gym Count','Cafe Count','Mall Count','Park Count','Nearest City','Office Count','Others Count','School Count','Grocery Count','Lodging Count','Area Affluence','Bus Stop Count','Hospital Count','Pharmacy Count','Market Presence','Office Presence','Pet Store Count','Total POI Count','Warehouse Count','Pincode Category','Restaurant Count','Wholesaler Count','Bus Station Count','Cinema Hall Count','Event Venue Count','Liquor Shop Count','Other Store Count','Petrol Pump Count','Manufacturer Count','Sports Store Count','Travel Agent Count','Weekly Impressions','Doctor Clinic Count','Metro Station Count','Clothing Store Count','Footwear Store Count','Hardware Store Count','Market Concentration','Office Concentration','Police Station Count','Income Group Category','Jewellery Store Count','Nearest City Distance','Railway Station Count','Religious Place Count','Beauty And Salon Count','Monthly Average Income','Vegetable Market Count','Apartment Complex Count','Electronics Store Count','Nearest Cinema Distance','Nearest School Distance','Nearest Airport Distance','Nearest College Distance','Automotive Showroom Count','Nearest Bus Stop Distance','Nearest Religious Distance','Social Service Count (NGO)','Average Daily Footfall Count','College And University Count','Money Transfer Service Count','Mass Media Entertainment Count','Nearest Metro Station Distance','Nearest Shopping Mall Distance','Electronic Service Centre Count','Stationary And Xerox Shop Count','Nearest Railway Station Distance','Average Daily Traffic 12am-6am Count','Average Daily Traffic 12pm-6pm Count','Average Daily Traffic 6am-12pm Count','Average Daily Traffic 6pm-12am Count','Automotive Repair And Maintenance Count');
+        $columns = array('area_id', 'Location Name', 'Road Name', 'Area Name', 'Pincode', 'Latitude','Longitude','City','State', 'Location Type','Media Formats','Orientation','Media Tags','Width','Height','Illumination','Ad Spot (Duration in seconds)','Total Ad spot per day', 'Total Advertisers', 'Display Charges PM','Production Cost','Installation Cost', 'Media Partner Name','Site Position','Junction','Obstruction','Visibility','Clutter','Gym Count','Cafe Count','Mall Count','Park Count','Nearest City','Office Count','Others Count','School Count','Grocery Count','Lodging Count','Area Affluence','Bus Stop Count','Hospital Count','Pharmacy Count','Market Presence','Office Presence','Pet Store Count','Total POI Count','Warehouse Count','Pincode Category','Restaurant Count','Wholesaler Count','Bus Station Count','Cinema Hall Count','Event Venue Count','Liquor Shop Count','Other Store Count','Petrol Pump Count','Manufacturer Count','Sports Store Count','Travel Agent Count','Weekly Impressions','Doctor Clinic Count','Metro Station Count','Clothing Store Count','Footwear Store Count','Hardware Store Count','Market Concentration','Office Concentration','Police Station Count','Income Group Category','Jewellery Store Count','Nearest City Distance','Railway Station Count','Religious Place Count','Beauty And Salon Count','Monthly Average Income','Vegetable Market Count','Apartment Complex Count','Electronics Store Count','Nearest Cinema Distance','Nearest School Distance','Nearest Airport Distance','Nearest College Distance','Automotive Showroom Count','Nearest Bus Stop Distance','Nearest Religious Distance','Social Service Count (NGO)','Average Daily Footfall Count','College And University Count','Money Transfer Service Count','Mass Media Entertainment Count','Nearest Metro Station Distance','Nearest Shopping Mall Distance','Electronic Service Centre Count','Stationary And Xerox Shop Count','Nearest Railway Station Distance','Average Daily Traffic 12am-6am Count','Average Daily Traffic 12pm-6pm Count','Average Daily Traffic 6am-12pm Count','Average Daily Traffic 6pm-12am Count','Automotive Repair And Maintenance Count');
         $myfilePath = fopen(public_path('/'. $filename), "w");
         fputcsv($myfilePath, $columns);
 
@@ -310,9 +310,9 @@ class AreaMailsend extends Command
                     $travel_agent_count=$poi_data['travel_agent_count']['value'];
                 }
 
-                if(isset($poi_data['weekly_impressions']['value'])){
+                if(isset($poi_data['weekly_impressions_(18+)']['value'])){
 
-                    $weekly_impressions=$poi_data['weekly_impressions']['value'];
+                    $weekly_impressions=$poi_data['weekly_impressions_(18+)']['value'];
                 }
 
                 if(isset($poi_data['doctor_clinic_count']['value'])){
@@ -519,7 +519,7 @@ class AreaMailsend extends Command
             }
 
 
-            fputcsv($myfilePath, array($area_data->site_location, $area_data->road_name, $area_data->title, $area_data->pin_code, $area_data->lat,$area_data->lng,$area_data->city->name,$area_data->state->name,$area_data->place_type,$area_data->media_formats,$area_data->orientation, $area_data->media_tags,$area_data->width,$area_data->height,$area_data->illumination,$area_data->ad_spot_durations,$area_data->ad_spot_per_second,$area_data->total_advertiser,$area_data->display_charge_pm,$area_data->production_cost,$area_data->installation_cost,$area_data->media_partner_name,$site_dtl[0]['label'],$site_dtl[1]['label'],$site_dtl[2]['label'],$site_dtl[3]['label'],$site_dtl[4]['label'], $gym_count,$cafe_count,$mall_count,$park_count,$nearest_city,$office_count,$others_count,$school_count,$grocery_count,$lodging_count,$area_affluence,$bus_stop_count,$hospital_count,$pharmacy_count,
+            fputcsv($myfilePath, array($area_info['id'], $area_data->site_location, $area_data->road_name, $area_data->title, $area_data->pin_code, $area_data->lat,$area_data->lng,$area_data->city->name,$area_data->state->name,$area_data->place_type,$area_data->media_formats,$area_data->orientation, $area_data->media_tags,$area_data->width,$area_data->height,$area_data->illumination,$area_data->ad_spot_durations,$area_data->ad_spot_per_second,$area_data->total_advertiser,$area_data->display_charge_pm,$area_data->production_cost,$area_data->installation_cost,$area_data->media_partner_name,$site_dtl[0]['label'],$site_dtl[1]['label'],$site_dtl[2]['label'],$site_dtl[3]['label'],$site_dtl[4]['label'], $gym_count,$cafe_count,$mall_count,$park_count,$nearest_city,$office_count,$others_count,$school_count,$grocery_count,$lodging_count,$area_affluence,$bus_stop_count,$hospital_count,$pharmacy_count,
             $market_presence,$office_presence,$pet_store_count,$total_POI_count,$warehouse_count,$pincode_category,$restaurant_count,$wholesaler_count,$bus_station_count,$cinema_hall_count,$event_venue_count,$liquor_shop_count,$other_store_count,$petrol_pump_count,$manufacturer_count,
             $sports_store_count,$travel_agent_count,$weekly_impressions,$doctor_clinic_count,$metro_station_count,$clothing_store_count,
             $footwear_store_count,$hardware_store_count,$market_concentration,$office_concentration,$police_station_count,
@@ -537,6 +537,9 @@ class AreaMailsend extends Command
             $message->to("subhajit.mukherjee@indusnet.co.in");
             $message->attach(public_path('/araedtl.csv'));
         });
+
+        $settings_data->send_site_dump = 'no';
+        $settings_data->save();
         
         $this->info("Mail sent successfull");
         return true;
