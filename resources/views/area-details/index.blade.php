@@ -69,7 +69,8 @@
 							<div class="p-30 brdtop">
 								<p><b>Affluance :</b> xxxxxxxx</p>
 								<p><b>Income Group :</b> xxxxxxxx</p>
-								<p><b>Traffic Count :</b> xxxxxxxx</p>
+								<p><b>Weekly Traffic Count :</b> xxxxxxxx</p>
+								<p><b>Impression Count :</b> xxxxxxxx</p>
 								<p>To know the values click on the connect button</p>
 								<form name="contactUsForm" id="contactUsForm" method="post" action="javascript:void(0)">
 									@csrf

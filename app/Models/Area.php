@@ -56,6 +56,7 @@ class Area extends Authenticatable
         'area_video',
         'nearby_places',
         'gridTrends',
+        'site_count',
         'error_response',
         'status',
         'created_by',

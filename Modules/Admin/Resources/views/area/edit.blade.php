@@ -49,7 +49,7 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <h6><b>{{ $area_data->gridTrends['affluence'] ?? '' }}</b></h6>
+                                                    <h6><b>{{ $area_data->gridTrends['area_affluence'] ?? 'NA' }}</b></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,7 +64,7 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <h6><b>{{ $area_data->gridTrends['income_group'] ?? '' }}</b></h6>
+                                                    <h6><b>{{ $area_data->gridTrends['income_group_category'] ?? 'NA' }}</b></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,14 +72,29 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <h6><b>Traffic Count :</b></h6>
+                                                    <h6><b>Weekly Traffic Count :</b></h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <h6><b>{{ $area_data->gridTrends['traffic_0-6_count']+$area_data->gridTrends['traffic_6-12_count']+$area_data->gridTrends['traffic_12-18_count']+$area_data->gridTrends['traffic_18-24_count'] ?? '' }}</b></h6>
+                                                    <h6><b>{{ $weekly_traffic_count }}</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>Impression Count :</b></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h6><b>{{ $area_data->gridTrends['weekly_impressions_(18+)'] ?? '' }}</b></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -332,6 +347,19 @@
                                                             <div class="col s12">
                                                                 <input id="total_advertiser" name="total_advertiser" type="text" class="validate" value="{{ $area_data->total_advertiser }}">
                                                                 <label>Total Advertisers</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <select name="site_count" id="site_count">
+                                                                    @foreach($site_count as $site_count_no)
+                                                                        <option value="{{ $site_count_no }}" {{ $area_data->site_count == $site_count_no ? 'selected' : ''}}>{{ $site_count_no }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label>Site Count</label>
                                                             </div>
                                                         </div>
                                                     </div>

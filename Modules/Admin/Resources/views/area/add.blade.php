@@ -290,6 +290,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <select name="site_count" id="site_count">
+                                                                    @foreach($site_count as $site_count_no)
+                                                                        <option value="{{ $site_count_no }}" {{ Session::get('requestInput.site_count')==$site_count_no ? 'selected' : ''}}>{{ $site_count_no }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label>Site Count</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- Location Details Ends Here -->
 
