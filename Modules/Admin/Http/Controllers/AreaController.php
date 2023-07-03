@@ -323,7 +323,9 @@ class AreaController extends Controller
             // redirecting to the fetch poi section
             return redirect()->route('admin.fetch_poi', ['id' => $areas->id]);
         } else {
-            $test = 'test';
+            $request->request->remove('area_pic1');
+            $request->request->remove('area_pic2');
+            $request->request->remove('area_video');
             $errors=$validator->errors();
             return redirect()->route('admin.area_add')->with('errors',$errors)->with('requestInput',request()->all());
         }
