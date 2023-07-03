@@ -45,8 +45,8 @@
                         <h4>{{ $area->title }}</h4>
                     </div>
                     <div class="bottom-widget d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">Display Charges PM</h6>
-                        <h5 class="mb-0"><span class="currency">&#x20B9;</span> {{ $area->display_charge_pm }}</h5>
+                        <h6 class="mb-0 me-2">Display Charges PM</h6>
+                        <h5 class="mb-0 ms-2 text-nowrap"><span class="currency">&#x20B9;</span> {{ $area->display_charge_pm }}</h5>
                     </div>
                 </div>
             </div>
