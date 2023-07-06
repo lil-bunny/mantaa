@@ -433,7 +433,7 @@ class AreaController extends Controller
         }
 
         if(isset($area_data->gridTrends['average_daily_traffic_12am-6am_count']) && isset($area_data->gridTrends['average_daily_traffic_12pm-6pm_count']) && isset($area_data->gridTrends['average_daily_traffic_6am-12pm_count']) && isset($area_data->gridTrends['average_daily_traffic_6pm-12am_count'])) {
-            $weekly_traffic_count = ($area_data->gridTrends['average_daily_traffic_12am-6am_count']+$area_data->gridTrends['average_daily_traffic_12pm-6pm_count']+$area_data->gridTrends['average_daily_traffic_6am-12pm_count']+$area_data->gridTrends['average_daily_traffic_6pm-12am_count'])*6;
+            $weekly_traffic_count = ($area_data->gridTrends['average_daily_traffic_12am-6am_count']+$area_data->gridTrends['average_daily_traffic_12pm-6pm_count']+$area_data->gridTrends['average_daily_traffic_6am-12pm_count']+$area_data->gridTrends['average_daily_traffic_6pm-12am_count'])*7;
         } else {
             $weekly_traffic_count = 'NA';
         }
