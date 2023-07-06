@@ -343,6 +343,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <input id="media_partner_email" name="media_partner_email" type="text" class="validate" value="{{ Session::get('requestInput.media_partner_email') }}">
+                                                                <label>Media Partner Email</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- Owner & Price Details Ends Here -->
 

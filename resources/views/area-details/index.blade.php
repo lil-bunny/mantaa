@@ -61,16 +61,19 @@
 								<h4>Display Charges PM</h4>
 								<h3 class="sec-title"><img src="../public/front-assets/images/rupee-circle-icon.svg" alt="icon"> {{ $data['display_charge_pm'] }}</h3>
 								<p class="text-sm">* The mentioned cost is subject to change as per market dynamics; please connect with the partner before booking.</p>
+								<h4><img src="../public/front-assets/images/area-icon.svg" alt="icon"> Site Count</h4>
+								<h3 class="sec-title">{{ $data['site_count'] }}</h3>
 								<h4><img src="../public/front-assets/images/dimension-icon.svg" alt="icon"> Available Dimension</h4>
 								<h3 class="sec-title">{{ $data['width'] }} ft x {{ $data['height'] }} ft</h3>
 								<h4><img src="../public/front-assets/images/area-icon.svg" alt="icon"> Available Area</h4>
-								<h3 class="sec-title m-0">{{ $data['width']*$data['height'] }} sq.ft</h3>
+								<h3 class="sec-title m-0">{{ $data['width']*$data['height']*$data['site_count'] }} sq.ft</h3>
 							</div>
 							<div class="p-30 brdtop">
 								<p><b>Affluance :</b> xxxxxxxx</p>
 								<p><b>Income Group :</b> xxxxxxxx</p>
 								<p><b>Weekly Traffic Count :</b> xxxxxxxx</p>
-								<p><b>Impression Count :</b> xxxxxxxx</p>
+								<p><b>Weekly Impression Count :</b> xxxxxxxx</p>
+								<p><b>Media Partner Email :</b> {{ obfuscate_email($data['media_partner_email']) }}</p>
 								<p>To know the values click on the connect button</p>
 								<form name="contactUsForm" id="contactUsForm" method="post" action="javascript:void(0)">
 									@csrf

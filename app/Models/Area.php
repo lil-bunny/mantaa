@@ -51,6 +51,7 @@ class Area extends Authenticatable
         'production_cost',
         'installation_cost',
         'media_partner_name',
+        'media_partner_email',
         'area_pic1',
         'area_pic2',
         'area_video',

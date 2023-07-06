@@ -87,7 +87,7 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12">
-                                                    <h6><b>Impression Count :</b></h6>
+                                                    <h6><b>Weekly Impression Count :</b></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -400,6 +400,14 @@
                                                             <div class="col s12">
                                                                 <input id="media_partner_name" name="media_partner_name" type="text" class="validate" value="{{ $area_data->media_partner_name }}">
                                                                 <label>Media Partner Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <input id="media_partner_email" name="media_partner_email" type="text" class="validate" value="{{ $area_data->media_partner_email }}">
+                                                                <label>Media Partner Email</label>
                                                             </div>
                                                         </div>
                                                     </div>

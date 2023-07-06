@@ -286,6 +286,7 @@ class AreaController extends Controller
                 'production_cost' => $request->input('production_cost'),
                 'installation_cost' => $request->input('installation_cost'),
                 'media_partner_name' => $request->input('media_partner_name'),
+                'media_partner_email' => $request->input('media_partner_email'),
                 'site_count' => $request->input('site_count'),
                 'area_pic1' => $area_pic1,
                 'area_pic2' => $area_pic2,
@@ -662,6 +663,7 @@ class AreaController extends Controller
             $model->production_cost = $request->input('production_cost');
             $model->installation_cost = $request->input('installation_cost');
             $model->media_partner_name = $request->input('media_partner_name');
+            $model->media_partner_email = $request->input('media_partner_email');
             $model->site_Count = $request->input('site_count');
             if($area_pic1 != '') {
                 $model->area_pic1 = $area_pic1;
