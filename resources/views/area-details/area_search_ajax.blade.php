@@ -20,7 +20,10 @@
 					<li><h4>City</h4><span>{{ $area_info->city->name ?? '' }}</span></li>
 					<li><h4>Size</h4><span>{{ $area_info->width }}x{{ $area_info->height }}</span></li>
 				</ul>
-				
+			</div>
+			<div class="bottom-widget d-flex justify-content-between align-items-center">
+				<h6 class="mb-0">Starting from</h6>
+				<h5 class="mb-0"><span class="currency">&#x20B9;</span>{{ $area_info->display_charge_pm }}</h5>
 			</div>
 		</div>
 	</div>
