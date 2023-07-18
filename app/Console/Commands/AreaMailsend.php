@@ -534,7 +534,7 @@ class AreaMailsend extends Command
         $content = "Please find the site details attached";
         Mail::send(['html' => 'mail'], ['content' => $content], function ($message){
             $message->subject("Site Details");
-            $message->to("subhajit.mukherjee@indusnet.co.in");
+            $message->to("vineet.sharma@mantaray.in");
             $message->attach(public_path('/araedtl.csv'));
         });
 

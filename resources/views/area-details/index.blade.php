@@ -8,7 +8,7 @@
 		<!-- <img src="../public/front-assets/images/plot-banner-photo.jpg"/> -->
 		<div class="banner-wrap d-flex align-items-center sec-pt">
 			<div class="container">
-				<h1 class="primary-color w-100">{{ $data['title'] }}</h1>
+				<h1 class="primary-color w-100">{{ $data['site_location'] }}</h1>
 				<div class="banner-cont"> 
 					<p><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">State: {{ $data['state'] -> name }}</span><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">City: {{ $data['city'] -> name }}</span><span><img src="../public/front-assets/images/location-icon.svg" alt="icon">Pincode: {{ $data['pin_code'] }}</span></p>
 					<p><img src="../public/front-assets/images/latitude-icon.svg" alt="icon">Latitude, Longitude : {{ $data['lat'] }}, {{ $data['lng'] }}</p>

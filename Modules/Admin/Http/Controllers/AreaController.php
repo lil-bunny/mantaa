@@ -183,7 +183,7 @@ class AreaController extends Controller
             'city_name' => 'required',
             'state_name' => 'required',
             'city_tag' => 'required',
-            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:5240',
             //'nearby_places' => 'required|array|max:6',
         ]);
 

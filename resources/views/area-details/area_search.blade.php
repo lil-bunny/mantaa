@@ -89,7 +89,7 @@
 											</span>
 										</a>
 										<div class="info-elmnt">
-											<h3><a href="{{ route('area-details', ['id' => $area_info->id]) }}">{{ $area_info->title }}</a></h3>
+											<h3><a href="{{ route('area-details', ['id' => $area_info->id]) }}">{{ $area_info->site_location }}</a></h3>
 											<ul>
 												<li><h4>State</h4><span>{{ $area_info->state->name ?? '' }}</span></li>
 												<li><h4>City</h4><span>{{ $area_info->city->name ?? '' }}</span></li>
