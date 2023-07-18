@@ -542,7 +542,9 @@ class AreaMailsend extends Command
         $settings_data->save();
         
 
+
         $this->info("Mail sent successfull from live");
+
 
         return true;
     }
