@@ -541,7 +541,7 @@ class AreaMailsend extends Command
         $settings_data->send_site_dump = 'no';
         $settings_data->save();
         
-        $this->info("Mail sent successfull");
+        $this->info("Mail sent successfull from prod");
         return true;
     }
 }
