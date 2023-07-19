@@ -10,7 +10,7 @@
                     @else
                         <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none</i></a></li>
                     @endif
-                    <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{ asset('images/avatar/avatar-7.png') }}" alt="avatar"><i></i></span></a></li>
+                    <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{ asset('images/avatar/avatar-icon.svg') }}" alt="avatar"><i></i></span></a></li>
                 </ul>
                 <!-- notifications-dropdown-->
                 <ul class="dropdown-content" id="notifications-dropdown">
