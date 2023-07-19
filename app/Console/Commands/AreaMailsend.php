@@ -57,7 +57,7 @@ class AreaMailsend extends Command
         $area_list = Area::where('areas.is_deleted', '=', 0)->get();
 
         $columns = array('area_id', 'Location Name', 'Road Name', 'Area Name', 'Pincode', 'Latitude','Longitude','City','State', 'Location Type','Media Formats','Orientation','Media Tags','Width','Height','Illumination','Ad Spot (Duration in seconds)','Total Ad spot per day', 'Total Advertisers', 'Display Charges PM','Production Cost','Installation Cost', 'Media Partner Name','Site Position','Junction','Obstruction','Visibility','Clutter','Gym Count','Cafe Count','Mall Count','Park Count','Nearest City','Office Count','Others Count','School Count','Grocery Count','Lodging Count','Area Affluence','Bus Stop Count','Hospital Count','Pharmacy Count','Market Presence','Office Presence','Pet Store Count','Total POI Count','Warehouse Count','Pincode Category','Restaurant Count','Wholesaler Count','Bus Station Count','Cinema Hall Count','Event Venue Count','Liquor Shop Count','Other Store Count','Petrol Pump Count','Manufacturer Count','Sports Store Count','Travel Agent Count','Weekly Impressions','Doctor Clinic Count','Metro Station Count','Clothing Store Count','Footwear Store Count','Hardware Store Count','Market Concentration','Office Concentration','Police Station Count','Income Group Category','Jewellery Store Count','Nearest City Distance','Railway Station Count','Religious Place Count','Beauty And Salon Count','Monthly Average Income','Vegetable Market Count','Apartment Complex Count','Electronics Store Count','Nearest Cinema Distance','Nearest School Distance','Nearest Airport Distance','Nearest College Distance','Automotive Showroom Count','Nearest Bus Stop Distance','Nearest Religious Distance','Social Service Count (NGO)','Average Daily Footfall Count','College And University Count','Money Transfer Service Count','Mass Media Entertainment Count','Nearest Metro Station Distance','Nearest Shopping Mall Distance','Electronic Service Centre Count','Stationary And Xerox Shop Count','Nearest Railway Station Distance','Average Daily Traffic 12am-6am Count','Average Daily Traffic 12pm-6pm Count','Average Daily Traffic 6am-12pm Count','Average Daily Traffic 6pm-12am Count','Automotive Repair And Maintenance Count');
-        $myfilePath = fopen(public_path('/'. $filename), "w");
+        $myfilePath = fopen(public_path('application_files/area_export/'. $filename), "w");
         fputcsv($myfilePath, $columns);
 
         foreach($area_list as $area_info) {
@@ -534,14 +534,15 @@ class AreaMailsend extends Command
         $content = "Please find the site details attached";
         Mail::send(['html' => 'mail'], ['content' => $content], function ($message){
             $message->subject("Site Details");
-            $message->to("subhajit.mukherjee@indusnet.co.in");
+            $message->to("vineet.sharma@mantaray.in");
             $message->attach(public_path('/araedtl.csv'));
         });
 
         $settings_data->send_site_dump = 'no';
         $settings_data->save();
         
-        $this->info("Mail sent successfull from prod");
+        $this->info("Mail sent successfull from live");
+
         return true;
     }
 }
