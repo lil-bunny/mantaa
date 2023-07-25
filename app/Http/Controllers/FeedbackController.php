@@ -47,7 +47,7 @@ class FeedbackController extends Controller
                 ]);
             }
         
-            $success = 'Thanks for your feedback, our backend team is reviewing the same';
+            $success = 'We appreciate your feedback. Our team will verify the information and make the necessary changes, if applicable. You can come back later and check the review section with your message once the information is updated.';
             return redirect()->route('area-details', $id)->with('message', $success);
         } else {
             $errors=$validator->errors();
