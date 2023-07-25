@@ -415,6 +415,7 @@
 
                                                 <div class="row">
                                                     <div class="col s12 display-flex justify-content-end mt-3">
+                                                        <button type="submit" disabled style="display: none" aria-hidden="true"></button>    
                                                         <button type="submit" class="btn indigo">Save changes</button>
                                                     </div>
                                                 </div>
@@ -441,7 +442,15 @@
         defer
         ></script>
 
-        <script type="text/javascript">           
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                jQuery(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                    }
+                });
+            });           
 
 
             function initAutocomplete() {

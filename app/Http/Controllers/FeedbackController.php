@@ -47,9 +47,11 @@ class FeedbackController extends Controller
                 ]);
             }
         
-            return redirect()->route('area-details', $id);
+            $success = 'Feedback submitted successfully';
+            return redirect()->route('area-details', $id)->with('message', $success);
         } else {
             $errors=$validator->errors();
+            var_dump($errors);exit;
             return redirect()->route('area-details', $id)->with('errors',$errors);
         }
     }

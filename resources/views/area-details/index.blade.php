@@ -170,6 +170,11 @@
 						</ul>
 					</div>
 					@endif
+					@if(session()->has('message'))
+						<div class="alert alert-success">
+							{{ session()->get('message') }}
+						</div>
+					@endif
 					<p>Help us improve by giving more information about this site</p>
 					<form method="POST" action="{{ route('frontend.feedbackSubmit', $id) }}">
 						@csrf

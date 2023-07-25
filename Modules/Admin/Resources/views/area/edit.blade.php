@@ -530,6 +530,7 @@
 
                                                 <div class="row">
                                                     <div class="col s12 display-flex justify-content-end mt-3">
+                                                        <button type="submit" disabled style="display: none" aria-hidden="true"></button>    
                                                         <button type="submit" class="btn indigo">Save changes</button>
                                                     </div>
                                                 </div>
