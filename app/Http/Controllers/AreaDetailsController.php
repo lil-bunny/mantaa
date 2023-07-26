@@ -78,7 +78,11 @@ class AreaDetailsController extends Controller
         $responseBody = json_decode($response->getBody(), true);
 
         if($statusCode == 200) {
-            $reco_sites = $responseBody;
+            if(array_key_exists('recommendations', $responseBody)) {
+                $reco_sites = $responseBody['recommendations'];
+            } else {
+                $reco_sites = $responseBody;
+            }
         } else {
             $reco_sites = [];
         }
