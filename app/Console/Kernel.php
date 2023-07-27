@@ -9,7 +9,7 @@ class Kernel extends ConsoleKernel
 {
     
     protected $commands = [
-        Commands\AreaMailsend::class,
+        'App\Console\Commands\AreaMailsend',
     ];
     
     /**
@@ -20,9 +20,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-
-        $schedule->command('sendsite:mail')->everyMinute();
+        //$schedule->command('sendsite:mail')->everyMinute();
+        if(env('APP_ENV') == 'prod') {
+            $schedule->command('sendsite:mail')->dailyAt('23:58');
+        }
     }
 
     /**

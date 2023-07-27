@@ -82,6 +82,14 @@
                                                                 <label for="upload_image">Upload Image</label><br>
                                                                 <input type="file" class="mt-8" name="city_pic" />
                                                             </div>
+                                                            @if ($city_data->image)
+                                                            <img 
+                                                                src="{{ url('public/application_files/city') . '/'. $city_data->image }}" 
+                                                                alt="" 
+                                                                id="areaImage2" 
+                                                                height="100" 
+                                                                width="100">
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="col s12 display-flex justify-content-end mt-3">
