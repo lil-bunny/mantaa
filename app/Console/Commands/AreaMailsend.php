@@ -47,8 +47,8 @@ class AreaMailsend extends Command
         // fetching the settings data and find whether sending dump is enabled or not
         $settings_data = Setting::latest()->first();
         if($settings_data->send_site_dump == 'no') {
-            $this->info("Sending dump is not enabled");
-            return true;
+            //$this->info("Sending dump is not enabled");
+            //return true;
         } else {
             $this->info("Creation of csv for sending dump is started");
         }
