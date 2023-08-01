@@ -17,6 +17,11 @@
             </ul>
         </div>
         @endif
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <form action="{{ route('frontend.submitForgetPasswordForm') }}" method="POST">
             @csrf
             <div class="form-group">

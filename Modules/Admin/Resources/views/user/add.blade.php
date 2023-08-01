@@ -58,13 +58,13 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="name" name="name" type="text" class="validate" value=""
                                                                        data-error=".errorTxt2">
                                                                 <label for="name">Name</label>
                                                                 <small class="errorTxt2"></small>
                                                             </div>
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="email" name="email" type="email" class="validate" value=""
                                                                        data-error=".errorTxt3">
                                                                 <label for="email">E-mail</label>
@@ -74,14 +74,14 @@
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="status">
                                                                     <option value="1">Active</option>
                                                                     <option value="0">Inactive</option>
                                                                 </select>
                                                                 <label>Status</label>
                                                             </div>
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <input id="mobile" name="mobile" type="text" class="validate">
                                                                 <label for="mobile">Mobile</label>
                                                             </div>
@@ -89,11 +89,11 @@
                                                     </div>
                                                     <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col s6 input-field">
+                                                            <div class="col s6">
                                                                 <input id="password" name="password" type="password" class="validate">
                                                                 <label for="password">Password</label>
                                                             </div>
-                                                            <div class="col s6 input-field">
+                                                            <div class="col s6">
                                                                 <input id="cnf_password" name="cnf_password" type="password" class="validate">
                                                                 <label for="cnf_password">Confirm Password</label>
                                                             </div>
@@ -101,7 +101,7 @@
                                                     </div>
                                                     <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col m6 s12 input-field">
+                                                            <div class="col m6 s12">
                                                                 <label for="upload_image">Upload Image</label><br>
                                                                 <input type="file" class="mt-4" name="profile_pic" />
                                                             </div>

@@ -159,18 +159,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col s12 m6">
-                                                        <div class="row">
-                                                            <div class="col s12">
-                                                                <select name="place_type">
-                                                                    @foreach($location_types as $key => $location_type)
-                                                                        <option value="{{ $key }}" {{ Session::get('requestInput.place_type')==$key ? 'selected' : ''}}>{{ $location_type }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label>Site Tag</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
 
                                                     <div class="col s12 m6">
                                                         <div class="row">
