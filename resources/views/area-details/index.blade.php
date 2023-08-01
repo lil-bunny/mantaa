@@ -88,7 +88,7 @@
 				<ul class="sec-plot-info">
 					<li>
 						<span>Media Type:</span>
-						<p>{{ $data['place_type'] }}</p>
+						<p>{{ $data['media_tags'] }}</p>
 					</li>
 					<li>
 						<span>Orientation:</span>

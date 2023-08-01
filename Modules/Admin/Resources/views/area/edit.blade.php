@@ -220,18 +220,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col s12 m12">
-                                                        <div class="row">
-                                                            <div class="col s12">
-                                                                <select name="place_type">
-                                                                    @foreach($location_types as $key => $location_type)
-                                                                        <option value="{{ $key }}" {{ $area_data->place_type==$location_type ? 'selected' : ''}}>{{ $location_type }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label>Site Tag</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
 
                                                     <div class="col s12 m12">
                                                         <div class="row">

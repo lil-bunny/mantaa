@@ -272,7 +272,6 @@ class AreaController extends Controller
                 'city_id' => $city_id,
                 'city_tag' => $request->input('city_tag'),
                 'face_traffic_from' => $request->input('face_traffic_from'),
-                'place_type' => $request->input('place_type'),
                 'media_formats' => $request->input('media_formats'),
                 'orientation' => $request->input('orientation'),
                 'media_tags' => $request->input('media_tags'),
@@ -562,7 +561,7 @@ class AreaController extends Controller
             'city_name' => 'required',
             'state_name' => 'required',
             'city_tag' => 'required',
-            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:7168',
+            //'area_pic1' => 'required|mimes:png,jpg,jpeg|max:7168',
         ]);
 
         
@@ -649,7 +648,6 @@ class AreaController extends Controller
             $model->city_id = $city_id;
             $model->city_tag = $request->input('city_tag');
             $model->face_traffic_from = $request->input('face_traffic_from');
-            $model->place_type = $request->input('place_type');
             $model->media_formats = $request->input('media_formats');
             $model->orientation = $request->input('orientation');
             $model->media_tags = $request->input('media_tags');
