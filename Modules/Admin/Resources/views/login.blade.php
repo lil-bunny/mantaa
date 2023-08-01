@@ -23,6 +23,11 @@
                                 </ul>
                             </div>
                         @endif
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         <form method="POST" action="{{ route('admin.loginSubmit') }}">
                             @csrf
                             <div class="row">
@@ -49,7 +54,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s6 m6 l6">
-                                    <p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>
+                                    <p class="margin right-align medium-small"><a href="{{ route('frontend.showForgetPasswordForm') }}">Forgot password ?</a></p>
                                 </div>
                             </div>
                         </form>

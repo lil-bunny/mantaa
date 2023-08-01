@@ -183,7 +183,7 @@ class AreaController extends Controller
             'city_name' => 'required',
             'state_name' => 'required',
             'city_tag' => 'required',
-            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:5240',
+            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:7168',
             //'nearby_places' => 'required|array|max:6',
         ]);
 
@@ -325,7 +325,7 @@ class AreaController extends Controller
             return redirect()->route('admin.fetch_poi', ['id' => $areas->id]);
         } else {
             $dt = $request->except(['area_pic1', 'area_pic2', 'area_video']);
-            $errors=$validator->errors();
+            $errors=$validator->errors();//dd($errors);exit;
             return redirect()->route('admin.area_add')->with('errors',$errors)->with('requestInput',$dt);
         }
 
@@ -387,7 +387,7 @@ class AreaController extends Controller
         $media_tags = [
             'Impact' => 'Impact',
             'Frequency' => 'Frequency',
-            'Ambience' => 'Ambience',
+            'Ambient' => 'Ambient',
         ];
 
         // Illumination assignment
@@ -484,8 +484,7 @@ class AreaController extends Controller
                     $poi_data[$key]['label'] = ucwords(str_replace('_', ' ', $key));
                 }
             } else {
-                $error = $responseBody['error'];
-                $area_data->error_response = $error != ''?$error:'';
+                $area_data->error_response = json_encode($responseBody);
                 $area_data->save();
                 return redirect()->intended('admin/areas')->withError('Something went wrong');
             }
@@ -562,7 +561,8 @@ class AreaController extends Controller
             'height' => 'required',
             'city_name' => 'required',
             'state_name' => 'required',
-            'city_tag' => 'required'
+            'city_tag' => 'required',
+            'area_pic1' => 'required|mimes:png,jpg,jpeg|max:7168',
         ]);
 
         

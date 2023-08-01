@@ -30,27 +30,28 @@ class ForgotPasswordController extends Controller
        * @return response()
        */
       
-       public function submitForgetPasswordForm(Request $request)
-      {
-          $request->validate([
-              'email' => 'required|email|exists:users',
-          ]);
+    public function submitForgetPasswordForm(Request $request) {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+        ]);
   
-          $token = Str::random(64);
+        $token = Str::random(64);
   
-          $password_obj = PasswordReset::create([
-                'email' => $request->email, 
-                'token' => $token, 
-                'created_at' => Carbon::now()
-            ]);
+        $password_obj = PasswordReset::create([
+            'email' => $request->email, 
+            'token' => $token, 
+            'created_at' => Carbon::now()
+        ]);
   
-        //   Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
-        //       $message->to($request->email);
-        //       $message->subject('Reset Password');
-        //   });
-  
-        //   return back()->with('message', 'We have e-mailed your password reset link!');
-        return view('email.forgetPassword', ['token' => $token]);
+        if(env('APP_ENV') != 'local') {
+            Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Reset Password');
+            });
+            return back()->with('message', 'We have e-mailed your password reset link!');
+        } else {
+            return view('email.forgetPassword', ['token' => $token]);
+        }
     }
 
     /**
@@ -58,7 +59,7 @@ class ForgotPasswordController extends Controller
        *
        * @return response()
        */
-      public function showResetPasswordForm($token) { 
+    public function showResetPasswordForm($token) { 
         return view('email.forgetPasswordLink', ['token' => $token]);
     }
 
@@ -69,24 +70,32 @@ class ForgotPasswordController extends Controller
        */
     public function submitResetPasswordForm(Request $request)
     {
-          $request->validate([
-                'password' => 'required|string|min:6|confirmed',
-                'password_confirmation' => 'required'
-          ]);
-  
-          $updatePassword = PasswordReset::where('token', $request->token)
-                              ->first();
-            
-            if(!$updatePassword){
-              return back()->withInput()->with('error', 'Invalid token!');
-          }
-  
-          $user = User::where('email', $updatePassword->email)
-                      ->update(['password' => Hash::make($request->password)]);
- 
-          PasswordReset::where(['email'=> $updatePassword->email])->delete();
-  
-          return redirect('/login')->with('message', 'Your password has been changed!');
+        $request->validate([
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $updatePassword = PasswordReset::where('token', $request->token)
+                            ->first();
+        
+        if(!$updatePassword){
+            return back()->withInput()->with('error', 'Invalid token!');
+        }
+
+        // finding the user object
+        $userObj = User::where('email', $updatePassword->email)->first();
+        
+
+        $user = User::where('email', $updatePassword->email)
+                    ->update(['password' => Hash::make($request->password)]);
+
+        PasswordReset::where(['email'=> $updatePassword->email])->delete();
+
+        if($userObj->role->role_id == 'admin') {
+            return redirect('/admin/login')->with('message', 'Your password has been changed!');
+        } else {
+            return redirect('/login')->with('message', 'Your password has been changed!');
+        }
     }
       
 }
