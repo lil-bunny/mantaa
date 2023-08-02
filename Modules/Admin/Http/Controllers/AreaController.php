@@ -436,9 +436,13 @@ class AreaController extends Controller
         } else {
             $weekly_traffic_count = 'NA';
         }
+
+        // loading role object from auth user id
+        $user_role_obj = User::find(auth()->user()->id);
+        $role_id = $user_role_obj->role->role_id;
         
         
-        return view('admin::area.edit', ['weekly_traffic_count' => $weekly_traffic_count, 'site_count' => $site_count, 'poi_data' => $poi_data, 'priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
+        return view('admin::area.edit', ['role_id' => $role_id, 'weekly_traffic_count' => $weekly_traffic_count, 'site_count' => $site_count, 'poi_data' => $poi_data, 'priority' => $priority, 'area_data' => $area_data, 'city_tags' => $city_tags, 'location_types' => $location_types, 'media_formats' => $media_formats, 'orientations' => $orientations, 'media_tags' => $media_tags, 'illuminations' => $illuminations, 'ad_spot_durations' => $ad_spot_durations, 'site_merits' => $site_merits, 'site_merits_values_assigned' => $site_merits_values_assigned]);
     }
 
 
@@ -672,7 +676,9 @@ class AreaController extends Controller
             if($area_video != '') {
                 $model->area_video = $area_video;
             }
-            $model->status = $request->input('status');
+            if(app('request')->exists('status')) {
+                $model->status = $request->input('status');
+            }
             $model->updated_at = date("Y-m-d H:i:s");
 
             // update user record
