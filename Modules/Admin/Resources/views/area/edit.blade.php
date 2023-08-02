@@ -504,6 +504,7 @@
                                                 @endif
                                                 <!-- POI Ends Here -->
 
+                                                @if ($role_id != 'admin')
                                                 <div class="col s12 m6">
                                                     <div class="row">
                                                         <div class="col s12">
@@ -515,7 +516,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                @endif
 
                                                 <div class="row">
                                                     <div class="col s12 display-flex justify-content-end mt-3">
