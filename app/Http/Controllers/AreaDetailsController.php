@@ -87,10 +87,12 @@ class AreaDetailsController extends Controller
             $reco_sites = [];
         }
       
-        // echo "Status code: ". $statusCode;  // status code
+        // checking if message is on response
+        if(array_key_exists('message', $reco_sites)) {
+            $reco_sites = [];
+        }
 
-        // dd($responseBody); // body response
-        // exit;
+        
 
         //feedback
         $feedbacks = Feedback::where('is_deleted', '=', 0)
