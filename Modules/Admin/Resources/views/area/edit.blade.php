@@ -504,7 +504,7 @@
                                                 @endif
                                                 <!-- POI Ends Here -->
 
-                                                @if ($role_id != 'admin')
+                                                @if ($role_id == 'admin')
                                                 <div class="col s12 m6">
                                                     <div class="row">
                                                         <div class="col s12">
