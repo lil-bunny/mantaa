@@ -27,7 +27,10 @@ class AreaDetailsController extends Controller
         $data = Area::where('is_deleted', '=', 0)
                     ->where('status', '=', 1)->find($id);
         
-        //echo "<pre>"; print_r($data); die;
+        
+        if(!$data) {
+            return redirect()->route('frontend.home');
+        }
 
         // fetching site merits
         $site_merits_arr = [];
