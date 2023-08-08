@@ -91,7 +91,7 @@ class AreaDetailsController extends Controller
         }
 
         // checking for status
-        if($responseBody[1] == "400") {
+        if($reco_sites[1] == "400") {
             $reco_sites = [];
         }
       
