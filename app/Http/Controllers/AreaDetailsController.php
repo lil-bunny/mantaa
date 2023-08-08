@@ -89,6 +89,11 @@ class AreaDetailsController extends Controller
         } else {
             $reco_sites = [];
         }
+
+        // checking for status
+        if($responseBody[1] == "400") {
+            $reco_sites = [];
+        }
       
         // checking if message is on response
         if(array_key_exists('message', $reco_sites)) {
