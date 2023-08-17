@@ -241,7 +241,7 @@ class AreaController extends Controller
             $area_pic2 = '';
             if($request->area_pic2) {
                 // picture upload
-                $fileName2 = auth()->id() . '_' . time() . '.'. $request->area_pic2->extension();  
+                $fileName2 = auth()->id() . '_' .rand(1111,9999). '_'. time() . '.'. $request->area_pic2->extension();  
                 $type2 = $request->area_pic2->getClientMimeType();
                 $size2 = $request->area_pic2->getSize();
                 $request->area_pic2->move(public_path('application_files/area_images'), $fileName2);
@@ -252,7 +252,7 @@ class AreaController extends Controller
             $area_video = '';
             if($request->area_video) {
                 // picture upload
-                $fileName3 = auth()->id() . '_' . time() . '.'. $request->area_video->extension();  
+                $fileName3 = auth()->id() . '_' .rand(2222,9999). '_'. time() . '.'. $request->area_video->extension();  
                 $type3 = $request->area_video->getClientMimeType();
                 $size3 = $request->area_video->getSize();
                 $request->area_video->move(public_path('application_files/area_videos'), $fileName3);
@@ -623,7 +623,7 @@ class AreaController extends Controller
             $area_pic2 = '';
             if($request->area_pic2) {
                 // picture upload
-                $fileName2 = auth()->id() . '_' . time() . '.'. $request->area_pic2->extension();  
+                $fileName2 = auth()->id() . '_' .rand(1111,9999).'_'.time() . '.'. $request->area_pic2->extension();  
                 $type2 = $request->area_pic2->getClientMimeType();
                 $size2 = $request->area_pic2->getSize();
                 $request->area_pic2->move(public_path('application_files/area_images'), $fileName2);
@@ -634,7 +634,7 @@ class AreaController extends Controller
             $area_video = '';
             if($request->area_video) {
                 // picture upload
-                $fileName3 = auth()->id() . '_' . time() . '.'. $request->area_video->extension();  
+                $fileName3 = auth()->id() . '_' .rand(1111,9999).'_'.time() . '.'. $request->area_video->extension();  
                 $type3 = $request->area_video->getClientMimeType();
                 $size3 = $request->area_video->getSize();
                 $request->area_video->move(public_path('application_files/area_videos'), $fileName3);
