@@ -535,7 +535,7 @@ class AreaMailsend extends Command
         Mail::send(['html' => 'mail'], ['content' => $content], function ($message){
             $message->subject("Site Details");
             $message->to("vineet.sharma@mantaray.in");
-            $message->attach(public_path('/araedtl.csv'));
+            $message->attach(public_path('application_files/area_export/araedtl.csv'));
         });
 
         $settings_data->send_site_dump = 'no';
