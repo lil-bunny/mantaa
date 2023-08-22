@@ -45,7 +45,7 @@ class AreaController extends Controller
         if($filters['status'] != '') {
             $areas->where('areas.status', '=', $filters['status']);
         }
-        $areas = $areas->orderBy('id', 'DESC')->paginate(10);
+        $areas = $areas->orderBy('status', 'ASC')->paginate(100);
         
         return view('admin::area.index', ['areas'=>$areas, 'filters' => $filters]);
     }
