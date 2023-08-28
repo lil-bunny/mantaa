@@ -46,7 +46,7 @@
                                             <div class="row">
                                                     <div class="col s12 m12">
                                                         <div class="row">
-                                                            <div class="col s12 input-field">
+                                                            <div class="col s12">
                                                                 <select name="role_id">
                                                                     @foreach($roles as $role)
                                                                         <option value="{{ $role->id }}">{{ $role->title }}</option>
